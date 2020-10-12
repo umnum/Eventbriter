@@ -45,7 +45,6 @@ group :development, :test do
   gem 'better_errors'
   gem 'rspec-rails'
   gem 'rails-controller-testing'
-  gem 'capybara'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
   gem 'faker'
