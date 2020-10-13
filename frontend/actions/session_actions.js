@@ -25,3 +25,11 @@ export const signup = user => {
                   errors => dispatch(receiveErrors(errors.responseJSON)));
     });
 };
+
+export const login = user => {
+    return (dispatch => {
+        return SessionAPIUtils.login(user)
+            .then(user => dispatch(receiveCurrentUser(user)),
+                  errors => dispatch(receiveErrors(errors.responseJSON)));
+    });
+};
