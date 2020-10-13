@@ -18,6 +18,12 @@ export const receiveErrors = (errors) => {
     });
 };
 
+export const logoutCurrentUser = () => {
+    return ({
+        type: LOGOUT_CURRENT_USER
+    });
+};
+
 export const signup = user => {
     return (dispatch => {
         return SessionAPIUtils.signup(user)
@@ -30,6 +36,14 @@ export const login = user => {
     return (dispatch => {
         return SessionAPIUtils.login(user)
             .then(user => dispatch(receiveCurrentUser(user)),
+                  errors => dispatch(receiveErrors(errors.responseJSON)));
+    });
+};
+
+export const logout = () => {
+    return (dispatch => {
+        return SessionAPIUtils.logout()
+            .then(success => dispatch(logoutCurrentUser()),
                   errors => dispatch(receiveErrors(errors.responseJSON)));
     });
 };
