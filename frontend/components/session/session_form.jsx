@@ -36,20 +36,24 @@ class SessionForm extends React.Component {
             return <p key={idx}>{error}</p>;
         });
         return (
-            <div>
+            <div className="session-container">
                 <header>{isLogin ? "Log In" : "Sign Up"} or {isLogin ? 
                         <Link onClick={this.clearErrors} to="/signup">Sign Up</Link> :
                         <Link onClick={this.clearErrors} to="/login">Log In</Link>}</header>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Email address
+                    <div className="email-field-wrapper">
+                        <label>Email address</label>
                         <input onChange={this.handleInput('email')} type="text" value={this.state.email}/>
-                    </label>
-                    {isLogin ? <></> : <label>Full Name
-                            <input onChange={this.handleInput('username')} type="text" value={this.state.username}/>
-                        </label>}
-                    <label>Password
+                    </div>
+                    {isLogin ? <></> : 
+                    <div className="username-field-wrapper">
+                        <label>Full Name</label>
+                        <input onChange={this.handleInput('username')} type="text" value={this.state.username}/>
+                    </div>}
+                    <div className="password-field-wrapper">
+                        <label>Password</label>
                         <input onChange={this.handleInput('password')} type="password" value={this.state.password}/>
-                    </label>
+                    </div>
                     <button type="submit">{isLogin ? "Log In" : "Sign Up"}</button>
                 </form>
                 {errors}
