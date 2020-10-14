@@ -27,7 +27,6 @@
 /config/master.key
 
 /config/credentials.yml.enc
-Gemfile.lock
 
 app/assets/javascripts/bundle.js*
 package-lock.json
