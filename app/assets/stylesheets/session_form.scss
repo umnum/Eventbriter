@@ -1,27 +1,43 @@
 .session-container {
     height: 250px;
     padding: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
-.session-container form {
+
+.session-form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.session-form header {
+    display: flex;
+    justify-content: center;
+}
+
+.session-form header a {
+    padding-left: 5px;
+}
+
+.session-form form {
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    justify-content: space-around;
     height: 200px;
+    padding-left: 25%;
+    padding-right: 25%;
 }
-.session-container form div {
+.session-form form div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border: 1px solid lightgray;
     border-radius: 4px;
     padding: 3px;
-    width: 40%;
+    width: 99%;
 }
 
-.session-container form div label {
+.session-form form div label {
   font-size: 12px;
   line-height: 22px;
   font-weight: 400;
@@ -31,18 +47,20 @@
   color: var(--eds-ui-800, #39364F);
 }
 
-.session-container form div input {
+.session-form form div input {
     border: 0px none; 
     font-size: 16px;
 }
 
-.session-container form div input:focus {
+.session-form form div input:focus {
     outline: none;
 }
 
-.session-container button {
+.session-form button {
+    display: flex;
+    justify-content: center;
     height: 44px;
-    width: 200px;
+    width: 100%;
     padding-top: 0;
     padding-bottom: 1px;
     padding-left: 30px;
@@ -59,4 +77,9 @@
     border: 2px solid #A9A8B3;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.session-errors {
+    text-align: center;
+    color: red;
 }

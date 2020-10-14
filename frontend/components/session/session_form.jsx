@@ -37,26 +37,30 @@ class SessionForm extends React.Component {
         });
         return (
             <div className="session-container">
-                <header>{isLogin ? "Log In" : "Sign Up"} or {isLogin ? 
-                        <Link onClick={this.clearErrors} to="/signup">Sign Up</Link> :
-                        <Link onClick={this.clearErrors} to="/login">Log In</Link>}</header>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="email-field-wrapper">
-                        <label>Email address</label>
-                        <input onChange={this.handleInput('email')} type="text" value={this.state.email}/>
-                    </div>
-                    {isLogin ? <></> : 
-                    <div className="username-field-wrapper">
-                        <label>Full Name</label>
-                        <input onChange={this.handleInput('username')} type="text" value={this.state.username}/>
-                    </div>}
-                    <div className="password-field-wrapper">
-                        <label>Password</label>
-                        <input onChange={this.handleInput('password')} type="password" value={this.state.password}/>
-                    </div>
-                    <button type="submit">{isLogin ? "Log In" : "Sign Up"}</button>
-                </form>
-                {errors}
+                <div className="session-form">
+                    <header>{isLogin ? "Log In" : "Sign Up"} or {isLogin ? 
+                            <Link onClick={this.clearErrors} to="/signup">Sign Up</Link> :
+                            <Link onClick={this.clearErrors} to="/login">Log In</Link>}</header>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="email-field-wrapper">
+                            <label>Email address</label>
+                            <input onChange={this.handleInput('email')} type="text" value={this.state.email}/>
+                        </div>
+                        {isLogin ? <></> : 
+                        <div className="username-field-wrapper">
+                            <label>Full Name</label>
+                            <input onChange={this.handleInput('username')} type="text" value={this.state.username}/>
+                        </div>}
+                        <div className="password-field-wrapper">
+                            <label>Password</label>
+                            <input onChange={this.handleInput('password')} type="password" value={this.state.password}/>
+                        </div>
+                        <button type="submit">{isLogin ? "Log In" : "Sign Up"}</button>
+                    </form>
+                </div>
+                <div className="session-errors">
+                    {errors}
+                </div>
             </div>
         );
     };
