@@ -6,8 +6,8 @@
     - a link to the user's liked events, "Likes"
     - a link to the user's "Tickets"
     - a dropdown profile displaying:
-        - username and password
-        - a link to "Log out"
+        - username and email 
+        * a link to "Log out"
   - logged out:
     - a Main Logo button which links to "/"
     - a "Search events" bar
@@ -30,19 +30,28 @@ class Header extends React.Component {
     }
     logout() {
         this.props.logout();
-        this.props.history.push("/signup");
+        this.props.history.push("/login");
     }
     render() {
         return (
-            <div>
-                <Link to="/"><i>FSProject</i></Link>
-                <input type="text"/>
-                {this.props.isLoggedIn() ? <Link onClick={this.clearErrors} to="/login">Sign In</Link> :
-                 <div>
-                     <h3>{this.props.currentUser.username}</h3>
-                     <h4>{this.props.currentUser.email}</h4>
-                     <button onClick={this.logout}>Log Out</button>
-                 </div>}
+            <div className="header">
+                <div className="left-header">
+                    <Link className="home-link" to="/"><i>FSProject</i></Link>
+                    <input type="text"/>
+                </div>
+                <div className="right-header">
+                    {this.props.isLoggedIn() ? <Link className="signin-link" onClick={this.clearErrors} to="/login">Sign In</Link> :
+                    <div className="dropdown-menu">
+                        <a className="dropdown-link">Profile</a>
+                        <div className="dropdown-content">
+                            <h3>
+                                <a>{this.props.currentUser.username}</a>
+                                <p>{this.props.currentUser.email}</p>
+                            </h3>
+                            <h3 onClick={this.logout}>Log Out</h3>
+                        </div>
+                    </div>}
+                 </div>
             </div>
         );
     };
