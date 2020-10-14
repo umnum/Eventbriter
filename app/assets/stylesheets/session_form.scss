@@ -1,0 +1,62 @@
+.session-container {
+    height: 250px;
+    padding: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.session-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+}
+.session-container form div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding: 3px;
+    width: 40%;
+}
+
+.session-container form div label {
+  font-size: 12px;
+  line-height: 22px;
+  font-weight: 400;
+  font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: var(--eds-ui-800, #39364F);
+}
+
+.session-container form div input {
+    border: 0px none; 
+    font-size: 16px;
+}
+
+.session-container form div input:focus {
+    outline: none;
+}
+
+.session-container button {
+    height: 44px;
+    width: 200px;
+    padding-top: 0;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    line-height: 24px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    color: #39364F;
+    fill:  #39364F;
+    background: transparent;
+    border: 2px solid #A9A8B3;
+    border-radius: 4px;
+    cursor: pointer;
+}
