@@ -75,20 +75,20 @@ class SessionForm extends React.Component {
                             <Link onClick={this.clearErrors} to="/signup">sign up</Link> :
                             <Link onClick={this.clearErrors} to="/login">log in</Link>}</h1>
                     <form onSubmit={this.handleSubmit}>
-                        <div className={'field-wrapper'}>
+                        <div className={this.state.design.email ? 'field-wrapper-focused' : 'field-wrapper'}>
                             <div className={`email-field-wrapper ${emailBorder}`}>
                                 <label id="email-label">Email address</label>
                                 <input onBlur={this.blur.bind(this)} onFocus={this.focus('email')} onChange={this.handleInput('email')} type="text" value={this.state.email}/>
                             </div>
                         </div>
                         {isLogin ? <></> : 
-                        <div className="field-wrapper">
+                        <div className={this.state.design.username ? 'field-wrapper-focused' : 'field-wrapper'}>
                             <div className={`username-field-wrapper ${usernameBorder}`}>
                                 <label id="username-label">Full Name</label>
                                 <input onBlur={this.blur.bind(this)} onFocus={this.focus('username')} onChange={this.handleInput('username')} type="text" value={this.state.username}/>
                             </div>
                         </div>}
-                        <div className="field-wrapper">
+                        <div className={this.state.design.password ? 'field-wrapper-focused' : 'field-wrapper'}>
                             <div className={`password-field-wrapper ${passwordBorder}`}>
                                 <label id="password-label">Password</label>
                                 <input onBlur={this.blur.bind(this)} onFocus={this.focus('password')} onChange={this.handleInput('password')} type="password" value={this.state.password}/>
