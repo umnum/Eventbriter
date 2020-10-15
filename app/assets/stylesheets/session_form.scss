@@ -34,28 +34,41 @@ body {
     padding-right: 33%;
 }
 .session-form form div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     border: 1px solid lightgray;
     border-radius: 2px;
+    position: relative;
     padding: 3px;
     width: 99%;
-    height: 15%;
+    height: 18%;
+    position: relative;
+    transition: border 240ms cubic-bezier(0.4, 0, 0.3, 1);
 }
+
+.session-form form div:hover {
+    border-color: var(--eds-ui-500, #A9A8B3);
+}
+
 
 .session-form form div label {
   font-size: 12px;
   line-height: 22px;
   font-weight: 400;
+  padding-left: 2%;
+  position: absolute;
+  overflow: auto;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   color: var(--eds-ui-800, #39364F);
+  z-index: -1;
 }
 
 .session-form form div input {
     border: 0px none; 
-    font-size: 16px;
+    font-size: 14px;
+    padding: 3% 3% .5%;
+    width: 94%;
+    height: 70%;
+    background: transparent;
 }
 
 .session-form form div input:focus {
