@@ -38,9 +38,9 @@ class SessionForm extends React.Component {
         return (
             <div className="session-container">
                 <div className="session-form">
-                    <header>{isLogin ? "Log In" : "Sign Up"} or {isLogin ? 
-                            <Link onClick={this.clearErrors} to="/signup">Sign Up</Link> :
-                            <Link onClick={this.clearErrors} to="/login">Log In</Link>}</header>
+                    <h1>{isLogin ? "Log in" : "Sign up"} or {isLogin ? 
+                            <Link onClick={this.clearErrors} to="/signup">sign up</Link> :
+                            <Link onClick={this.clearErrors} to="/login">log in</Link>}</h1>
                     <form onSubmit={this.handleSubmit}>
                         <div className="email-field-wrapper">
                             <label>Email address</label>
