@@ -96,6 +96,15 @@ body {
     border: 2px solid #d1410c;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 240ms cubic-bezier(0.4, 0, 0.3, 1);
+}
+
+.session-form button:hover {
+    background-color: #F05537;
+}
+
+.session-form button:focus {
+    outline: none;
 }
 
 .session-errors {
