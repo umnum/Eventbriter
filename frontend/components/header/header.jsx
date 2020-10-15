@@ -33,17 +33,22 @@ class Header extends React.Component {
         this.props.history.push("/login");
     }
     render() {
+        
         let pathname = this.props.location.pathname;
         let isSessionForm = pathname === '/login' || pathname === '/signup';
+        let sessionHeaderClass = isSessionForm ? ' session-header' : '';
         return (
-            <div className="header">
+            <div className={`header${sessionHeaderClass}`}>
                 <div className="left-header">
                     <Link className="home-link" to="/"><i>eventbriter</i></Link>
                 </div>
                 <div className="right-header">
                     {!this.props.isLoggedIn() ?
                     <div className="dropdown-menu">
-                        <a className="dropdown-link">Profile</a>
+                            <a className="dropdown-link">
+                                <i className="far fa-user"></i>
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
                         <div className="dropdown-content">
                             <h3>
                                 <a>{this.props.currentUser.username}</a>

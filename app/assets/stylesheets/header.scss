@@ -33,6 +33,12 @@
   text-decoration: none;
 }
 
+.dropdown-link i:first-child {
+  color: rgb(103, 100, 100);
+  padding-right: 20%;
+  padding-left: 20%;
+}
+
 .home-link i {
   display: flex;
   flex-direction: column;
@@ -41,9 +47,7 @@
 
 /* Dropdown Button */
 .dropdown-link{
-  background-color: #f05537;
-  color: white;
-  padding: 16px;
+  padding: 20%;
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -70,7 +74,14 @@
 /* The container <div> - needed to position the dropdown content */
 .dropdown-menu {
   position: relative;
-  display: inline-block flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30%;
+}
+
+.dropdown-menu:hover {
+  background-color: rgb(242, 242, 242);
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -81,8 +92,9 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  left: -90px;
-  top: 30px;
+  left: -80%;
+  width: 200%;
+  top: 100%;
 }
 
 /* Links inside the dropdown */
@@ -102,4 +114,6 @@
 .dropdown-menu:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown-menu:hover .dropdown-link{background-color: #f05537;}
+.dropdown-menu:hover .dropdown-link{
+  background-color: rgb(242, 242, 242);
+}
