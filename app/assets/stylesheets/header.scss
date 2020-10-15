@@ -1,25 +1,33 @@
 .header {
     display: flex;
     justify-content: space-between;
-    height: 70px;
+    height: 8%;
 }
 
 .left-header {
     display: flex;
     justify-content: space-between;
-    width: 300px;
+    width: 70%;
+}
+
+.right-header {
+  display: flex;
+  justify-content: flex-end;
+  width: 30%;
 }
 
 .home-link {
   display: flex;
   color: #f05537;
   background-color: white;
-  justify-content: space-between;
-  padding: 10px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
   font-size: 24px;
   font-family: briteicons,"Neue Plak",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Helvetica,Tahoma,Arial,sans-serif;
   font-weight: bolder;
   font-style: normal;
+  width: 170px;
   border: none;
   cursor: pointer;
   text-decoration: none;
@@ -43,16 +51,16 @@
 
 .signin-link{
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
   background-color: white;
   color: black;
-  padding: 29px 14px;
-  width: 40px;
   font-size: 12px;
-  font-weight: 450;
-  font-family: briteicons,"Neue Plak",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Helvetica,Tahoma,Arial,sans-serif;
+  font-weight: 350;
   border: none;
   text-decoration: none;
-  top: 30px;
+  width: 80px;
 }
 
 .signin-link:hover {
@@ -79,11 +87,12 @@
 
 /* Links inside the dropdown */
 .dropdown-content h3 {
+  display: block;
   color: black;
   padding: 12px 16px;
   text-decoration: none;
-  display: block;
   cursor: pointer;
+  height: 40px;
 }
 
 /* Change color of dropdown links on hover */

@@ -1,47 +1,53 @@
+body {
+  font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
+  color: #39364f;
+}
+
 .session-container {
-    height: 250px;
-    padding: 200px;
+    padding-top: 10%;
 }
 
 .session-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 40%;
 }
 
-.session-form header {
+.session-form h1 {
     display: flex;
     justify-content: center;
+    height: 20%;
+    font-size: 30px;
+    font-weight: 700;
 }
 
-.session-form header a {
+.session-form h1 a {
     padding-left: 5px;
 }
 
 .session-form form {
     display: flex;
-    padding: 30px;
     flex-direction: column;
     justify-content: space-around;
-    height: 200px;
-    padding-left: 25%;
-    padding-right: 25%;
+    padding-left: 33%;
+    padding-right: 33%;
 }
 .session-form form div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border: 1px solid lightgray;
-    border-radius: 4px;
+    border-radius: 2px;
     padding: 3px;
     width: 99%;
+    height: 15%;
 }
 
 .session-form form div label {
   font-size: 12px;
   line-height: 22px;
   font-weight: 400;
-  font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   color: var(--eds-ui-800, #39364F);
@@ -61,7 +67,7 @@
     justify-content: center;
     height: 44px;
     width: 100%;
-    padding-top: 0;
+    padding-top: 5px;
     padding-bottom: 1px;
     padding-left: 30px;
     padding-right: 30px;
@@ -69,17 +75,25 @@
     text-align: center;
     text-decoration: none;
     line-height: 24px;
-    font-weight: 600;
+    font-weight: 548;
     letter-spacing: 0.2px;
-    color: #39364F;
+    color: white;
+    background-color: #d1410c;
     fill:  #39364F;
-    background: transparent;
-    border: 2px solid #A9A8B3;
+    border: 2px solid #d1410c;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .session-errors {
+    display: flex;
     text-align: center;
+    flex-direction: column;
+    justify-content: flex-start;
     color: red;
+    height: 20%;
+}
+
+.session-errors p {
+    height: 10%;
 }
