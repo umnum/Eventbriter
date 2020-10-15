@@ -33,7 +33,7 @@ body {
     padding-left: 33%;
     padding-right: 33%;
 }
-.session-form form div {
+.session-form form .field-wrapper {
     border: 1px solid lightgray;
     border-radius: 2px;
     position: relative;
@@ -44,12 +44,12 @@ body {
     transition: border 240ms cubic-bezier(0.4, 0, 0.3, 1);
 }
 
-.session-form form div:hover {
+.session-form form .field-wrapper:hover {
     border-color: var(--eds-ui-500, #A9A8B3);
 }
 
 
-.session-form form div label {
+.session-form form .field-wrapper label {
   font-size: 12px;
   line-height: 22px;
   font-weight: 400;
@@ -62,7 +62,7 @@ body {
   z-index: -1;
 }
 
-.session-form form div input {
+.session-form form .field-wrapper input {
     border: 0px none; 
     font-size: 14px;
     padding: 3% 3% .5%;
@@ -71,7 +71,7 @@ body {
     background: transparent;
 }
 
-.session-form form div input:focus {
+.session-form form .field-wrapper input:focus {
     outline: none;
 }
 
@@ -92,7 +92,6 @@ body {
     letter-spacing: 0.2px;
     color: white;
     background-color: #d1410c;
-    fill:  #39364F;
     border: 2px solid #d1410c;
     border-radius: 4px;
     cursor: pointer;
@@ -120,4 +119,25 @@ body {
 
 .session-errors p {
     height: 10%;
+}
+
+.new-class {
+    position: relative;
+    border: 2px solid lightgray;
+    border-radius: 2px;
+    transition: border 140ms ease;
+    bottom: 10%;
+    right: 1%;
+    height: 110%;
+    width: 101%;
+}
+
+.new-class:defined {
+    border-color: var(--eds-ui-500, #3659E3);
+}
+
+.new-class > #email-label, 
+.new-class > #username-label, 
+.new-class > #password-label {
+    color: #3659E3;
 }
