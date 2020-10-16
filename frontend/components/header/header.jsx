@@ -47,7 +47,7 @@ class Header extends React.Component {
                     <div className="dropdown-menu">
                             <a className="dropdown-link">
                                 <i className="far fa-user"></i>
-                                <i class="fas fa-chevron-down"></i>
+                                <i className="fas fa-chevron-down"></i>
                             </a>
                         <div className="dropdown-content">
                             <h3>
