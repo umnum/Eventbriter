@@ -5,11 +5,11 @@ class Api::EventsController < ApplicationController
     end
 
     def show
-        @event = Event.new(event_params)
-        if @event.save
+        @event = Event.find_by(id: params[:id])
+        if @event
             render :show
         else
-            render json: @event.errors.full_messages, status: 401
+            render json: {errors: "Event does not exist."}, status: 422
         end
     end
 
