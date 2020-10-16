@@ -16,13 +16,21 @@ class SessionForm extends React.Component {
             },
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoSubmit = this.demoSubmit.bind(this);
         this.clearErrors = this.clearErrors(this);
         this.focus = this.focus.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.processForm(this.state)
+        const {username, email, password} = this.state;
+        this.props.processForm({username, email, password})
+            .then(success => {this.props.history.push('/')});
+    }
+
+    demoSubmit(e) {
+        e.preventDefault();
+        this.props.processForm({email: 'demo@mail.com', password: "passworddemo"})
             .then(success => {this.props.history.push('/')});
     }
 
@@ -95,6 +103,7 @@ class SessionForm extends React.Component {
                             </div>
                         </div>
                         <button type="submit">{isLogin ? "Log In" : "Sign Up"}</button>
+                        {isLogin ? <button onClick={this.demoSubmit}>Demo Log In</button> : <></>}
                     </form>
                 </div>
                 <div className="session-errors">
