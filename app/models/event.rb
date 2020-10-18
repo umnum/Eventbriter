@@ -1,7 +1,6 @@
 class Event < ApplicationRecord
     validates :name, :location, :event_type, :description, presence: true
-    validates :start_date, :end_date, :timezone, :capacity, presence: true
-    validates :status, :start_sales_date, presence: true
+    validates :start_date, :end_date, :timezone, :status, presence: true
 
     belongs_to :organizer,
         primary_key: :id,
