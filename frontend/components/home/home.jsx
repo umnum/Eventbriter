@@ -1,9 +1,13 @@
 import React from 'react';
+import EventIndexContainer from '../../components/events/event_index_container';
 
 class Home extends React.Component {
+
     render() {
         return(
-            <h1 className="home">Home Page</h1>
+            <div className="home">
+                <EventIndexContainer />
+            </div>
         );
     };
 };
