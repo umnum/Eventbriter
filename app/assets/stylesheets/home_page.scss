@@ -1,5 +1,13 @@
-.home {
+.home ul{
     display: flex;
-    justify-content: center;
-    padding: 40%;
+    justify-content: space-evenly;
+}
+
+.home h3{
+    height: 50%;
+}
+
+.event {
+    height: 10%;
+    width: 20%;
 }
