@@ -182,11 +182,13 @@
     height: 55%;
 }
 
-.location-field-wrapper {
-    width: 100% !important;
-}
-
-.category-field-wrapper {
+.location-field-wrapper,
+.category-field-wrapper,
+.start-date-field-wrapper,
+.start-time-field-wrapper,
+.end-date-field-wrapper,
+.end-time-field-wrapper,
+.timezone-field-wrapper {
     width: 100% !important;
 }
 
@@ -202,6 +204,22 @@
     letter-spacing: .75px;
     margin-right: -.75px;
     font-weight: 700;
+}
+
+.start-date-time-field-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.datetime-item {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.end-date-time-field-wrapper {
+    display: flex;
+    justify-content: space-around;
 }
 
 .basic-info-header div, 
@@ -243,6 +261,11 @@
 .event-date-and-time {
     display: flex;
     flex-direction: column;
+    height: 150%;
+}
+
+.timezone-header {
+    height: 50%;
 }
 
 .event-date-and-time-header {
@@ -357,11 +380,12 @@
     width: 100%;
 }
 
-.event-form .name-field-wrapper {
+.event-form .description-field-wrapper {
     width: 100%;
 }
 
-#event-type-category-dropdown {
+#event-type-category-dropdown,
+#timezone-dropdown {
     display: flex;
     padding-top: 7%;
     justify-content: space-between;
@@ -377,7 +401,9 @@
     outline: none;
 }
 
-#event-type:focus,  #category-type:focus{
+#event-type:focus,  
+#category-type:focus,
+#timezone-type:focus {
     border: 0px none; 
     position: relative;
     padding: 1.1% 1.5% 1.5%;
@@ -404,6 +430,41 @@
     top: -25%;
     width: 94%;
     background: transparent;
+}
+
+.event-date-and-time-selector {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 250%;
+}
+
+.event-description {
+    height: 40%;
+}
+
+.start-date-field-wrapper input,
+.end-date-field-wrapper input,
+.start-time-field-wrapper input,
+.end-time-field-wrapper input {
+    height: 120%;
+}
+
+.description-field-wrapper input {
+    height: 70%;
+}
+
+.start-date-field-wrapper input:focus,
+.end-date-field-wrapper input:focus,
+.start-time-field-wrapper input:focus,
+.end-time-field-wrapper input:focus {
+    height: 170%;
+}
+
+#start-time,
+#end-time {
+    width: 75%;
+    padding-left: 10%;
 }
 
 .event-form button {
@@ -466,7 +527,12 @@
 
 .new-class > #name-label, 
 .new-class > #type-label, 
-.new-class > #category-label {
+.new-class > #start-date-label,
+.new-class > #start-time-label,
+.new-class > #end-date-label,
+.new-class > #end-time-label,
+.new-class > #category-label,
+.new-class > #description-label {
     color: #3659E3;
 }
 ///////

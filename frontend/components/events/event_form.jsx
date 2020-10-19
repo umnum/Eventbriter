@@ -7,7 +7,13 @@ class EventFrom extends React.Component {
         this.state.design = {
             name: false,
             type: false,
-            location: false
+            location: false,
+            startDate: false,
+            startTime: false,
+            endDate: false,
+            endTime: false,
+            timezone: false,
+            description: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
@@ -29,6 +35,12 @@ class EventFrom extends React.Component {
             let type = false;
             let category = false;
             let location = false;
+            let startDate = false;
+            let startTime = false;
+            let endDate = false;
+            let endTime = false;
+            let timezone = false;
+            let description = false;
             if (form === 'name') {
                 name = true;
             }
@@ -41,7 +53,25 @@ class EventFrom extends React.Component {
             else if (form === 'location') {
                 location = true;
             }
-            this.setState({design: {name, type, category, location}});
+            else if (form === 'startDate') {
+                startDate = true;
+            }
+            else if (form === 'startTime') {
+                startTime = true;
+            }
+            else if (form === 'endDate') {
+                endDate = true;
+            }
+            else if (form === 'endTime') {
+                endTime = true;
+            }
+            else if (form === 'timezone') {
+                timezone = true;
+            }
+            else if (form === 'description') {
+                description = true;
+            }
+            this.setState({design: {name, type, category, location, startDate, startTime, endDate, endTime, timezone, description}});
         };
     }
 
@@ -85,6 +115,12 @@ class EventFrom extends React.Component {
         let typeBorder = this.state.design.type ? "new-class" : "";
         let categoryBorder = this.state.design.category ? "new-class" : "";
         let locationBorder = this.state.design.location? "new-class" : "";
+        let startDateBorder = this.state.design.startDate? "new-class" : "";
+        let startTimeBorder = this.state.design.startTime? "new-class" : "";
+        let endDateBorder = this.state.design.endDate? "new-class" : "";
+        let endTimeBorder = this.state.design.endTime? "new-class" : "";
+        let timezoneBorder = this.state.design.timezone? "new-class" : "";
+        let descriptionBorder = this.state.design.description? "new-class" : "";
         return (
             <form className="event-form" onSubmit={this.handleSubmit}>
                 <div className="event-basic-info">
@@ -175,54 +211,84 @@ class EventFrom extends React.Component {
                         <div>
                             <p>
                                 <span>
-                                    Help people in the area discover your event and let attendees know where to show up.
+                                    Tell event-goers when your event starts and ends so they can make plans to attend.
                                 </span>
                             </p>
                         </div>
                     </div>
-                    <div>
-                        <label>Start Date</label>
-                            <input onChange={this.handleInput('startDate')} type="date" id="start-date" name="startDate" />
-                    </div> 
-                    <div>
-                        <label>Start Time</label>
-                            <input onChange={this.handleInput('startTime')} type="time" id="start-time" name="startTime" />
-                    </div> 
-                    <div>
-                        <label>End Date</label>
-                            <input onChange={this.handleInput('endDate')} type="date" id="end-date" name="endDate" />
-                    </div> 
-                    <div>
-                        <label>End Time</label>
-                            <input onChange={this.handleInput('endTime')} type="time" id="end-time" name="endTime" />
-                    </div> 
-                    <div>
-                        <label>Timezone</label>
-                            <select onChange={this.handleInput('timezone')} id="timezone" name="timezone">
-                                <option value="AST">Atlantic Standard Time (AST)</option>
-                                <option value="EST">Eastern Standard Time (EST)</option>
-                                <option value="EDT">Eastern Daylight Time (EDT)</option>
-                                <option value="CST">Central Standard Time (CST)</option>
-                                <option value="CDT">Central Daylight Time (CDT)</option>
-                                <option value="MST">Mountain Standard Time (MST)</option>
-                                <option value="MDT">Mountain Daylight Time (MDT)</option>
-                                <option value="PST">Pacific Standard Time (PST)</option>
-                                <option defaultValue value="PDT">Pacific Daylight Time (PDT)</option>
-                                <option value="AKST">Alaska Standard Time (AKST)</option>
-                                <option value="AKDT">Alaska Daylight Time (AKDT)</option>
-                                <option value="HST">Hawaii Standard Time (HST)</option>
-                                <option value="HAST">Hawaii-Aleutian Standard Time (HAST)</option>
-                                <option value="HADT">Hawaii-Aleutian Daylight Time (HADT)</option>
-                                <option value="SST">Samoa Standard Time (SST)</option>
-                                <option value="SDT">Samoa Daylight Time (SDT)</option>
-                                <option value="CHST">Chamorro Standard Time (CHST)</option>
-                            </select>
+                    <div className="event-date-and-time-selector">
+                        <div className="start-date-time-field-wrapper">
+                            <div id="start-date" className="datetime-item">
+                                <div className={this.state.design.startDate? 'field-wrapper-focused' : 'field-wrapper'}>
+                                    <div className={`start-date-field-wrapper ${startDateBorder}`}>
+                                        <label id="start-date-label">Start Date</label>
+                                        <input onBlur={this.blur.bind(this)} onFocus={this.focus('startDate')} onChange={this.handleInput('startDate')} type="date" name="startDate"/>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div id="start-time" className="datetime-item">
+                                <div className={this.state.design.startTime? 'field-wrapper-focused' : 'field-wrapper'}>
+                                    <div className={`start-time-field-wrapper ${startTimeBorder}`}>
+                                        <label id="start-time-label">Start Time</label>
+                                        <input onBlur={this.blur.bind(this)} onFocus={this.focus('startTime')} onChange={this.handleInput('startTime')} type="time" name="startTime"/>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div className="end-date-time-field-wrapper">
+                            <div id="end-date" className="datetime-item">
+                                <div className={this.state.design.endDate? 'field-wrapper-focused' : 'field-wrapper'}>
+                                    <div className={`end-date-field-wrapper ${endDateBorder}`}>
+                                        <label id="end-date-label">End Date</label>
+                                        <input onBlur={this.blur.bind(this)} onFocus={this.focus('endDate')} onChange={this.handleInput('endDate')} type="date" name="endDate"/>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div id="end-time" className="datetime-item">
+                                <div className={this.state.design.endTime? 'field-wrapper-focused' : 'field-wrapper'}>
+                                    <div className={`end-time-field-wrapper ${endTimeBorder}`}>
+                                        <label id="start-time-label">End Time</label>
+                                        <input onBlur={this.blur.bind(this)} onFocus={this.focus('endTime')} onChange={this.handleInput('endTime')} type="time" name="endTime"/>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div id="timezone-dropdown">
+                        <div className={this.state.design.timezone? 'field-wrapper-dropdown-focused' : 'field-wrapper-dropdown'}>
+                            <div className={`timezone-field-wrapper ${timezoneBorder}`}>
+                                <select onBlur={this.blur.bind(this)} onFocus={this.focus('timezone')} onChange={this.handleInput('timezone')} id="timezone-type" name="timezone">
+                                    <option value="">Timezone</option>
+                                    <option value="AST">Atlantic Standard Time (AST)</option>
+                                    <option value="EST">Eastern Standard Time (EST)</option>
+                                    <option value="EDT">Eastern Daylight Time (EDT)</option>
+                                    <option value="CST">Central Standard Time (CST)</option>
+                                    <option value="CDT">Central Daylight Time (CDT)</option>
+                                    <option value="MST">Mountain Standard Time (MST)</option>
+                                    <option value="MDT">Mountain Daylight Time (MDT)</option>
+                                    <option value="PST">Pacific Standard Time (PST)</option>
+                                    <option value="PDT">Pacific Daylight Time (PDT)</option>
+                                    <option value="AKST">Alaska Standard Time (AKST)</option>
+                                    <option value="AKDT">Alaska Daylight Time (AKDT)</option>
+                                    <option value="HST">Hawaii Standard Time (HST)</option>
+                                    <option value="HAST">Hawaii-Aleutian Standard Time (HAST)</option>
+                                    <option value="HADT">Hawaii-Aleutian Daylight Time (HADT)</option>
+                                    <option value="SST">Samoa Standard Time (SST)</option>
+                                    <option value="SDT">Samoa Daylight Time (SDT)</option>
+                                    <option value="CHST">Chamorro Standard Time (CHST)</option>
+                                </select>
+                            </div>
+                        </div>
                     </div> 
                 </div>
                 <hr className="event-form-divider" />
-                <div>
-                    <label>Description</label>
-                    <input onChange={this.handleInput('description')} type="text" value={this.state.description}/>
+                <div className="event-description">
+                    <div className={this.state.design.description? 'field-wrapper-focused' : 'field-wrapper'}>
+                        <div className={`description-field-wrapper ${descriptionBorder}`}>
+                            <label id="description-label">Description</label>
+                            <input onBlur={this.blur.bind(this)} onFocus={this.focus('description')} onChange={this.handleInput('description')} type="text" value={this.state.description}/>
+                        </div>
+                    </div>
                 </div> 
                <div>
                    <label>Image</label>
