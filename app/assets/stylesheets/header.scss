@@ -77,7 +77,7 @@
   cursor: pointer;
 }
 
-.signin-link{
+.signin-link, .about-link {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -91,8 +91,13 @@
   width: 80px;
 }
 
-.signin-link:hover {
+.signin-link:hover, .about-link:hover {
   background-color: rgb(242, 242, 242);
+}
+
+.fab.fa-github {
+  padding-top: 10px;
+  color: green;
 }
 
 /* The container <div> - needed to position the dropdown content */

@@ -2,7 +2,7 @@
   - logged in:
     * a Main Logo button which links to "/"
     * a "Search events" bar
-    - a link for "Create Event"
+    * a link for "Create Event"
     - a link to the user's liked events, "Likes"
     - a link to the user's "Tickets"
     * a dropdown profile displaying:
@@ -13,7 +13,6 @@
     * a "Search events" bar
     - a dropdown for "Organize"
     - a dropdown for "Help"
-    - a "Create Event" link to "/signin" and "/signup"
     * a link to "Sign In"
 */
 import React from 'react';
@@ -59,7 +58,7 @@ class Header extends React.Component {
                             <h3 onClick={this.logout}>Log Out</h3>
                         </div>
                     </div> </>: isSessionForm ? <></> :
-                    <Link className="signin-link" onClick={this.clearErrors} to="/login">Sign In</Link>}
+                    <><a className="about-link" href="https://github.com/umnum/FSProject/wiki"><i class="fab fa-github"></i><p>About</p></a><Link className="signin-link" onClick={this.clearErrors} to="/login">Sign In</Link></>}
                  </div>
             </div>
         );
