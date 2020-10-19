@@ -131,6 +131,12 @@
     font-weight: 700;
 }
 
+.event-category {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+}
+
 //.event-index-item:not(:first-child) {
     //padding: 8px;
 //}
@@ -149,8 +155,8 @@
 }
 
 .event-form div {
-    width: 50%;
-    padding-left: 25%;
+    width: 40%;
+    padding-left: 30%;
 }
 
 .event-form div div {
@@ -170,6 +176,18 @@
     flex-direction: column;
     padding-top: 2%;
     padding-bottom: 2%;
+}
+
+.event-location {
+    height: 55%;
+}
+
+.location-field-wrapper {
+    width: 100% !important;
+}
+
+.category-field-wrapper {
+    width: 100% !important;
 }
 
 .basic-info-header h1, 
@@ -270,7 +288,7 @@
     border: 1px solid lightgray;
     border-radius: 2px;
     position: relative;
-    width: 25%;
+    width: 47%;
     height: 50%;
     position: relative;
     transition: border 240ms cubic-bezier(0.4, 0, 0.3, 1);
@@ -281,7 +299,7 @@
     border-radius: 2px;
     border: none;
     position: relative;
-    width: 25%;
+    width: 47%;
     height: 50%;
     position: relative;
     transition: border 240ms cubic-bezier(0.4, 0, 0.3, 1);
@@ -292,6 +310,7 @@
     border: none;
     position: relative;
     height: 45%;
+    width: 101%;
     position: relative;
     transition: border 240ms cubic-bezier(0.4, 0, 0.3, 1);
 }
@@ -334,9 +353,19 @@
     background: transparent;
 }
 
-.event-type-category-dropdown {
+.event-form .name-field-wrapper {
+    width: 100%;
+}
+
+.event-form .name-field-wrapper {
+    width: 100%;
+}
+
+#event-type-category-dropdown {
     display: flex;
     padding-top: 7%;
+    justify-content: space-between;
+    width: 50%;
 }
 
 .event-form .field-wrapper-dropdown select {
@@ -350,7 +379,9 @@
 
 #event-type:focus,  #category-type:focus{
     border: 0px none; 
+    position: relative;
     padding: 1.1% 1.5% 1.5%;
+    top: 25%;
     font-size: 14px;
     width: 100%;
     background: transparent;
@@ -369,7 +400,9 @@
     outline: none;
     border: 0px none; 
     font-size: 14px;
-    padding: 3% 3% .5%;
+    position: relative;
+    top: -25%;
+    width: 94%;
     background: transparent;
 }
 
@@ -424,10 +457,6 @@
     border: 2px solid lightgray;
     border-radius: 2px;
     transition: border 140ms ease;
-    bottom: 10%;
-    right: 1%;
-    height: 110%;
-    width: 101%;
 }
 
 .new-class:defined {

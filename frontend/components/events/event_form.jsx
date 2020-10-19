@@ -6,7 +6,8 @@ class EventFrom extends React.Component {
         this.state = props.event;
         this.state.design = {
             name: false,
-            type: false
+            type: false,
+            location: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
@@ -23,12 +24,11 @@ class EventFrom extends React.Component {
     }
 
     focus(form) {
-        //document.getElementsByClassName('email-field-wrapper')[0].classList.add("new-class");
         return (e) => {
-            //this.setState({[form]: e.target.value});
             let name = false;
             let type = false;
             let category = false;
+            let location = false;
             if (form === 'name') {
                 name = true;
             }
@@ -38,7 +38,10 @@ class EventFrom extends React.Component {
             else if (form === 'category') {
                 category = true;
             }
-            this.setState({design: {name, type, category}});
+            else if (form === 'location') {
+                location = true;
+            }
+            this.setState({design: {name, type, category, location}});
         };
     }
 
@@ -81,6 +84,7 @@ class EventFrom extends React.Component {
         let nameBorder = this.state.design.name ? "new-class" : "";
         let typeBorder = this.state.design.type ? "new-class" : "";
         let categoryBorder = this.state.design.category ? "new-class" : "";
+        let locationBorder = this.state.design.location? "new-class" : "";
         return (
             <form className="event-form" onSubmit={this.handleSubmit}>
                 <div className="event-basic-info">
@@ -103,7 +107,7 @@ class EventFrom extends React.Component {
                             <input onBlur={this.blur.bind(this)} onFocus={this.focus('name')} onChange={this.handleInput('name')} type="text" value={this.state.name}/>
                         </div>
                     </div>
-                    <div className="event-type-category-dropdown">
+                    <div id="event-type-category-dropdown">
                         <div className={this.state.design.type? 'field-wrapper-dropdown-focused' : 'field-wrapper-dropdown'}>
                             <div className={`name-field-wrapper ${typeBorder}`}>
                                 <select onBlur={this.blur.bind(this)} onFocus={this.focus('type')} onChange={this.handleInput('eventType')} id="event-type" name="eventType">
@@ -155,10 +159,12 @@ class EventFrom extends React.Component {
                             </p>
                         </div>
                     </div>
-                    <div>
-                        <label>Location</label>
-                        <input onChange={this.handleInput('location')} type="text" value={this.state.location}/>
-                    </div>
+                    <div className={this.state.design.location? 'field-wrapper-focused' : 'field-wrapper'}>
+                        <div className={`location-field-wrapper ${locationBorder}`}>
+                            <label id="location-label">Location</label>
+                            <input onBlur={this.blur.bind(this)} onFocus={this.focus('location')} onChange={this.handleInput('location')} type="text" value={this.state.location}/>
+                        </div>
+                    </div> 
                 </div> 
                 <hr className="event-form-divider" />
                 <div className="event-date-and-time">
