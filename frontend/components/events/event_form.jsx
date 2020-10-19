@@ -282,18 +282,30 @@ class EventFrom extends React.Component {
                     </div> 
                 </div>
                 <hr className="event-form-divider" />
-                <div className="event-description">
+                <div className="event-description-wrapper">
+                    <div className="event-description-header">
+                        <h1>
+                            Description
+                        </h1>
+                        <div>
+                            <p>
+                                <span>
+                                    Add more details to your event like your schedule, sponsors, or featured guests.
+                                </span>
+                            </p>
+                        </div>
+                    </div>
                     <div className={this.state.design.description? 'field-wrapper-focused' : 'field-wrapper'}>
                         <div className={`description-field-wrapper ${descriptionBorder}`}>
-                            <label id="description-label">Description</label>
+                            <label id="description-label">Summary</label>
                             <input onBlur={this.blur.bind(this)} onFocus={this.focus('description')} onChange={this.handleInput('description')} type="text" value={this.state.description}/>
                         </div>
                     </div>
                 </div> 
-               <div>
+                <div className="event-image">
                    <label>Image</label>
                    <input onChange={this.handleFile} type="file"/>
-               </div>
+                </div>
                 <button type="submit">{this.props.formType}</button>
             </form>
         );

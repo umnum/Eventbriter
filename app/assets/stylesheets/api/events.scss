@@ -171,7 +171,8 @@
 
 .basic-info-header, 
 .event-location-header,
-.event-date-and-time-header {
+.event-date-and-time-header,
+.event-description-header {
     display: flex;
     flex-direction: column;
     padding-top: 2%;
@@ -194,7 +195,8 @@
 
 .basic-info-header h1, 
 .event-location-header h1,
-.event-date-and-time-header h1 {
+.event-date-and-time-header h1, 
+.event-description-header h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -224,7 +226,8 @@
 
 .basic-info-header div, 
 .event-location-header div, 
-.event-date-and-time-header div {
+.event-date-and-time-header div,
+.event-description-header div {
     padding-left: 0;
     width: 100%;
     line-height: 22px;
@@ -236,7 +239,8 @@
 
 .basic-info-header div p, 
 .event-location-header div p,
-.event-date-and-time-header p {
+.event-date-and-time-header p,
+.event-description-header p {
     color: #39364f;
     font-size: 14px;
     line-height: 1.5rem;
@@ -262,6 +266,12 @@
     display: flex;
     flex-direction: column;
     height: 150%;
+}
+
+.event-description-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
 }
 
 .timezone-header {
