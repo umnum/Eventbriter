@@ -4,7 +4,8 @@
 
 .event-index {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .events {
@@ -73,7 +74,7 @@
     box-sizing: border-box;
     display: inline-block;
     vertical-align: top;
-    height: 40%;
+    height: 350px;
     width: 22%;
     box-shadow: 0 4px 15px 0 rgba(40,44,53,.06), 0 2px 2px 0 rgba(40,44,53,.08);
     transition: box-shadow 400ms ease;
