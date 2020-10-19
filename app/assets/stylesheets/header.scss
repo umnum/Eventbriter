@@ -33,6 +33,30 @@
   text-decoration: none;
 }
 
+.create-event-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  width: 30%;
+}
+
+.create-event-link:hover {
+  background-color: rgb(242, 242, 242);
+}
+
+.create-event-link i:first-child {
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+}
+
+.create-event-link i:last-child {
+  display: flex;
+  justify-content: center;
+}
+
 .dropdown-link i:first-child {
   color: rgb(103, 100, 100);
   padding-right: 20%;
@@ -88,9 +112,7 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   left: -80%;
   width: 200%;
@@ -101,6 +123,7 @@
 .dropdown-content h3 {
   display: block;
   color: black;
+  background-color: white;
   padding: 12px 16px;
   text-decoration: none;
   cursor: pointer;

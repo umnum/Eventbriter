@@ -44,6 +44,8 @@ class Header extends React.Component {
                 </div>
                 <div className="right-header">
                     {!this.props.isLoggedIn() ?
+                    <>
+                    <Link className="create-event-link" to="/events/new"><i className="fas fa-plus"></i><i>Create Event</i></Link>
                     <div className="dropdown-menu">
                             <a className="dropdown-link">
                                 <i className="far fa-user"></i>
@@ -56,7 +58,7 @@ class Header extends React.Component {
                             </h3>
                             <h3 onClick={this.logout}>Log Out</h3>
                         </div>
-                    </div> : isSessionForm ? <></> :
+                    </div> </>: isSessionForm ? <></> :
                     <Link className="signin-link" onClick={this.clearErrors} to="/login">Sign In</Link>}
                  </div>
             </div>

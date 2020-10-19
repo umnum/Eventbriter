@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import EventForm from './event_form';
 import { createEvent } from '../../actions/event_actions';
+import { fetchCategories } from '../../actions/category_actions';
 
 const mapStateToProps = state => {
     return ({
@@ -24,7 +25,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return({
-        submitForm: event => dispatch(createEvent(event))
+        submitForm: event => dispatch(createEvent(event)),
+        fetchCategories: () => dispatch(fetchCategories())
     });
 };
 

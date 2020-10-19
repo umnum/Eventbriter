@@ -1,3 +1,442 @@
 // Place all the styles related to the api/events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.event-index {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.events {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}
+
+.events-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100px;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: .5px;
+    line-height: 40px;
+    padding: 0% 5% 0;
+}
+
+.event-index-nav {
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1% 4.5% 0;
+}
+
+.event-index-nav ul {
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.event-index-nav ul li a {
+    text-decoration: none;
+    list-style-type: disc;
+    color: #6f7287;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    background: none;
+    border: none;
+    padding: 0;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    list-style-type: none;
+    padding-bottom: 10px;
+}
+
+.event-index-nav ul li a:hover {
+    color: #39364f;
+    border-bottom: 2px solid #39364f;
+}
+
+.event-index-item {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    height: 40%;
+    width: 22%;
+    box-shadow: 0 4px 15px 0 rgba(40,44,53,.06), 0 2px 2px 0 rgba(40,44,53,.08);
+    transition: box-shadow 400ms ease;
+}
+
+.event-index-item:hover {
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.event-index-item-image-wrapper {
+    height: 40%;
+}
+
+.event-index-item-image-container {
+    position: relative;
+}
+
+.event-index-item-image-container .status{
+    position: absolute;
+    height: 20%;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.event-index-item-image-wrapper img {
+    width: 100%;
+}
+
+.event-index-item-content-container {
+    padding: 20px 6px;
+    height: 50%;
+}
+
+.event-index-item-content-container div {
+    overflow: hidden;
+    padding-top: 5%;
+}
+
+.event-date {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #d1410c;
+    font-size: 14px;
+    line-height: 1.5rem;
+    font-weight: 500;
+    height: 20%;
+}
+
+.event-name {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+}
+
+//.event-index-item:not(:first-child) {
+    //padding: 8px;
+//}
+.event-index-item {
+    padding: 8px;
+}
+
+.event-index-item h3,
+.event-index-item p {
+    height: 50%;
+}
+
+.event-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-form div {
+    width: 50%;
+    padding-left: 25%;
+}
+
+.event-form div div {
+    padding-left: 0;
+    width: 90%;
+}
+
+.event-basic-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.basic-info-header, 
+.event-location-header,
+.event-date-and-time-header {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.basic-info-header h1, 
+.event-location-header h1,
+.event-date-and-time-header h1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #1e0a3c;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    letter-spacing: .75px;
+    margin-right: -.75px;
+    font-weight: 700;
+}
+
+.basic-info-header div, 
+.event-location-header div, 
+.event-date-and-time-header div {
+    padding-left: 0;
+    width: 100%;
+    line-height: 22px;
+    font-weight: 400;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.basic-info-header div p, 
+.event-location-header div p,
+.event-date-and-time-header p {
+    color: #39364f;
+    font-size: 14px;
+    line-height: 1.5rem;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    display: block;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    width: 100%;
+}
+
+.event-location {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-location-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-date-and-time {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-date-and-time-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-form-divider {
+    width: 60%;
+    height: 1px;
+    background-color: var(--eds-ui-200,var(--eds-ui-200,#eeedf2));
+    box-sizing: content-box;
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+}
+
+
+//////
+.event-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 200%;
+}
+
+.event-form .field-wrapper {
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    position: relative;
+    padding: 3px;
+    width: 99%;
+    height: 40%;
+    position: relative;
+    transition: border 240ms cubic-bezier(0.4, 0, 0.3, 1);
+}
+
+.event-form .field-wrapper-dropdown {
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    position: relative;
+    width: 25%;
+    height: 50%;
+    position: relative;
+    transition: border 240ms cubic-bezier(0.4, 0, 0.3, 1);
+}
+
+.event-form .field-wrapper-dropdown-focused {
+    border: 1px solid transparent;
+    border-radius: 2px;
+    border: none;
+    position: relative;
+    width: 25%;
+    height: 50%;
+    position: relative;
+    transition: border 240ms cubic-bezier(0.4, 0, 0.3, 1);
+}
+
+
+.event-form .field-wrapper-focused {
+    border: none;
+    position: relative;
+    height: 45%;
+    position: relative;
+    transition: border 240ms cubic-bezier(0.4, 0, 0.3, 1);
+}
+
+.event-form .field-wrapper:hover {
+    border-color: var(--eds-ui-500, #A9A8B3);
+}
+
+.event-form .field-wrapper label {
+  font-size: 12px;
+  line-height: 22px;
+  font-weight: 400;
+  padding-left: 2%;
+  position: absolute;
+  overflow: auto;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: var(--eds-ui-800, #39364F);
+  z-index: -1;
+}
+
+.event-form .field-wrapper-focused label {
+  font-size: 12px;
+  line-height: 22px;
+  font-weight: 400;
+  padding-left: 2%;
+  position: absolute;
+  overflow: auto;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: var(--eds-ui-800, #39364F);
+  z-index: -1;
+}
+
+.event-form .field-wrapper input {
+    border: 0px none; 
+    font-size: 14px;
+    padding: 3% 3% .5%;
+    width: 94%;
+    background: transparent;
+}
+
+.event-type-category-dropdown {
+    display: flex;
+    padding-top: 7%;
+}
+
+.event-form .field-wrapper-dropdown select {
+    border: 0px none; 
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+}
+
+#event-type:focus,  #category-type:focus{
+    border: 0px none; 
+    padding: 1.1% 1.5% 1.5%;
+    font-size: 14px;
+    width: 100%;
+    background: transparent;
+    outline: none;
+}
+
+.event-form .field-wrapper-focused input {
+    border: 0px none; 
+    font-size: 14px;
+    padding: 3% 3% .5%;
+    height: 100%;
+    background: transparent;
+}
+
+.event-form .field-wrapper-focused input:focus {
+    outline: none;
+    border: 0px none; 
+    font-size: 14px;
+    padding: 3% 3% .5%;
+    background: transparent;
+}
+
+.event-form button {
+    display: flex;
+    justify-content: center;
+    height: 44px;
+    width: 100%;
+    padding-top: 1.5%;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    line-height: 24px;
+    font-weight: 548;
+    letter-spacing: 0.2px;
+    color: white;
+    background-color: #d1410c;
+    border: 2px solid #d1410c;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 240ms cubic-bezier(0.4, 0, 0.3, 1);
+    transition-property: background-color, border-color;
+}
+
+.event-form button:hover {
+    background-color: #F05537;
+    border-color: #F05537;
+}
+
+.event-form button:focus {
+    outline: none;
+}
+
+.event-form-errors {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: red;
+    height: 20%;
+}
+
+.event-form-errors p {
+    height: 10%;
+}
+
+.new-class {
+    position: relative;
+    border: 2px solid lightgray;
+    border-radius: 2px;
+    transition: border 140ms ease;
+    bottom: 10%;
+    right: 1%;
+    height: 110%;
+    width: 101%;
+}
+
+.new-class:defined {
+    border-color: var(--eds-ui-500, #3659E3);
+    height: 100%;
+}
+
+.new-class > #name-label, 
+.new-class > #type-label, 
+.new-class > #category-label {
+    color: #3659E3;
+}
+///////

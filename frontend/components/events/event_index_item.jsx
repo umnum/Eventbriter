@@ -17,11 +17,17 @@ class EventIndexItem extends React.Component {
         let minutes = startDate.getMinutes();
         minutes = (minutes > 9 ? '' : '0') + minutes;
         return (
-            <div className="event" key={event.id}>
-                <img src={event.photoUrl} />
-                <p>{dayOfWeek + ', ' + month + ' ' + day + ', ' + year + ' ' + hours + ':' + minutes + ' ' + amOrPm + ' ' + event.timezone}</p>
-                <h3>{event.name}</h3>
-                <h3>{event.status}</h3>
+            <div className="event-index-item" key={event.id}>
+                <div className="event-index-item-image-wrapper">
+                    <div className="event-index-item-image-container">
+                        <img src={event.photoUrl} />
+                    </div>
+                    <div className="status">{event.status}</div>
+                </div>
+                <div className="event-index-item-content-container">
+                    <div className="event-date">{dayOfWeek + ', ' + month + ' ' + day + ', ' + year + ' ' + hours + ':' + minutes + ' ' + amOrPm + ' ' + event.timezone}</div>
+                    <div className="event-name">{event.name}</div>
+                </div>
             </div>
 
         );
