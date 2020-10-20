@@ -303,10 +303,23 @@ class EventFrom extends React.Component {
                     </div>
                 </div> 
                 <div className="event-image">
-                   <label>Image</label>
-                   <input onChange={this.handleFile} type="file"/>
+                    <h1>
+                        Main Event Image
+                    </h1>
+                    <div>
+                        <p>
+                            <span>
+                                This is the first image attendees will see at the top of your listing. Use a high quality image: 2160x1080px (2:1 ratio).
+                            </span>
+                        </p>
+                    </div>
+                    <div className="image-selector">
+                        <input onChange={this.handleFile} type="file"/>
+                    </div>
                 </div>
-                <button type="submit">{this.props.formType}</button>
+                <div className="event-form-submit">
+                    <button type="submit">{this.props.formType}</button>
+                </div>
             </form>
         );
     }

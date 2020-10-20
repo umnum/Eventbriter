@@ -196,7 +196,8 @@
 .basic-info-header h1, 
 .event-location-header h1,
 .event-date-and-time-header h1, 
-.event-description-header h1 {
+.event-description-header h1,
+.event-image h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -227,7 +228,8 @@
 .basic-info-header div, 
 .event-location-header div, 
 .event-date-and-time-header div,
-.event-description-header div {
+.event-description-header div,
+.event-image {
     padding-left: 0;
     width: 100%;
     line-height: 22px;
@@ -240,7 +242,8 @@
 .basic-info-header div p, 
 .event-location-header div p,
 .event-date-and-time-header p,
-.event-description-header p {
+.event-description-header p,
+.event-time p {
     color: #39364f;
     font-size: 14px;
     line-height: 1.5rem;
@@ -272,6 +275,46 @@
     display: flex;
     flex-direction: column;
     height: 80%;
+}
+
+.event-image {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+}
+
+.image-selector > input {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: textfield;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+
+input[type="file"] {
+    appearance: initial;
+    align-items: baseline;
+    color: transparent;
+    white-space: pre;
+    padding: initial;
+    border: initial;
+    overflow: hidden;
 }
 
 .timezone-header {
