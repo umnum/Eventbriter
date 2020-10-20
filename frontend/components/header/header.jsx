@@ -58,7 +58,7 @@ class Header extends React.Component {
                             <h3 onClick={this.logout}>Log Out</h3>
                         </div>
                     </div> </>: isSessionForm ? <></> :
-                    <><a className="about-link" href="https://github.com/umnum/FSProject/wiki"><i class="fab fa-github"></i><p>About</p></a><Link className="signin-link" onClick={this.clearErrors} to="/login">Sign In</Link></>}
+                    <><a className="about-link" href="https://github.com/umnum/FSProject/wiki"><i className="fab fa-github"></i><p>About</p></a><Link className="signin-link" onClick={this.clearErrors} to="/login">Sign In</Link></>}
                  </div>
             </div>
         );

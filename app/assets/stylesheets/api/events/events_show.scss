@@ -1,0 +1,38 @@
+    //background-color: #555; //dark-gray
+.event-show-page {
+    background-color: #ececec;
+    height: 300%;
+}
+
+.event-show-body {
+    background-color: white;
+    position: absolute;
+    top: 13%;
+    left:13%;
+    width:75%;
+    height: 280%;
+    border-radius: 6px;
+}
+
+.event-show-header-image img {
+    width: 100%;
+    height: 15%;
+    border-top-left-radius: 6px;
+}
+
+.event-show-header {
+    display: flex;
+}
+
+.event-show-header-info {
+    background: #F7F7F7;
+    border-top-right-radius: 6px;
+    width: 45%;
+    height: 15%;
+}
+
+.header-info-container {
+    height: 30%;
+    padding-top: 10%;
+    padding-left: 20%;
+}
