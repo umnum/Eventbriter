@@ -9,6 +9,7 @@ class EventShow extends React.Component {
     }
 
     render() {
+        if (!this.props.event) return null;
         let organizer = this.props.users[this.props.event.organizerId];
         if (!this.props.event || !organizer) return null;
         return (
