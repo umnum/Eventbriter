@@ -5,10 +5,10 @@ export const RECEIVE_EVENT = 'RECEIVE_EVENT';
 export const RECEIVE_EVENTS = 'RECEIVE_EVENTS';
 export const REMOVE_EVENT = 'REMOVE_EVENT';
 
-export const receiveEvent = (event) => {
+export const receiveEvent = (payload) => {
     return ({ 
         type: RECEIVE_EVENT,
-        event
+        payload
     });
 };
 
@@ -29,8 +29,8 @@ export const deleteEvent = (eventId) => {
 export const fetchEvent = eventId => {
     return (dispatch => {
         return EventAPIUtils.fetchEvent(eventId)
-            .then(event => dispatch(receiveEvent(event)),
-                  errors => dispatch(receiveErrors(errors)));
+            .then(response => dispatch(receiveEvent(response)),
+                  errors => dispatch(receiveErrors(errors)))
     });
 };
 
