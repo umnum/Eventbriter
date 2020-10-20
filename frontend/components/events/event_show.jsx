@@ -12,16 +12,29 @@ class EventShow extends React.Component {
         if (!this.props.event) return null;
         let organizer = this.props.users[this.props.event.organizerId];
         if (!this.props.event || !organizer) return null;
-        let dateTime = new Date(this.props.event.startDate);
-        let date = dateTime.toDateString().split(' ')
-        let dayOfMonth = date[0];
-        let month = date[1];
-        let day = date[2];
-        let year = date[3];
-        let hours = dateTime.getHours();
-        let amOrPm = hours > 11 ? "PM" : "AM";
-        hours = (hours % 12 + 1).toLocaleString();
-        let minutes = dateTime.getMinutes().toLocaleString();
+        let startDateTime = new Date(this.props.event.startDate);
+        let date = startDateTime.toDateString().split(' ')
+        let startDayOfMonth = date[0];
+        let startMonth = date[1];
+        let startDay = date[2];
+        let startYear = date[3];
+        let startHours = startDateTime.getHours();
+        let startAmOrPm = startHours > 11 ? "PM" : "AM";
+        startHours = (startHours % 12 + 1).toLocaleString();
+        let startMinutes = startDateTime.getMinutes().toLocaleString();
+        startMinutes = (startMinutes.length === 1 ? '0' : '') + startMinutes;
+        let endDateTime = new Date(this.props.event.endDate);
+        let sameDate = startDateTime.toDateString() === endDateTime.toDateString();
+        date = endDateTime.toDateString().split(' ')
+        let endDayOfMonth = date[0];
+        let endMonth = date[1];
+        let endDay = date[2];
+        let endYear = date[3];
+        let endHours = endDateTime.getHours();
+        let endAmOrPm = endHours > 11 ? "PM" : "AM";
+        endHours = (endHours % 12 + 1).toLocaleString();
+        let endMinutes = endDateTime.getMinutes().toLocaleString();
+        endMinutes = (endMinutes.length === 1 ? '0' : '') + endMinutes;
         return (
             <div className="event-show-page">
                 <div className="event-show-body">
@@ -32,8 +45,8 @@ class EventShow extends React.Component {
                         <div className="event-show-header-info">
                             <div className="header-info-container">
                                 <div className="header-info-date">
-                                    <h2>{month}</h2>
-                                    <h2>{day}</h2>
+                                    <h2>{startMonth}</h2>
+                                    <h2>{startDay}</h2>
                                 </div>
                                 <h1>{this.props.event.name}</h1>
                                 <p>{`by ` + organizer.username}</p>
@@ -52,7 +65,10 @@ class EventShow extends React.Component {
                         <div className="details-info">
                             <div>
                                 <h1>Date and Time</h1>
-                                <p>{`${dayOfMonth}, ${month} ${day}, ${year} ${hours}:${minutes} ${amOrPm}`}</p>
+                                <p>{`${startDayOfMonth}, ${startMonth} ${startDay}, 
+                                     ${startYear} ${startHours}:${startMinutes} ${startAmOrPm} - `
+                                   + (!sameDate ? `${endDayOfMonth}, ${endMonth} ${endDay}, 
+                                     ${endYear} ` : ``) + `${endHours}:${endMinutes} ${endAmOrPm}`}</p>
                             </div>
                             <div>
                                 <h1>Location</h1>
