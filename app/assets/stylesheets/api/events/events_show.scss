@@ -67,14 +67,25 @@
 
 .event-show-details {
     display: flex;
+    height: 15%;
+    padding-top: 5%;
+    padding-left: 10%;
+    padding-right: 5%;
 }
 
 .details-description {
     display: flex;
     width: 70%;
+    padding-right: 5%;
 }
 
 .details-info {
     display: flex;
+    flex-direction: column;
     width: 30%;
+}
+
+.details-info div {
+    display: flex;
+    flex-direction: column;
 }

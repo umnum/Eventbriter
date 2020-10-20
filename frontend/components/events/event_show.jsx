@@ -12,9 +12,16 @@ class EventShow extends React.Component {
         if (!this.props.event) return null;
         let organizer = this.props.users[this.props.event.organizerId];
         if (!this.props.event || !organizer) return null;
-        let date = new Date(this.props.event.startDate).toDateString().split(' ')
+        let dateTime = new Date(this.props.event.startDate);
+        let date = dateTime.toDateString().split(' ')
+        let dayOfMonth = date[0];
         let month = date[1];
         let day = date[2];
+        let year = date[3];
+        let hours = dateTime.getHours();
+        let amOrPm = hours > 11 ? "PM" : "AM";
+        hours = (hours % 12 + 1).toLocaleString();
+        let minutes = dateTime.getMinutes().toLocaleString();
         return (
             <div className="event-show-page">
                 <div className="event-show-body">
@@ -45,12 +52,11 @@ class EventShow extends React.Component {
                         <div className="details-info">
                             <div>
                                 <h1>Date and Time</h1>
+                                <p>{`${dayOfMonth}, ${month} ${day}, ${year} ${hours}:${minutes} ${amOrPm}`}</p>
                             </div>
                             <div>
                                 <h1>Location</h1>
-                            </div>
-                            <div>
-                                <h1>Refund Policy</h1>
+                                <p>{this.props.event.location}</p>
                             </div>
                         </div>
                     </div>
