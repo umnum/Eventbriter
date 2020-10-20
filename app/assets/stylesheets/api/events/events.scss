@@ -80,6 +80,11 @@
     transition: box-shadow 400ms ease;
 }
 
+.event-index-item a {
+    text-decoration: none;
+    color: black;
+}
+
 .event-index-item:hover {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     cursor: pointer;
