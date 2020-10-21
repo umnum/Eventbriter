@@ -42,10 +42,10 @@ export const fetchEvents = () => {
     });
 };
 
-export const createEvent = (formData) => {
+export const createEvent = (payload) => {
     return (dispatch => {
-        return EventAPIUtils.createEvent(formData)
-            .then(event => dispatch(receiveEvent(formData)),
+        return EventAPIUtils.createEvent(payload.event)
+            .then(event => dispatch(receiveEvent(payload)),
                   errors => dispatch(receiveErrors(errors)));
     });
 };

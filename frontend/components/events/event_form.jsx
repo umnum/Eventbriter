@@ -100,7 +100,8 @@ class EventFrom extends React.Component {
         if (this.props.formType === 'Update Event') {
             formData.append('event[id]', this.props.event.id);
         }
-        this.props.submitForm(formData);
+        let payload = {user: this.props.currentUser, event: formData};
+        this.props.submitForm(payload);
     }
 
     handleFile(e) {
