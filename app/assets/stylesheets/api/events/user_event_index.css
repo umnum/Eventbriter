@@ -1,10 +1,12 @@
 .user-events {
     display: flex;
     flex-direction: column;
+    padding: 4%;
 }
 
 .user-events-title {
-    padding: 4%;
+    padding-top: 4%;
+    padding-bottom: 4%;
     height: 20%;
 }
 
@@ -18,18 +20,13 @@
 }
 
 .contents-name {
+    padding-left: 2%;
     display: flex;
     justify-content: flex-start;
     background-color: #f8f7fa;
-    width: 92%;
     height: 20%;
-    padding: 2%;
-}
-
-.contents-name-wrapper {
-    padding-left: 4%;
-    padding-right: 4%;
-    height: 10%;
+    padding-top: 2%;
+    padding-bottom: 2.5%;
 }
 
 .contents-name i {

@@ -1,0 +1,116 @@
+.user-index-item {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    padding: 3%;
+    border-bottom: 1px solid #eeedf2;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(238, 237, 242); 
+    transition: box-shadow 400ms ease;
+}
+
+.user-index-item:hover {
+    box-shadow: 0 2px 0px 2px rgb(238, 237, 242);
+}
+
+.contents-description {
+    display: flex;
+}
+
+.event-content-description {
+    width: 40%;
+    display: flex;
+}
+
+.event-content-description-date {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-content-description-image {
+    width: 20%;
+}
+
+.event-content-description-info {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sold-content-description {
+    width: 20%;
+}
+
+.gross-content-description {
+    width: 22%;
+}
+
+.status-content-description {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+.user-event-dropdown {
+    display: flex;
+    justify-content: center;
+    color: #4b4d63;
+    padding-top: 1.5%;
+    height: 20%;
+    border-radius: 50%;
+    position: relative;
+    width: 5%;
+    transition: background-color 300ms ease;
+}
+
+.user-event-dropdown:hover {
+    background-color: #f8f7fa;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.event-dropdown-content {
+  position: absolute;
+  min-width: 160px;
+  z-index: -1;
+  left: -80%;
+  top: 100%;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+/* Links inside the dropdown */
+.event-dropdown-content p {
+  display: block;
+  color: black;
+  background-color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  height: 20px;
+  box-shadow: 0 2px 0px 2px rgb(238, 237, 242);
+}
+
+.event-dropdown-content a {
+    text-decoration: none;
+}
+
+/* Change color of dropdown links on hover */
+.event-dropdown-content p:hover {background-color: #f8f7fa;}
+
+/* Show the dropdown menu on hover */
+.user-event-dropdown:hover .event-dropdown-content {
+    z-index: 1;
+    opacity: 1;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.event-dropdown-menu:hover .event-dropdown-link{
+  background-color: rgb(242, 242, 242);
+}

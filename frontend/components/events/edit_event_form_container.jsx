@@ -8,7 +8,6 @@ import { Redirect } from 'react-router-dom';
 class EditEventForm extends React.Component {
     componentDidMount() {
         this.props.fetchEvent(this.props.match.params.eventId);
-        this.props.fetchCategories();
     }
 
     render() {
@@ -20,6 +19,7 @@ class EditEventForm extends React.Component {
         return (
             <EventForm 
                 categories={categories}
+                fetchCategories={this.props.fetchCategories}
                 event={event}
                 submitForm={submitForm} 
                 currentUser={currentUser} 

@@ -20,13 +20,11 @@ class UserEventIndex extends React.Component {
                 <div className="user-events-title">
                     <h1>Events</h1>
                 </div>
-                <div className="contents-name-wrapper">
-                    <div className="contents-name">
-                        <i>Event</i>
-                        <i>Sold</i>
-                        <i>Gross</i>
-                        <i>Status</i>
-                    </div>
+                <div className="contents-name">
+                    <i>Event</i>
+                    <i>Sold</i>
+                    <i>Gross</i>
+                    <i>Status</i>
                 </div>
                 <ul>{userEvents}</ul>
             </div>

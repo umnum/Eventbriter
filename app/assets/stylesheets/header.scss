@@ -115,10 +115,11 @@
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-  display: none;
   position: absolute;
   min-width: 160px;
-  z-index: 1;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 500ms ease;
   left: -80%;
   width: 200%;
   top: 100%;
@@ -133,13 +134,21 @@
   text-decoration: none;
   cursor: pointer;
   height: 40px;
+  box-shadow: 0 2px 0px 2px rgb(238, 237, 242);
+}
+
+.dropdown-content a {
+  text-decoration: none;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content h3:hover {background-color: #ddd;}
+.dropdown-content h3:hover {background-color: #f8f7fa;}
 
 /* Show the dropdown menu on hover */
-.dropdown-menu:hover .dropdown-content {display: block;}
+.dropdown-menu:hover .dropdown-content {
+  z-index: 1;
+  opacity: 1;
+}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown-menu:hover .dropdown-link{

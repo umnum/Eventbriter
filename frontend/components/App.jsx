@@ -19,7 +19,7 @@ const App = () => {
                 <Route exact path="/" component={HomeContainer} />
                 <AuthRoute exact path="/login" component={LoginFormContainer} />
                 <AuthRoute exact path="/signup" component={SignupFormContainer} />
-                <Route exact path="/events//edit" component={EditEventFormContainer} />
+                <Route exact path="/events/:eventId/edit" component={EditEventFormContainer} />
                 <Route exact path="/events/new" component={CreateEventFormContainer} />
                 <Route exact path="/events/:eventId" component={EventShowContainer} />
                 <Route exact path="/users/:userId/events" component={UserEventIndexContainer} />
