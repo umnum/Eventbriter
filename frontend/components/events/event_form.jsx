@@ -101,7 +101,10 @@ class EventFrom extends React.Component {
             formData.append('event[id]', this.props.event.id);
         }
         let payload = {user: this.props.currentUser, event: formData};
-        this.props.submitForm(payload);
+        this.props.submitForm(payload).then(response => {
+            const eventId = response.payload.event.id;
+            this.props.history.push(`/events/${eventId}`);
+        });
     }
 
     handleFile(e) {
