@@ -27,6 +27,24 @@
     width: 20%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+
+.event-content-description-date i:first-child {
+    color: #d1410c;
+    font-size: 16px;
+    line-height: 16px;
+    height: 20%;
+}
+
+.event-content-description-date i:last-child {
+    color: #6f7287;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    height: 40%;
+    letter-spacing: .25px;
+    margin-right: -.25px;
+    font-weight: 600;
 }
 
 .event-content-description-image {
@@ -37,6 +55,21 @@
     width: 60%;
     display: flex;
     flex-direction: column;
+    color: #1e0a3c;
+    padding-top: 5%;
+}
+
+.event-content-description-info div:first-child {
+    font-weight: 400;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    height: 30%;
+}
+
+.event-content-description-info div:nth-child(2) {
+    color: #6f7287;
+    font-size: .85rem;
+    line-height: 1rem;
 }
 
 .sold-content-description {
@@ -52,6 +85,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: #6f7287;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
 }
 
 
