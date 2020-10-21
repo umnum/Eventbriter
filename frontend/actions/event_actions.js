@@ -45,7 +45,7 @@ export const fetchEvents = () => {
 export const createEvent = (payload) => {
     return (dispatch => {
         return EventAPIUtils.createEvent(payload.event)
-            .then(event => dispatch(receiveEvent(payload)),
+            .then(payload => dispatch(receiveEvent(payload)),
                   errors => dispatch(receiveErrors(errors)));
     });
 };
