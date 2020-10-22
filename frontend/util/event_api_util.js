@@ -9,11 +9,11 @@ export const createEvent = (formData) => {
     });
 };
 
-export const updateEvent = (formData) => {
+export const updateEvent = (payload) => {
     return $.ajax({
-        url: `/api/events/${formData.get("event[id]")}`,
+        url: `/api/events/${payload.event.get("event[id]")}`,
         method: 'PATCH',
-        data: formData,
+        data: payload.event,
         contentType: false,
         processData: false
     })

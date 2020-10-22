@@ -19,6 +19,7 @@ class EditEventForm extends React.Component {
         return (
             <EventForm 
                 categories={categories}
+                history={this.props.history}
                 fetchCategories={this.props.fetchCategories}
                 event={event}
                 submitForm={submitForm} 
