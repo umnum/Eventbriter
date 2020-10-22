@@ -4,7 +4,7 @@
 
 .event-index {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
@@ -67,6 +67,12 @@
     border-bottom: 2px solid #39364f;
 }
 
+.event-index-item-wrapper {
+    height: 300px;
+    width: 275px;
+    padding: 20px;
+}
+
 .event-index-item {
     font-size: 14px;
     line-height: 22px;
@@ -74,8 +80,6 @@
     box-sizing: border-box;
     display: inline-block;
     vertical-align: top;
-    height: 350px;
-    width: 22%;
     box-shadow: 0 4px 15px 0 rgba(40,44,53,.06), 0 2px 2px 0 rgba(40,44,53,.08);
     transition: box-shadow 400ms ease;
 }
