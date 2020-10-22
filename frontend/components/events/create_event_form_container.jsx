@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import EventForm from './event_form';
-import { createEvent } from '../../actions/event_actions';
+import { createEvent, clearEventErrors } from '../../actions/event_actions';
 import { fetchCategories } from '../../actions/category_actions';
 
 const mapStateToProps = state => {
     return ({
         currentUser: state.entities.users[state.session.id],
         categories: Object.values(state.entities.categories),
+        errors: state.errors.event,
         event: {
             name: "",
             location: "",
@@ -26,7 +27,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return({
         submitForm: event => dispatch(createEvent(event)),
-        fetchCategories: () => dispatch(fetchCategories())
+        fetchCategories: () => dispatch(fetchCategories()),
+        clearEventErrors: () => dispatch(clearEventErrors)
     });
 };
 

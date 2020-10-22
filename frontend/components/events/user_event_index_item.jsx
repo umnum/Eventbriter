@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import DeleteEventModal from './delete_event_modal';
 
 class UserEventIndexItem extends React.Component {
 
