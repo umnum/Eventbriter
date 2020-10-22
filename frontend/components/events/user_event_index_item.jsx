@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import DeleteEventModal from './delete_event_modal';
 
 class UserEventIndexItem extends React.Component {
 
@@ -10,6 +11,8 @@ class UserEventIndexItem extends React.Component {
 
     handleDelete() {
         this.props.removeEvent(this.props.event.id);
+        this.props.toggleModal(true);
+        window.scrollTo(0,0);
     }
 
     render () {
