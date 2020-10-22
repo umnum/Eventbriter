@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EventForm from './event_form';
-import { fetchEvent, updateEvent } from '../../actions/event_actions';
+import { fetchEvent, updateEvent, clearEventErrors } from '../../actions/event_actions';
 import { fetchCategories } from '../../actions/category_actions';
 import { Redirect } from 'react-router-dom';
 
@@ -34,6 +34,7 @@ const mapStateToProps = (state, ownProps) => {
         currentUser: state.entities.users[state.session.id],
         event: state.entities.events[ownProps.match.params.eventId],
         categories: Object.values(state.entities.categories),
+        errors: state.errors.event,
         formType: 'Update Event'
     });
 };
@@ -42,7 +43,8 @@ const mapDispatchToProps = dispatch => {
     return({
         fetchEvent: eventId => dispatch(fetchEvent(eventId)),
         fetchCategories: () => dispatch(fetchCategories()),
-        submitForm: event => dispatch(updateEvent(event))
+        submitForm: event => dispatch(updateEvent(event)),
+        clearEventErrors: () => dispatch(clearEventErrors())
     });
 };
 
