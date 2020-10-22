@@ -12,7 +12,7 @@ class UserEventIndex extends React.Component {
         const currentUserId = this.props.currentUserId;
         let userEvents = this.props.events.map(event => {
             if (event.organizerId === currentUserId) {
-                return <UserEventIndexItem key={event.id} event={event} />
+                return <UserEventIndexItem key={event.id} event={event} removeEvent={this.props.removeEvent} />
             }
         })
         return (
