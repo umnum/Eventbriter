@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 
 class DeleteEventModal extends React.Component {
 
