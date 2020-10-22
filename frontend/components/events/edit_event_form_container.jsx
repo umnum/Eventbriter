@@ -22,6 +22,8 @@ class EditEventForm extends React.Component {
                 history={this.props.history}
                 fetchCategories={this.props.fetchCategories}
                 event={event}
+                errors={this.props.errors}
+                clearEventErrors={this.props.clearEventErrors}
                 submitForm={submitForm} 
                 currentUser={currentUser} 
                 formType={formType} />
