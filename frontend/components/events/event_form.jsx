@@ -23,6 +23,7 @@ class EventFrom extends React.Component {
 
     componentDidMount() {
         this.props.fetchCategories();
+        window.scrollTo(0,0);
     }
 
     handleInput(form) {
