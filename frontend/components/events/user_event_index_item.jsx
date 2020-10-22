@@ -29,7 +29,7 @@ class UserEventIndexItem extends React.Component {
                             <i>{day}</i>
                         </div>
                         <div className="event-content-description-image">
-                            {/*<img src={event.photoUrl}/>*/}
+                            <img src={event.photoUrl}/>
                         </div>
                         <div className="event-content-description-info">
                             <div><i>{event.name}</i></div>
