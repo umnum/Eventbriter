@@ -127,8 +127,9 @@
 
 /* Links inside the dropdown */
 .dropdown-content h3 {
-  display: block;
-  color: black;
+  display: flex;
+  flex-direction: column;
+  color: #6f7287;
   background-color: white;
   padding: 12px 16px;
   text-decoration: none;
@@ -137,8 +138,25 @@
   box-shadow: 0 2px 0px 2px rgb(238, 237, 242);
 }
 
+.dropdown-content h3 a {
+  display: block;
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  height: 100%;
+}
+
+.dropdown-content h3 p {
+  font-size: 13px;
+  color: #6f7287;
+}
+
 .dropdown-content a {
   text-decoration: none;
+}
+
+#profile-header-info {
+  border-bottom: 1px solid #eeedf2;
 }
 
 /* Change color of dropdown links on hover */

@@ -51,7 +51,7 @@ class Header extends React.Component {
                                 <i className="fas fa-chevron-down"></i>
                             </a>
                         <div className="dropdown-content">
-                            <h3>
+                            <h3 id="profile-header-info">
                                 <a>{this.props.currentUser.username}</a>
                                 <p>{this.props.currentUser.email}</p>
                             </h3>
