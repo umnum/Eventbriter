@@ -42,17 +42,23 @@ The following is a list of all of the features available on Eventbriter. The ava
 
 ### All Users
 
+All users of Eventbriter will be able to view a list of all events posted to the website as well as view detailed information on a single event.
+
 #### Viewing All Events
 
 #### Viewing a Single Event
 
 ### Logged Out Users
 
+Logged out users will have access to the `Sign In` feature, which will direct them to sign up for an account, log in to their own account, or log in as the Demo User.
+
 #### User Authentication
 
 #### Logging in as Demo User
 
 ### Logged In Users
+
+Logged in users have the ability to create their own events, which can be viewed by all users of the website, update information on an event they have previously created, and delete one of their events.
 
 #### Creating an Event
 
