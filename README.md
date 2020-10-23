@@ -1,7 +1,7 @@
 # Welcome to Eventbriter!
 <p align="center">
     <a href="https://eventbriter-app.herokuapp.com/#/" target="_blank">
-        <img width="50%" src="https://drive.google.com/file/d/1TRhYvMmjTvqss0-kkPo3gWxBLJJL79Xx/view?usp=sharing" alt="Eventbrite logo">
+        <img width="50%" src="img/eventbriter-logo.png" alt="Eventbrite logo">
     </a>
 </p>
 
