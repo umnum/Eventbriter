@@ -16,7 +16,6 @@ class EventFrom extends React.Component {
             description: false,
             eventImage: false
         };
-        //debugger
         this.state.errors = {
             name: false,
             type: false,
@@ -188,6 +187,22 @@ class EventFrom extends React.Component {
     }
 
     render() {
+        let startDate = new Date(this.state.startDate);
+        let endDate = new Date(this.state.endDate);
+        let year = startDate.getFullYear().toString();
+        let month = (startDate.getMonth() + 1).toString();
+        month = (month.length === 1 ? '0' : '') + month;
+        let day = startDate.toString(' ').split(' ')[2];
+        let startTime = startDate.toTimeString().split(' ')[0].slice(0, 5);
+        startDate = `${year}-${month}-${day}`;
+
+        year = endDate.getFullYear().toString();
+        month = (endDate.getMonth() + 1).toString();
+        month = (month.length === 1 ? '0' : '') + month;
+        day = endDate.toString(' ').split(' ')[2];
+        let endTime = endDate.toTimeString().split(' ')[0].slice(0, 5);
+        endDate = `${year}-${month}-${day}`;
+
         let categoryOptions = this.props.categories.map(category => {
             return <option key={category.id} value={category.id}>{category.name}</option>;
         }); 
@@ -241,7 +256,7 @@ class EventFrom extends React.Component {
                         <div id="event-type-category-dropdown">
                             <div className={this.state.design.type? 'field-wrapper-dropdown-focused' : ( this.state.errors.type ? 'field-wrapper-dropdown-error' : 'field-wrapper-dropdown')}>
                                 <div className={`category-field-wrapper ${typeBorder} ${typeBorderError}`}>
-                                    <select onBlur={this.blur('type')} onFocus={this.focus('type')} onChange={this.handleInput('eventType')} id="event-type" name="eventType">
+                                    <select value={this.state.eventType} onBlur={this.blur('type')} onFocus={this.focus('type')} onChange={this.handleInput('eventType')} id="event-type" name="eventType">
                                         <option value="">Type</option>
                                         <option value="Appearance or Signing">Appearance or Signing</option>
                                         <option value="Attraction">Attraction</option>
@@ -268,7 +283,7 @@ class EventFrom extends React.Component {
                             </div> 
                             <div className={this.state.design.category? 'field-wrapper-dropdown-focused' : ( this.state.errors.category? 'field-wrapper-dropdown-error' : 'field-wrapper-dropdown')}>
                                 <div className={`category-field-wrapper ${categoryBorder} ${categoryBorderError}`}>
-                                    <select onBlur={this.blur('category')} onFocus={this.focus('category')} onChange={this.handleInput('categoryId')} id="category-type" name="categoryId">
+                                    <select value={this.state.categoryId} onBlur={this.blur('category')} onFocus={this.focus('category')} onChange={this.handleInput('categoryId')} id="category-type" name="categoryId">
                                         <option value="">Category</option>
                                         {categoryOptions}
                                     </select>
@@ -318,7 +333,7 @@ class EventFrom extends React.Component {
                                     <div className={this.state.design.startDate? 'field-wrapper-focused' : ( this.state.errors.startDate? 'field-wrapper-error' : 'field-wrapper')}>
                                         <div className={`start-date-field-wrapper ${startDateBorder} ${startDateBorderError}`}>
                                             <label id="start-date-label">Start Date</label>
-                                            <input onBlur={this.blur('startDate')} onFocus={this.focus('startDate')} onChange={this.handleInput('startDate')} type="date" name="startDate"/>
+                                            <input onBlur={this.blur('startDate')} onFocus={this.focus('startDate')} onChange={this.handleInput('startDate')} type="date" name="startDate" value={startDate}/>
                                         </div>
                                     </div> 
                                 </div>
@@ -326,7 +341,7 @@ class EventFrom extends React.Component {
                                     <div className={this.state.design.startTime? 'field-wrapper-focused' : ( this.state.errors.startTime? 'field-wrapper-error' : 'field-wrapper')}>
                                         <div className={`start-time-field-wrapper ${startTimeBorder} ${startTimeBorderError}`}>
                                             <label id="start-time-label">Start Time</label>
-                                            <input onBlur={this.blur('startTime')} onFocus={this.focus('startTime')} onChange={this.handleInput('startTime')} type="time" name="startTime"/>
+                                            <input onBlur={this.blur('startTime')} onFocus={this.focus('startTime')} onChange={this.handleInput('startTime')} type="time" name="startTime" />
                                         </div>
                                     </div> 
                                 </div>
@@ -336,7 +351,7 @@ class EventFrom extends React.Component {
                                     <div className={this.state.design.endDate? 'field-wrapper-focused' : ( this.state.errors.endDate? 'field-wrapper-error' : 'field-wrapper')}>
                                         <div className={`end-date-field-wrapper ${endDateBorder} ${endDateBorderError}`}>
                                             <label id="end-date-label">End Date</label>
-                                            <input onBlur={this.blur('endDate')} onFocus={this.focus('endDate')} onChange={this.handleInput('endDate')} type="date" name="endDate"/>
+                                            <input onBlur={this.blur('endDate')} onFocus={this.focus('endDate')} onChange={this.handleInput('endDate')} type="date" name="endDate" value={endDate}/>
                                         </div>
                                     </div> 
                                 </div>
@@ -344,7 +359,7 @@ class EventFrom extends React.Component {
                                     <div className={this.state.design.endTime? 'field-wrapper-focused' : ( this.state.errors.endTime? 'field-wrapper-error' : 'field-wrapper')}>
                                         <div className={`end-time-field-wrapper ${endTimeBorder} ${endTimeBorderError}`}>
                                             <label id="start-time-label">End Time</label>
-                                            <input onBlur={this.blur('endTime')} onFocus={this.focus('endTime')} onChange={this.handleInput('endTime')} type="time" name="endTime"/>
+                                            <input onBlur={this.blur('endTime')} onFocus={this.focus('endTime')} onChange={this.handleInput('endTime')} type="time" name="endTime" />
                                         </div>
                                     </div> 
                                 </div>
@@ -353,7 +368,7 @@ class EventFrom extends React.Component {
                         <div id="timezone-dropdown">
                             <div className={this.state.design.timezone? 'field-wrapper-dropdown-focused' : ( this.state.errors.timezone? 'field-wrapper-dropdown-error' : 'field-wrapper-dropdown')}>
                                 <div className={`timezone-field-wrapper ${timezoneBorder} ${timezoneBorderError}`}>
-                                    <select onBlur={this.blur('timezone')} onFocus={this.focus('timezone')} onChange={this.handleInput('timezone')} id="timezone-type" name="timezone">
+                                    <select value={this.state.timezone} onBlur={this.blur('timezone')} onFocus={this.focus('timezone')} onChange={this.handleInput('timezone')} id="timezone-type" name="timezone">
                                         <option value="">Timezone</option>
                                         <option value="AST">Atlantic Standard Time (AST)</option>
                                         <option value="EST">Eastern Standard Time (EST)</option>
@@ -411,7 +426,7 @@ class EventFrom extends React.Component {
                             </p>
                         </div>
                         <div className="image-selector">
-                            <input className={this.state.errors.eventImage ? `image-selector-error` : ``} onChange={this.handleFile} type="file"/>
+                            <input className={this.state.errors.eventImage ? `image-selector-error` : ``} onChange={this.handleFile} type="file" />
                         </div>
                     </div>
                     <div className="event-form-submit">
