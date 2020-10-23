@@ -11,9 +11,11 @@
   * [Technologies Used](#technologies-used)
   * [Features](#features)
     * [All Users](#all-users)
-        * [Viewing Events](#viewing-events-)
+        * [Viewing All Events](#viewing-all-events)
+        * [Viewing a Single Event](#viewing-a-single-event)
     * [Logged Out Users](#logged-out-users)
         * [User Authentication](#user-authentication)
+        * [Logging In as Demo User](#logging-in-as-demo-user)
     * [Logged In Users](#logged-in-users)
         * [Creating an Event](#creating-an-event)
         * [Updating an Event](#updating-an-event)
@@ -36,13 +38,19 @@ What separates Eventbriter from Eventbrite is that it is built as a single-page 
 
 ## Features
 
+The following is a list of all of the features available on Eventbriter. The availability of these features will vary depending on whether a user is logged in or logged out. Some features will be available to all users of the website.
+
 ### All Users
 
-#### Viewing Events
+#### Viewing All Events
+
+#### Viewing a Single Event
 
 ### Logged Out Users
 
 #### User Authentication
+
+#### Logging in as Demo User
 
 ### Logged In Users
 
