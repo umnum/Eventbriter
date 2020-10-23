@@ -293,6 +293,14 @@
     height: 80%;
 }
 
+.image-selector {
+    color: #39364F;
+}
+
+.image-selector-error {
+    color: red;
+}
+
 .image-selector > input {
     -webkit-writing-mode: horizontal-tb !important;
     text-rendering: auto;
@@ -320,7 +328,6 @@
 input[type="file"] {
     appearance: initial;
     align-items: baseline;
-    color: transparent;
     white-space: pre;
     padding: initial;
     border: initial;
@@ -379,6 +386,29 @@ input[type="file"] {
     position: relative;
     transition: border 240ms cubic-bezier(0.4, 0, 0.3, 1);
 }
+
+.event-form .field-wrapper-dropdown-error {
+    border: 1px solid transparent;
+    border-radius: 2px;
+    border: none;
+    position: relative;
+    width: 47%;
+    height: 50%;
+    position: relative;
+    transition: border 240ms cubic-bezier(0.4, 0, 0.3, 1);
+}
+
+.field-wrapper-dropdown-error select {
+    border: 0px none; 
+    position: relative;
+    padding: 1.1% 1.5% 1.5%;
+    top: 25%;
+    font-size: 14px;
+    width: 100%;
+    background: transparent;
+    outline: none;
+}
+
 
 .event-form .field-wrapper-dropdown-focused {
     border: 1px solid transparent;
@@ -641,6 +671,18 @@ input[type="file"] {
     height: 100%;
 }
 
+.error-class-dropdown {
+    position: relative;
+    border: 2px solid lightgray;
+    border-radius: 2px;
+    transition: border 140ms ease;
+}
+
+.error-class-dropdown:defined {
+    border-color: var(--eds-ui-500, red);
+    height: 100%;
+}
+
 .event-errors-shown {
     color: red;
     font-size: 12px;
@@ -662,6 +704,19 @@ input[type="file"] {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     z-index: -1;
+    height: 20%;
+}
+
+.event-errors-list {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: red;
+    height: 20%;
+}
+
+div .event-form-submit {
     height: 20%;
 }
 
