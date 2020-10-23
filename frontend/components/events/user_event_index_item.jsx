@@ -6,12 +6,17 @@ class UserEventIndexItem extends React.Component {
     constructor(props) {
         super(props);
         this.handleDelete = this.handleDelete.bind(this);
+        this.clearErrors = this.clearErrors.bind(this);
     }
 
     handleDelete() {
         this.props.removeEvent(this.props.event.id);
         this.props.toggleModal(true);
         window.scrollTo(0,0);
+    }
+
+    clearErrors() {
+        this.props.clearEventErrors();
     }
 
     render () {
@@ -45,7 +50,7 @@ class UserEventIndexItem extends React.Component {
                         <a><i className="fas fa-ellipsis-v"></i></a>
                         <div className="event-dropdown-content">
                             <Link to={`/events/${event.id}`}><p>View</p></Link>
-                            <Link to={`/events/${event.id}/edit`}><p>Update</p></Link>
+                            <Link onClick={this.clearErrors} to={`/events/${event.id}/edit`}><p>Update</p></Link>
                             <p onClick={this.handleDelete}>Delete</p>
                         </div>
                     </div>
