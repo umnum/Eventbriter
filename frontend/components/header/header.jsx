@@ -22,10 +22,14 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.clearErrors = this.clearErrors.bind(this);
+        this.clearEventErrors = this.clearEventErrors.bind(this);
         this.logout = this.logout.bind(this);
     }
     clearErrors() {
         this.props.clearErrors();
+    }
+    clearEventErrors() {
+        this.props.clearEventErrors();
     }
     logout() {
         this.props.logout();
@@ -44,7 +48,7 @@ class Header extends React.Component {
                 <div className="right-header">
                     {!this.props.isLoggedIn() ?
                     <>
-                    <Link className="create-event-link" to="/events/new"><i className="fas fa-plus"></i><i>Create Event</i></Link>
+                    <Link onClick={this.clearEventErrors} className="create-event-link" to="/events/new"><i className="fas fa-plus"></i><i>Create Event</i></Link>
                     <div className="dropdown-menu">
                             <a className="dropdown-link">
                                 <i className="far fa-user"></i>

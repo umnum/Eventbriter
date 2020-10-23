@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Header from './header';
 import { clearErrors, logout } from '../../actions/session_actions';
+import { clearEventErrors } from '../../actions/event_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
@@ -12,6 +13,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return ({
         clearErrors: () => dispatch(clearErrors()),
+        clearEventErrors: () => dispatch(clearEventErrors()),
         logout: () => dispatch(logout())
     });
 };
