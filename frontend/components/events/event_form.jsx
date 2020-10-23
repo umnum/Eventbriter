@@ -333,7 +333,7 @@ class EventFrom extends React.Component {
                                     <div className={this.state.design.startDate? 'field-wrapper-focused' : ( this.state.errors.startDate? 'field-wrapper-error' : 'field-wrapper')}>
                                         <div className={`start-date-field-wrapper ${startDateBorder} ${startDateBorderError}`}>
                                             <label id="start-date-label">Start Date</label>
-                                            <input onBlur={this.blur('startDate')} onFocus={this.focus('startDate')} onChange={this.handleInput('startDate')} type="date" name="startDate" value={startDate}/>
+                                            <input onBlur={this.blur('startDate')} onFocus={this.focus('startDate')} onChange={this.handleInput('startDate')} type="date" />
                                         </div>
                                     </div> 
                                 </div>
@@ -351,7 +351,7 @@ class EventFrom extends React.Component {
                                     <div className={this.state.design.endDate? 'field-wrapper-focused' : ( this.state.errors.endDate? 'field-wrapper-error' : 'field-wrapper')}>
                                         <div className={`end-date-field-wrapper ${endDateBorder} ${endDateBorderError}`}>
                                             <label id="end-date-label">End Date</label>
-                                            <input onBlur={this.blur('endDate')} onFocus={this.focus('endDate')} onChange={this.handleInput('endDate')} type="date" name="endDate" value={endDate}/>
+                                            <input onBlur={this.blur('endDate')} onFocus={this.focus('endDate')} onChange={this.handleInput('endDate')} type="date" name="endDate" />
                                         </div>
                                     </div> 
                                 </div>
