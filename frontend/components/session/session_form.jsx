@@ -41,9 +41,7 @@ class SessionForm extends React.Component {
     }
 
     focus(form) {
-        //document.getElementsByClassName('email-field-wrapper')[0].classList.add("new-class");
         return (e) => {
-            //this.setState({[form]: e.target.value});
             let email = false;
             let username = false;
             let password = false;

@@ -4,7 +4,7 @@ import { signup, clearErrors } from '../../actions/session_actions';
 
 const mapStateToProps = state => {
     return({
-        errors: state.errors.event
+        errors: state.errors.session
     });
 }
 
