@@ -46,6 +46,24 @@ class Header extends React.Component {
                     <Link className="home-link" to="/"><i>eventbriter</i></Link>
                 </div>
                 <div className="right-header">
+                    {isSessionForm ? <></> :
+                    <div className="dropdown-about-menu">
+                            <a className="dropdown-link">
+                                <p>About</p>
+                                <i className="fas fa-chevron-down"></i>
+                            </a>
+                        <div className="dropdown-about-content">
+                            <a className="about-link" href="https://github.com/umnum/FSProject/wiki">
+                                <i className="fab fa-github fa-3x"></i>
+                            </a>
+                            <a className="about-link" href="https://linkedin.com/in/mcastanieto">
+                                <i class="fab fa-linkedin fa-3x"></i>
+                            </a>
+                            <a className="about-link" href="https://angel.co/u/michael-castanieto">
+                                <i class="fab fa-angellist fa-3x"></i>
+                            </a>
+                        </div>
+                    </div>}
                     {!this.props.isLoggedIn() ?
                     <>
                     <Link onClick={this.clearEventErrors} className="create-event-link" to="/events/new"><i className="fas fa-plus"></i><i>Create Event</i></Link>
@@ -63,7 +81,8 @@ class Header extends React.Component {
                             <h3 onClick={this.logout}>Log Out</h3>
                         </div>
                     </div> </>: isSessionForm ? <></> :
-                    <><a className="about-link" href="https://github.com/umnum/FSProject/wiki"><i className="fab fa-github"></i><p>About</p></a><Link className="signin-link" onClick={this.clearErrors} to="/login">Sign In</Link></>}
+                        <Link className="signin-link" onClick={this.clearErrors} to="/login">Sign In</Link>
+                    }
                  </div>
             </div>
         );

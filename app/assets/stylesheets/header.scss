@@ -88,6 +88,25 @@
   font-weight: 350;
   border: none;
   text-decoration: none;
+}
+
+.dropdown-link {
+  color: black;
+  font-size: 12px;
+  font-weight: 350;
+}
+
+.dropdown-link p, 
+.dropdown-link i {
+  display: flex;
+  justify-content: center;
+}
+
+.signin-link {
+  width: 80px;
+}
+
+.about-link {
   width: 80px;
 }
 
@@ -96,20 +115,30 @@
 }
 
 .fab.fa-github {
-  padding-top: 10px;
+  padding-top: 3px;
   color: green;
 }
 
+.fab.fa-linkedin {
+  padding-top: 3px;
+  color: #0077b5;
+}
+
+.fab.fa-angellist {
+  padding-top: 3px;
+  color: black;
+}
+
 /* The container <div> - needed to position the dropdown content */
-.dropdown-menu {
+.dropdown-menu, .dropdown-about-menu {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 30%;
+  width: 80px;
 }
 
-.dropdown-menu:hover {
+.dropdown-menu:hover, .dropdown-about-menu:hover {
   background-color: rgb(242, 242, 242);
 }
 
@@ -125,8 +154,19 @@
   top: 100%;
 }
 
+.dropdown-about-content {
+  position: absolute;
+  min-width: 160px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 500ms ease;
+  left: -40%;
+  top: 100%;
+}
+
 /* Links inside the dropdown */
-.dropdown-content h3 {
+.dropdown-content h3,
+.dropdown-about-content a {
   display: flex;
   flex-direction: column;
   color: #6f7287;
@@ -168,7 +208,13 @@
   opacity: 1;
 }
 
+.dropdown-about-menu:hover .dropdown-about-content {
+  z-index: 1;
+  opacity: 1;
+}
+
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown-menu:hover .dropdown-link{
+.dropdown-menu:hover .dropdown-link,
+.dropdown-about-menu:hover .dropdown-link {
   background-color: rgb(242, 242, 242);
 }
