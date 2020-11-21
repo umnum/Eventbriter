@@ -69,7 +69,7 @@ class Header extends React.Component {
                     <Link onClick={this.clearEventErrors} className="create-event-link" to="/events/new"><i className="fas fa-plus"></i><i>Create Event</i></Link>
                     <div className="dropdown-menu">
                             <a className="dropdown-link">
-                                <i className="far fa-user"></i>
+                                <i className="far fa-user fa-lg"></i>
                                 <i className="fas fa-chevron-down"></i>
                             </a>
                         <div className="dropdown-content">
