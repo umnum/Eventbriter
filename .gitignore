@@ -29,3 +29,6 @@
 app/assets/javascripts/bundle.js*
 package-lock.json
 spec/
+
+# Ignore application configuration
+/config/application.yml

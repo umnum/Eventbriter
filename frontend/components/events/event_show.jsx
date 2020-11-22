@@ -1,4 +1,5 @@
 import React from 'react';
+import EventMap from './event_map';
 
 class EventShow extends React.Component {
     constructor(props) {
@@ -76,6 +77,11 @@ class EventShow extends React.Component {
                                 <p>{this.props.event.location}</p>
                             </div>
                         </div>
+                    </div>
+                    <div className="event-show-map">
+                        { this.props.event.longitude && this.props.event.latitude ? 
+                          <EventMap lng={this.props.event.longitude} lat={this.props.event.latitude} /> :
+                          <></> }
                     </div>
                 </div>
             </div>

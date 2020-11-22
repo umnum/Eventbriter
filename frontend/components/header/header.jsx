@@ -57,10 +57,10 @@ class Header extends React.Component {
                                 <i className="fab fa-github fa-3x"></i>
                             </a>
                             <a className="about-link" href="https://linkedin.com/in/mcastanieto">
-                                <i class="fab fa-linkedin fa-3x"></i>
+                                <i className="fab fa-linkedin fa-3x"></i>
                             </a>
                             <a className="about-link" href="https://angel.co/u/michael-castanieto">
-                                <i class="fab fa-angellist fa-3x"></i>
+                                <i className="fab fa-angellist fa-3x"></i>
                             </a>
                         </div>
                     </div>}
