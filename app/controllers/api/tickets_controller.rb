@@ -1,6 +1,6 @@
 class Api::TicketsController < ApplicationController
     def index
-        @tickets = Ticket.all
+        @tickets = Ticket.where(user_id: params[:user_id])
         render :index
     end
 
@@ -23,7 +23,7 @@ class Api::TicketsController < ApplicationController
     end
 
     def update
-        @ticket = Ticket.find_by(id: params[:id])
+        @ticket = Ticket.find_by(id: ticket_params[:id])
 
         if @ticket.update(ticket_params)
             render :show
@@ -44,6 +44,6 @@ class Api::TicketsController < ApplicationController
 
     private
         def ticket_params
-            params.require(:ticket).permit(:price, :currency, :quantity, :user_id, :event_id)
+            params.require(:ticket).permit(:id, :price, :currency, :quantity, :user_id, :event_id)
         end
 end
