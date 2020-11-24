@@ -7,9 +7,10 @@ const mapStateToProps = state => {
         currentUser: state.entities.users[state.session.id],
         errors: state.errors.ticket,
         ticket: {
-            price: null,
+            name: "",
+            price: 0.00,
             currency: "",
-            quantity: null,
+            quantity: 0,
             userId: null,
             eventId: null
         },

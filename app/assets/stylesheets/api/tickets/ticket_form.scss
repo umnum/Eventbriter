@@ -1,0 +1,190 @@
+
+.ticket-form-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.ticket-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 90%;
+}
+
+.ticket-form-title {
+    height: 10%;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    letter-spacing: .25px;
+    margin-right: -.25px;
+    font-weight: 600;
+}
+
+.design-class {
+}
+
+.design-class:defined {
+}
+
+.required {
+    color: red;
+}
+
+label {
+    display: flex;
+}
+
+.ticket-form .ticket-field-wrapper {
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    padding: 3px;
+    height: 10%;
+    transition: border 240ms cubic-bezier(0.4, 0, 0.3, 1);
+}
+
+.ticket-form .ticket-field-wrapper-focused {
+    border: 2px solid blue;
+    border-radius: 2px;
+    position: relative;
+    padding: 3px;
+    height: 10%;
+    position: relative;
+    transition: border 240ms cubic-bezier(0.4, 0, 0.3, 1);
+}
+
+.ticket-form .ticket-field-wrapper-error {
+    border: 2px solid red;
+    position: relative;
+    border-radius: 2px;
+    position: relative;
+    padding: 3px;
+    height: 10%;
+    transition: border 240ms cubic-bezier(0.4, 0, 0.3, 1);
+    text-align: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.ticket-form .ticket-field-wrapper-error input{
+    border: 0px none; 
+    font-size: 14px;
+    padding: 3% 3% 2%;
+    width: 95%;
+    background: transparent;
+}
+
+.ticket-form .ticket-field-wrapper-error input:focus {
+    outline: none;
+    border: 0px none; 
+    font-size: 14px;
+    position: relative;
+    width: 95%;
+    background: transparent;
+}
+
+
+.ticket-form .ticket-field-wrapper:hover {
+    border-color: var(--eds-ui-500, #A9A8B3);
+}
+
+.ticket-form .ticket-field-wrapper label {
+  font-size: 12px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  overflow: auto;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: var(--eds-ui-800, #39364F);
+  z-index: -1;
+}
+
+.ticket-form .ticket-field-wrapper-focused label {
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: var(--eds-ui-800, #39364F);
+}
+
+.ticket-form .ticket-field-wrapper-error label {
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  overflow: auto;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: var(--eds-ui-800, red);
+  z-index: -1;
+}
+
+.ticket-form .ticket-field-wrapper input {
+    border: 0px none; 
+    font-size: 14px;
+    padding: 3% 3% 2%;
+    width: 95%;
+    background: transparent;
+}
+
+.ticket-form .ticket-name-field-wrapper,
+.ticket-form .ticket-quantity-field-wrapper,
+.ticket-form .ticket-price-field-wrapper,
+.ticket-form .ticket-currency-field-wrapper {
+    width: 100%;
+}
+
+.ticket-form .ticket-field-wrapper-focused input {
+    border: 0px none; 
+    font-size: 14px;
+    width: 94%;
+    padding: 3% 3% 2%;
+    background: transparent;
+}
+
+.ticket-form .ticket-field-wrapper-focused input:focus {
+    outline: none;
+    border: 0px none; 
+    font-size: 14px;
+    position: relative;
+    width: 94%;
+    background: transparent;
+}
+
+.ticket-form-submit {
+    height: 10%;
+    width: 30%;
+}
+
+.ticket-form-submit button{
+    display: flex;
+    justify-content: center;
+    height: 44px;
+    width: 100%;
+    padding-top: 1.5%;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    line-height: 24px;
+    font-weight: 548;
+    letter-spacing: 0.2px;
+    color: white;
+    background-color: #d1410c;
+    border: 2px solid #d1410c;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 240ms cubic-bezier(0.4, 0, 0.3, 1);
+    transition-property: background-color, border-color;
+}
+
+.ticket-form-submit button:hover {
+    background-color: #F05537;
+    border-color: #F05537;
+}
+
+.ticket-form-submit button:focus {
+    outline: none;
+}
