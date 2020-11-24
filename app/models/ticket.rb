@@ -1,5 +1,5 @@
 class Ticket < ApplicationRecord
-    validates :price, :currency, :quantity, presence: true
+    validates :price, :currency, :quantity, :name, presence: true
 
     belongs_to :purchaser,
         primary_key: :id,
