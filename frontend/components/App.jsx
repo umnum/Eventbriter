@@ -7,6 +7,8 @@ import EditEventFormContainer from './events/edit_event_form_container';
 import CreateEventFormContainer from './events/create_event_form_container';
 import EventShowContainer from './events/event_show_container';
 import UserEventIndexContainer from './events/user_event_index_container';
+import CreateTicketFormContainer from './tickets/create_ticket_form_container';
+import EditTicketFormContainer from './tickets/edit_ticket_form_container';
 import { Switch, Route } from 'react-router-dom';
 import { AuthRoute } from '../util/route_util';
 import NotFound from './not_found';
@@ -23,6 +25,8 @@ const App = () => {
                 <Route exact path="/events/new" component={CreateEventFormContainer} />
                 <Route exact path="/events/:eventId" component={EventShowContainer} />
                 <Route exact path="/users/:userId/events" component={UserEventIndexContainer} />
+                <Route exact path="/tickets/:ticketId/edit" component={EditTicketFormContainer} />
+                <Route exact path="/tickets/new" component={CreateTicketFormContainer} />
                 <Route path="/" component={NotFound} />
             </Switch>
         </div>
