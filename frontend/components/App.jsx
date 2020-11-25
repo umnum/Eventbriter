@@ -26,7 +26,7 @@ const App = () => {
                 <Route exact path="/events/:eventId" component={EventShowContainer} />
                 <Route exact path="/users/:userId/events" component={UserEventIndexContainer} />
                 <Route exact path="/tickets/:ticketId/edit" component={EditTicketFormContainer} />
-                <Route exact path="/users/:userId/tickets/new" component={CreateTicketFormContainer} />
+                <Route exact path="/events/:eventId/tickets/new" component={CreateTicketFormContainer} />
                 <Route path="/" component={NotFound} />
             </Switch>
         </div>

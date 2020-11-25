@@ -21,6 +21,10 @@ class TicketForm extends React.Component {
         this.triggerLoadScreen = this.triggerLoadScreen.bind(this);
     }
 
+    componentWillMount() {
+        this.props.fetchEvent(parseInt(this.props.match.params.eventId));
+    }
+
     handleInput(form) {
         return e => {
             this.setState({[form]: e.target.value});
@@ -69,9 +73,22 @@ class TicketForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        let payload = {
+            ticket: {
+                name: this.state.name,
+                price: this.state.price,
+                currency: this.state.currency,
+                quantity: this.state.quantity,
+                user_id: this.props.event.organizerId,
+                event_id: this.props.event.id
+            }
+        };
+        this.props.submitForm(payload);
     }
 
     render() {
+        if (this.props.event === undefined) return null;
+        if (this.props.currentUser.id !== this.props.event.organizerId) return null;
         let nameBorder = this.state.design.name ? "design-class" : "";
         let nameBorderError = this.state.errors.name ? "design-class" : "";
         let quantityBorder = this.state.design.quantity ? "design-class" : "";
