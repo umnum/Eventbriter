@@ -3,9 +3,6 @@ json.ticket do
     json.extract! ticket, :id, :price, :currency, :quantity
     json.extract! ticket, :name, :user_id, :event_id
 end
-json.user do
-    json.extract! ticket.purchaser, :id, :username, :email
-end
 json.event do
     json.extract! ticket.event, :id, :name, :location, :event_type, :status
     json.extract! ticket.event, :start_date, :end_date, :timezone, :capacity
