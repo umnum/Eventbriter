@@ -8,8 +8,10 @@ Rails.application.routes.draw do
     resources :events, only: [:index, :show, :create, :update, :destroy]
     resources :categories, only: [:index, :show]
     resources :tickets, only: [:show, :create, :update, :destroy]
+    resources :purchased_tickets, only: [:show, :create, :destroy]
     resources :users, only: [:show] do
       resources :tickets, only: [:index]
+      resources :purchased_tickets, only: [:index]
     end
   end
 end
