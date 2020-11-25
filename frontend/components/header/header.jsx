@@ -67,11 +67,12 @@ class Header extends React.Component {
                     {!this.props.isLoggedIn() ?
                     <>
                     <Link onClick={this.clearEventErrors} className="create-event-link" to="/events/new"><i className="fas fa-plus"></i><i>Create Event</i></Link>
+                    <Link className="show-tickets-link" to={`/users/${this.props.currentUser.id}/tickets`}><i className="fas fa-ticket-alt"></i><i>Tickets</i></Link>
                     <div className="dropdown-menu">
-                            <a className="dropdown-link">
-                                <i className="far fa-user fa-lg"></i>
-                                <i className="fas fa-chevron-down"></i>
-                            </a>
+                        <a className="dropdown-link">
+                            <i className="far fa-user fa-lg"></i>
+                            <i className="fas fa-chevron-down"></i>
+                        </a>
                         <div className="dropdown-content">
                             <h3 id="profile-header-info">
                                 <a>{this.props.currentUser.username}</a>
