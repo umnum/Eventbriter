@@ -1,7 +1,7 @@
 json.key_format! camelize: :lower
 json.ticket do
     json.extract! ticket, :id, :price, :currency, :quantity
-    json.extract! ticket, :name, :user_id, :event_id
+    json.extract! ticket, :name, :event_id
 end
 json.event do
     json.extract! ticket.event, :id, :name, :location, :event_type, :status

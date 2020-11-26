@@ -18,7 +18,7 @@ class Api::TicketsController < ApplicationController
         if @ticket.save
             render :show
         else
-            render json: @event.errors.full_messages, status: 422
+            render json: @ticket.errors.full_messages, status: 422
         end
     end
 
@@ -28,7 +28,7 @@ class Api::TicketsController < ApplicationController
         if @ticket.update(ticket_params)
             render :show
         else
-            render json: @event.errors.full_messages, status: 422
+            render json: @ticket.errors.full_messages, status: 422
         end
     end
 
