@@ -4,7 +4,12 @@ const purchasedTicketsReducer = (oldState = {}, action) => {
     let newState = Object.assign({}, oldState);
     switch(action.type) {
         case RECEIVE_PURCHASED_TICKETS:
-            return action.payload.purchasedTickets;
+            if (Object.keys(action.payload).length === 0) {
+                return action.payload;
+            }
+            else {
+                return action.payload.purchasedTickets;
+            }
         case RECEIVE_PURCHASED_TICKET:
             newState[action.payload.purchasedTicket.id] = action.payload.purchasedTicket;
             return newState;
