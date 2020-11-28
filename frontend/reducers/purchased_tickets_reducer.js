@@ -5,7 +5,7 @@ const purchasedTicketsReducer = (oldState = {}, action) => {
     switch(action.type) {
         case RECEIVE_PURCHASED_TICKETS:
             if (Object.keys(action.payload).length === 0) {
-                return action.payload;
+                return oldState;
             }
             else {
                 return action.payload.purchasedTickets;
