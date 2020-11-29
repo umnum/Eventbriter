@@ -8,7 +8,10 @@ const purchasedTicketsReducer = (oldState = {}, action) => {
                 return oldState;
             }
             else {
-                return action.payload.purchasedTickets;
+                Object.values(action.payload.purchasedTickets).forEach(ticket => {
+                    newState[ticket.id] = ticket;
+                });
+                return newState;
             }
         case RECEIVE_PURCHASED_TICKET:
             newState[action.payload.purchasedTicket.id] = action.payload.purchasedTicket;
