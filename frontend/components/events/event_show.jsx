@@ -1,13 +1,33 @@
 import React from 'react';
 import EventMap from './event_map';
+import PurchaseTicketModal from '../tickets/purchase_ticket_modal';
 
 class EventShow extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            on: false
+        };
+        this.toggleModal = this.toggleModal.bind(this);
+        this.handlePurchase = this.handlePurchase.bind(this);
     }
+
     componentDidMount() {
         this.props.fetchEvent(this.props.match.params.eventId);
         window.scrollTo(0,0);
+    }
+
+    toggleModal(toggle) {
+        if (toggle) {
+            window.scrollTo(0,0);
+            document.body.classList.add("stop-scrolling");
+        }
+        this.setState({on: toggle})
+    }
+
+    handlePurchase(e) {
+        e.preventDefault();
+        this.toggleModal(true);
     }
 
     render() {
@@ -59,7 +79,7 @@ class EventShow extends React.Component {
                     <div className="event-show-panel">
                         <div className="event-show-panel-like-share"></div>
                         <div className="event-show-panel-tickets">
-                            <button>Tickets</button>
+                            <button onClick={this.handlePurchase}>Tickets</button>
                         </div>
                     </div>
                     <div className="event-show-details">
@@ -86,6 +106,7 @@ class EventShow extends React.Component {
                           <></> }
                     </div>
                 </div>
+                <PurchaseTicketModal on={this.state.on} toggleModal={this.toggleModal}/>
             </div>
         );
     }
