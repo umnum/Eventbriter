@@ -58,7 +58,9 @@ class EventShow extends React.Component {
                     </div>
                     <div className="event-show-panel">
                         <div className="event-show-panel-like-share"></div>
-                        <div className="event-show-panel-like-tickets"></div>
+                        <div className="event-show-panel-tickets">
+                            <button>Tickets</button>
+                        </div>
                     </div>
                     <div className="event-show-details">
                         <div className="details-description">
