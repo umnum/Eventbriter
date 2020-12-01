@@ -57,6 +57,7 @@ class EventShow extends React.Component {
         endHours = (endHours % 12 + 1).toLocaleString();
         let endMinutes = endDateTime.getMinutes().toLocaleString();
         endMinutes = (endMinutes.length === 1 ? '0' : '') + endMinutes;
+        const tickets = this.props.tickets.map(ticket => {if (ticket.eventId === this.props.event.id) return ticket});
         return (
             <div className="event-show-page">
                 <div className="event-show-body">
@@ -106,7 +107,12 @@ class EventShow extends React.Component {
                           <></> }
                     </div>
                 </div>
-                <PurchaseTicketModal on={this.state.on} toggleModal={this.toggleModal}/>
+                <PurchaseTicketModal 
+                on={this.state.on} 
+                toggleModal={this.toggleModal}
+                event={this.props.event}
+                tickets={tickets}
+                />
             </div>
         );
     }

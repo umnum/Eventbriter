@@ -5,7 +5,8 @@ import EventShow from './event_show';
 const mapStateToProps = (state, ownProps) => {
     return({
         event: state.entities.events[ownProps.match.params.eventId],
-        users: state.entities.users
+        users: state.entities.users,
+        tickets: Object.values(state.entities.tickets)
     });
 };    
     
