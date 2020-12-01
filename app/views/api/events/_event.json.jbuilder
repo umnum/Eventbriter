@@ -9,3 +9,11 @@ end
 json.user do
     json.extract! event.organizer, :id, :username, :email
 end
+json.tickets do
+    event.tickets.each do |ticket|
+        json.set! ticket.id do
+            json.extract! ticket, :id, :price, :currency, :quantity
+            json.extract! ticket, :name, :user_id, :event_id
+        end
+    end
+end
