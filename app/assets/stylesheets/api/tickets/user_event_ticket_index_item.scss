@@ -94,3 +94,12 @@
     overflow: hidden;
     height: 100%;
 }
+
+.modal-ticket-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-ticket-item {
+    display: flex;
+}
