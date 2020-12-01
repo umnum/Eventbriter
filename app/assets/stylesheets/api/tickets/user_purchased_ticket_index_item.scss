@@ -1,0 +1,15 @@
+.user-purchased-ticket-index-item {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    padding: 3%;
+    border-bottom: 2px solid #eeedf2;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(238, 237, 242); 
+    transition: box-shadow 400ms ease;
+}
+
+.user-purchased-ticket-index-item:hover {
+    box-shadow: 0 2px 0px 2px rgb(238, 237, 242);
+}
