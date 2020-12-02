@@ -34,8 +34,18 @@ class UserTicketIndex extends React.Component {
         return (
             <div className="user-ticket-index">
                 <h1>My Event Tickets</h1>
+                <div className="ticket-contents-name">
+                    <i>Description</i>
+                    <i>Total Quantity</i>
+                    <i>Price</i>
+                </div>
                 <ul>{userEventTicketIndexItems}</ul>
                 <h1>My Purcased Tickets</h1>
+                <div className="ticket-contents-name">
+                    <i>Description</i>
+                    <i>Purchased Quantity</i>
+                    <i>Price</i>
+                </div>
                 <ul>{userPurchasedTicketIndexItems}</ul>
             </div>
         );

@@ -1,6 +1,6 @@
 .user-event-ticket-index-item {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     height: 20%;
     width: 80%;
     padding: 3%;
@@ -13,6 +13,14 @@
 
 .user-event-ticket-index-item:hover {
     box-shadow: 0 0px 2px 2px rgb(238, 237, 242);
+}
+
+.user-event-ticket-index-item div:first-child {
+    width: 62.5%;
+}
+
+.user-event-ticket-index-item div:nth-child(2) {
+    width: 30.5%;
 }
 
 .user-event-ticket-index-item-description {

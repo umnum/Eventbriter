@@ -5,11 +5,40 @@
 }
 .user-ticket-index h1 {
     height: 2%;
-    padding-top: 3%;
+    padding-top: 5%;
     padding-bottom: 3%;
     font-size: 1.75rem;
     line-height: 2.25rem;
     letter-spacing: .75px;
     margin-right: -.75px;
     font-weight: 700;
+}
+
+.ticket-contents-name {
+    display: flex;
+    justify-content: flex-start;
+    width: 83%;
+    padding-left: 3%;
+    background-color: #f8f7fa;
+    height: 20%;
+    padding-top: 2%;
+    padding-bottom: 2.5%;
+}
+
+.ticket-contents-name i {
+    color: #6f7287;
+    font-size: .975rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+}
+
+.ticket-contents-name i:first-child {
+    width: 60%;
+}
+
+.ticket-contents-name i:nth-child(2){
+    width: 30%;
+}
+
+.ticket-contents-name i:nth-child(3) {
 }

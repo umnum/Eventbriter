@@ -7,10 +7,16 @@ class UserPurchasedTicketIndexItem extends React.Component {
         const ticket = tickets[purchasedTicket.ticketId];
         return (
             <div className="user-purchased-ticket-index-item">
-                <li>Event: {event.name}</li>
-                <li>Type: {ticket.name}</li>
-                <li>Price: {ticket.price} {ticket.currency}</li>
-                <li>Quantity: {purchasedTicket.quantity}</li>
+                <div className="user-purchased-ticket-description">
+                    <p>{event.name}</p>
+                    <p>{ticket.name}</p>
+                </div>
+                <div className="user-purchased-ticket-quantity">
+                    <p>{purchasedTicket.quantity}</p>
+                </div>
+                <div className="user-purchased-ticket-price">
+                    <p>{ticket.price} {ticket.currency}</p>
+                </div>
             </div>
         )
     }
