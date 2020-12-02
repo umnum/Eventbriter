@@ -18,15 +18,19 @@ const ticketsReducer = (oldState = {}, action) => {
             if (Object.keys(action.payload).length === 0) {
                 return oldState;
             }
-            else {
-                return action.payload.tickets;
-            }
+            Object.values(action.payload.tickets).forEach(ticket => {
+                newState[ticket.id] = ticket;
+            });
+            return newState;
         case RECEIVE_PURCHASED_TICKET:
             newState[action.payload.ticket.id] = action.payload.ticket;
         case REMOVE_TICKET:
             delete newState[action.ticketId];
             return newState;
         case RECEIVE_EVENT:
+            if (action.payload.tickets === undefined) {
+                return oldState;
+            }
             Object.values(action.payload.tickets).forEach(ticket => {
                 newState[ticket.id] = ticket;
             });
