@@ -8,7 +8,7 @@ class PurchaseTicketModal extends React.Component {
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         let quantity = {};
-        props.tickets.map(ticket => {
+        props.tickets.forEach(ticket => {
             quantity[ticket.id] = 0;
         });
         this.state = {

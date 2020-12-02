@@ -51,6 +51,7 @@ class UserEventIndexItem extends React.Component {
                         <div className="event-dropdown-content">
                             <Link to={`/events/${event.id}`}><p>View</p></Link>
                             <Link onClick={this.clearErrors} to={`/events/${event.id}/edit`}><p>Update</p></Link>
+                            <Link to={`/events/${event.id}/tickets/new`}><p>Create Ticket</p></Link>
                             <p onClick={this.handleDelete}>Delete</p>
                         </div>
                     </div>
