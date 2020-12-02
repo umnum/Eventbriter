@@ -1,7 +1,8 @@
 .user-event-ticket-index-item {
     display: flex;
-    flex-direction: column;
-    height: 150px;
+    justify-content: space-between;
+    height: 20%;
+    width: 80%;
     padding: 3%;
     border-bottom: 2px solid #eeedf2;
     border-bottom-width: 1px;
@@ -11,7 +12,28 @@
 }
 
 .user-event-ticket-index-item:hover {
-    box-shadow: 0 2px 0px 2px rgb(238, 237, 242);
+    box-shadow: 0 0px 2px 2px rgb(238, 237, 242);
+}
+
+.user-event-ticket-index-item-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-event-ticket-description p {
+    line-height: 1.5rem;
+    letter-spacing: .25px;
+    margin-right: -.25px;
+    font-weight: 600;
+}
+
+.user-event-ticket-description p:first-child {
+    font-size: 1.5rem;
+}
+
+.user-event-ticket-description p:last-child {
+    font-size: 1.125rem;
+    color: #4b4d63;
 }
 
 .purchase-ticket-modal {

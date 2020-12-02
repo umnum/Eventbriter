@@ -6,10 +6,16 @@ class UserEventTicketIndexItem extends React.Component {
         if (event === undefined) return null;
         return (
             <div className="user-event-ticket-index-item">
-                <li>Event: {event.name}</li>
-                <li>Type: {ticket.name}</li>
-                <li>Price: {ticket.price} {ticket.currency}</li>
-                <li>Quantity: {ticket.quantity}</li>
+                <div className="user-event-ticket-description">
+                    <p>{event.name}</p>
+                    <p>{ticket.name}</p>
+                </div>
+                <div className="user-event-ticket-quantity">
+                    <p>{ticket.quantity}</p>
+                </div>
+                <div className="user-event-ticket-price">
+                    <p>{ticket.price} {ticket.currency}</p>
+                </div>
             </div>
         )
     }

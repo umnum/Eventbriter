@@ -32,7 +32,7 @@ class UserTicketIndex extends React.Component {
             />
         });
         return (
-            <div>
+            <div className="user-ticket-index">
                 <h1>My Event Tickets</h1>
                 <ul>{userEventTicketIndexItems}</ul>
                 <h1>My Purcased Tickets</h1>
