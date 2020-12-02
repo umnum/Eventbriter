@@ -57,7 +57,8 @@ class EventShow extends React.Component {
         endHours = (endHours % 12 + 1).toLocaleString();
         let endMinutes = endDateTime.getMinutes().toLocaleString();
         endMinutes = (endMinutes.length === 1 ? '0' : '') + endMinutes;
-        const tickets = this.props.tickets.map(ticket => {if (ticket.eventId === this.props.event.id) return ticket});
+        let tickets = [];
+        this.props.tickets.forEach(ticket => {if (ticket.eventId === this.props.event.id) tickets.push(ticket)});
         return (
             <div className="event-show-page">
                 <div className="event-show-body">
