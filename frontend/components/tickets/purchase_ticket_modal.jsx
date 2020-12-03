@@ -60,7 +60,7 @@ class PurchaseTicketModal extends React.Component {
             return <option key={quantity} value={quantity}>{quantity}</option>
         })
         const TicketItems = this.props.tickets.map(ticket => {
-            return <li className="modal-ticket-item" key={ticket.id}>
+            return <div className="modal-ticket-item" key={ticket.id}>
                 <div>
                     <p>{ticket.name}</p>
                     <p>{ticket.price} {ticket.currency}</p>
@@ -70,19 +70,46 @@ class PurchaseTicketModal extends React.Component {
                         {QuantityDropdownItems}
                     </select>
                 </div>
-            </li>
+            </div>
+        })
+        let orderTotal = 0;
+        const OrderItems = this.props.tickets.map(ticket => {
+            const quantity = this.state.quantity[ticket.id];
+            orderTotal += quantity * ticket.price;
+            return (
+                quantity === 0 ? <div key={ticket.id} className="order-summary-item-blank"></div> : 
+                <div key={ticket.id} className="order-summary-item">
+                    <div className="order-summary-item-quantity"><p>{quantity} x {ticket.name}</p></div>
+                    <div className="order-summary-item-price"><p>{ticket.price} {ticket.currency}</p></div>
+                </div>
+            );
         })
         return (
                 <>
                     <div className="purchase-ticket-modal">
-                        <div><p>{this.props.event.name}</p></div>
-                        <div><button onClick={this.closeModal}>Close</button></div>
-                        <form onSubmit={this.handleSubmit}>
-                            <ul className="modal-ticket-items">{TicketItems}</ul>
-                            <div className="event-form-submit">
-                                <button type="submit">Purchase Tickets</button>
+                        <div className="purchase-ticket-modal-close"><button onClick={this.closeModal}><i className="fas fa-times fa-lg"></i></button></div>
+                        <div className="ticket-checkout">
+                            <div><p>{this.props.event.name}</p></div>
+                            <form className="modal-ticket-items-form" onSubmit={this.handleSubmit}>
+                                <div className="modal-ticket-items">{TicketItems}</div>
+                                <div className="purchase-ticket-form-submit">
+                                    <button type="submit">Purchase Tickets</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div className="ticket-order-summary">
+                            <div className="ticket-order-summary-image">
+                                <img src={this.props.event.photoUrl} />
                             </div>
-                        </form>
+                            <div className="ticket-order-summary-info">
+                                <p>Order summary</p>
+                                <div className="order-summary-items">{OrderItems}</div>
+                                <div className="order-total">
+                                    <div><p>Total</p></div>
+                                    <div><p>{orderTotal} USD</p></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div className="purchase-ticket-modal-dim"></div>
                 </>

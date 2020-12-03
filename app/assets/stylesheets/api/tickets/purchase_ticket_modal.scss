@@ -4,12 +4,9 @@
 
 .purchase-ticket-modal {
     display: flex;
-    flex-direction: column;
-    width: 80%;
-    height: 90%;
-    max-height: 100%;
+    max-height: 85%;
+    width: 70%;
     background: white;
-    border: 1px solid #ccc;
     transition: 1.1s ease-out;
     box-shadow: 
         -2rem 2rem 2rem rgba(black, 0.2);
@@ -21,11 +18,129 @@
     transform: translate(-50%, -50%);
     z-index: 2;
     position: absolute;
-    padding: 20px;
     border-radius: 2px;
 }
 
-.purchase-ticket-modal button {
+.purchase-ticket-modal-close {
+    display: flex;
+    left: 99%;
+    transform: translate(-100%, -100%);
+    top: 8%;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+}
+
+.ticket-checkout {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+}
+
+.ticket-checkout > div {
+    height: 20%;
+}
+
+.ticket-order-summary {
+    display: flex;
+    background-color: #f8f7fa;
+    flex-direction: column;
+    border-left: 1px solid #eeedf2;
+    width: 30%;
+    height: 100%;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.ticket-order-summary-image {
+    height: 40%;
+}
+
+.ticket-order-summary-image img {
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 2px;
+}
+
+.ticket-order-summary-info {
+    display: flex;
+    flex-direction: column;
+    padding: 10%;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    color: #39364f;
+}
+
+.ticket-order-summary-info > p {
+    height: 20%;
+    font-weight: 600;
+}
+
+.order-summary-item-blank {
+    height: 0%;
+}
+
+.order-summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+    height: 30%;
+    border-bottom: 1px solid #eeedf2;
+}
+
+.order-summary-item-quantity {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+.order-summary-item-price{
+    display: flex;
+    justify-content: flex-end;
+    width: 30%;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+}
+
+.purchase-ticket-modal-close button {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    opacity: 0.3;
+	color: #39364f;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+    outline: inherit;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    transition: opacity 300ms ease;
+}
+
+.purchase-ticket-modal-close > button > i {
+    padding-top: 30%;
+}
+
+.purchase-ticket-modal-close button:hover {
+    opacity: 0.9;
+}
+
+.purchase-ticket-form-submit {
+    height: 15%;
+    border-top: 1px solid #eeedf2;
+    padding-top: 4%;
+}
+
+.purchase-ticket-form-submit button {
     display: flex;
     justify-content: center;
     height: 44px;
@@ -49,18 +164,26 @@
     transition-property: background-color, border-color;
 }
 
-.purchase-ticket-modal div:first-child {
+.ticket-checkout > div {
     display: flex;
+    height: 6%;
+    margin-top: 2%;
     justify-content: center;
-    padding-top: 50px;
+    color: #39364f;
     font-size: 24px;
-    font-weight: 600;
+    font-size: 1.125rem;
+    font-weight: 400;
+    border-bottom: 1px solid #eeedf2;
 }
 
-.purchase-ticket-modal div:last-child {
+.purchase-ticket-form-submit {
     display: flex;
     justify-content: center;
-    height: 50px;
+}
+
+.modal-ticket-items-form {
+    display: flex;
+    flex-direction: column;
 }
 
 .purchase-ticket-modal-dim {
@@ -79,11 +202,53 @@
     height: 100%;
 }
 
+.modal-ticket-items-form {
+    display: flex;
+}
+
 .modal-ticket-items {
     display: flex;
     flex-direction: column;
+    width: 80%;
+    margin-left: 10%;
 }
 
 .modal-ticket-item {
     display: flex;
+    margin-top: 5%;
+    height: 30%;
+    justify-content: space-between;
+    border-bottom: 1px solid #eeedf2;
+}
+
+.modal-ticket-item > div:first-child {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.modal-ticket-item > div:last-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 10%;
+}
+
+.modal-ticket-item > div > p {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-ticket-item > div > p:first-child {
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.modal-ticket-item > div > p:last-child {
+    font-size: 1rem;
+    font-weight: 440;
+}
+
+.modal-ticket-item > div:last-child {
+    height: 100%;
 }
