@@ -81,7 +81,7 @@ class EventShow extends React.Component {
                     <div className="event-show-panel">
                         <div className="event-show-panel-like-share"></div>
                         <div className="event-show-panel-tickets">
-                            <button onClick={this.handlePurchase}>Tickets</button>
+                            { this.props.currentUserId === null ? <></> : <button onClick={this.handlePurchase}>Tickets</button>}
                         </div>
                     </div>
                     <div className="event-show-details">
