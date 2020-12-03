@@ -21,6 +21,10 @@
     border-radius: 2px;
 }
 
+.purchase-ticket-modal > div {
+    display: flex;
+}
+
 .purchase-ticket-modal-close {
     display: flex;
     left: 99%;
@@ -284,4 +288,66 @@
 
 .modal-ticket-item > div:last-child {
     height: 100%;
+}
+
+.ticket-order-processed {
+    display: flex;
+    flex-direction: column;
+    padding: 10%;
+    width: 100%;
+}
+
+.ticket-order-processed > div:first-child {
+    height: 30%;
+}
+
+.ticket-order-processed > div:first-child > h1 {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    letter-spacing: .25px;
+    margin-right: -.25px;
+    font-weight: 600;
+    color: #39364f;
+}
+
+.ticket-order-processed > div:nth-child(2) {
+    height: 20%;
+    border-bottom: 1px solid #eeedf2;
+}
+
+.ticket-order-processed > div:nth-child(2) > h1 {
+    font-size: 1.125rem;
+    color: #4b4d63;
+    line-height: 1.5rem;
+    letter-spacing: .25px;
+    margin-right: -.25px;
+    font-weight: 600;
+}
+
+.order-receipt-item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+    height: 30%;
+    border-bottom: 1px solid #eeedf2;
+}
+
+.order-receipt-item-quantity {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+.order-receipt-item-price{
+    display: flex;
+    justify-content: flex-end;
+    width: 30%;
+}
+
+.order-receipt-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    font-weight: 600;
 }

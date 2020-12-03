@@ -12,6 +12,7 @@ class PurchaseTicketModal extends React.Component {
             quantity[ticket.id] = 0;
         });
         this.state = {
+            ticketOrderProcessed: false,
             quantity: quantity
         };
     }
@@ -19,6 +20,7 @@ class PurchaseTicketModal extends React.Component {
     closeModal() {
         document.body.classList.remove("stop-scrolling");
         this.props.toggleModal(false)
+        this.setState({ticketOrderProcessed: false})
     }
 
     handleInput(field, ticketId) {
@@ -48,7 +50,8 @@ class PurchaseTicketModal extends React.Component {
             if (quantity !== 0) {
                 purchasedTicket.purchased_ticket.ticket_id = ticket.id;
                 purchasedTicket.purchased_ticket.quantity = quantity;
-                this.props.purchaseTicket(purchasedTicket);
+                this.props.purchaseTicket(purchasedTicket)
+                    .then(() => this.setState({ticketOrderProcessed: true}));
             }
         });
     }
@@ -59,57 +62,90 @@ class PurchaseTicketModal extends React.Component {
         const QuantityDropdownItems = quantities.map(quantity => {
             return <option key={quantity} value={quantity}>{quantity}</option>
         })
-        const TicketItems = this.props.tickets.map(ticket => {
-            return <div className="modal-ticket-item" key={ticket.id}>
-                <div>
-                    <p>{ticket.name}</p>
-                    <p>{ticket.price} {ticket.currency}</p>
-                </div>
-                <div>
-                    <select value={this.state.quantity[ticket.id]} onChange={this.handleInput(`quantity`,ticket.id)} id="quantity" name="quantity">
-                        {QuantityDropdownItems}
-                    </select>
-                </div>
-            </div>
-        })
         let orderTotal = 0;
-        const OrderItems = this.props.tickets.map(ticket => {
-            const quantity = this.state.quantity[ticket.id];
-            orderTotal += quantity * ticket.price;
-            return (
-                quantity === 0 ? <div key={ticket.id} className="order-summary-item-blank"></div> : 
-                <div key={ticket.id} className="order-summary-item">
-                    <div className="order-summary-item-quantity"><p>{quantity} x {ticket.name}</p></div>
-                    <div className="order-summary-item-price"><p>{ticket.price} {ticket.currency}</p></div>
+        let ReceiptItems, TicketItems, OrderItems;
+        if (this.state.ticketOrderProcessed) {
+            ReceiptItems = this.props.tickets.map(ticket => {
+                const quantity = this.state.quantity[ticket.id];
+                orderTotal += quantity * ticket.price;
+                return (
+                    quantity === 0 ? <div key={ticket.id} className="order-summary-item-blank"></div> : 
+                    <div key={ticket.id} className="order-receipt-item">
+                        <div className="order-receipt-item-quantity"><p>{quantity} x {ticket.name}</p></div>
+                        <div className="order-receipt-item-price"><p>{ticket.price} {ticket.currency}</p></div>
+                    </div>
+                );
+            });
+        }
+        else {
+            TicketItems = this.props.tickets.map(ticket => {
+                return <div className="modal-ticket-item" key={ticket.id}>
+                    <div>
+                        <p>{ticket.name}</p>
+                        <p>{ticket.price} {ticket.currency}</p>
+                    </div>
+                    <div>
+                        <select value={this.state.quantity[ticket.id]} onChange={this.handleInput(`quantity`,ticket.id)} id="quantity" name="quantity">
+                            {QuantityDropdownItems}
+                        </select>
+                    </div>
                 </div>
-            );
-        })
+            })
+            OrderItems = this.props.tickets.map(ticket => {
+                const quantity = this.state.quantity[ticket.id];
+                orderTotal += quantity * ticket.price;
+                return (
+                    quantity === 0 ? <div key={ticket.id} className="order-summary-item-blank"></div> : 
+                    <div key={ticket.id} className="order-summary-item">
+                        <div className="order-summary-item-quantity"><p>{quantity} x {ticket.name}</p></div>
+                        <div className="order-summary-item-price"><p>{ticket.price} {ticket.currency}</p></div>
+                    </div>
+                );
+            })
+        }
         return (
                 <>
                     <div className="purchase-ticket-modal">
                         <div className="purchase-ticket-modal-close"><button onClick={this.closeModal}><i className="fas fa-times fa-lg"></i></button></div>
-                        <div className="ticket-checkout">
-                            <div><p>{this.props.event.name}</p></div>
-                            <form className="modal-ticket-items-form" onSubmit={this.handleSubmit}>
-                                <div className="modal-ticket-items">{TicketItems}</div>
-                                <div className={`purchase-ticket-form-submit${orderTotal === 0 ? "-disable" : ""}`}>
-                                    <button type="submit" disabled={orderTotal === 0 ? 'true' : ''}>Purchase Tickets</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div className="ticket-order-summary">
-                            <div className="ticket-order-summary-image">
-                                <img src={this.props.event.photoUrl} />
+                        {this.state.ticketOrderProcessed ?
+                        <div className="ticket-order-processed">
+                            <div>
+                                <h1>Thank you for your purchase!</h1>
                             </div>
-                            <div className="ticket-order-summary-info">
-                                <p>Order summary</p>
-                                <div className="order-summary-items">{OrderItems}</div>
-                                <div className="order-total">
-                                    <div><p>Total</p></div>
-                                    <div><p>{orderTotal} USD</p></div>
+                            <div>
+                                <h1>Your order details:</h1>
+                            </div>
+                            <div className="order-receipt-items">{ReceiptItems}</div>
+                            <div className="order-receipt-total">
+                                <div><p>Total</p></div>
+                                <div><p>{orderTotal} USD</p></div>
+                            </div>
+                        </div> :
+                        <>
+                            <div className="ticket-checkout">
+                                <div><p>{this.props.event.name}</p></div>
+                                <form className="modal-ticket-items-form" onSubmit={this.handleSubmit}>
+                                    <div className="modal-ticket-items">{TicketItems}</div>
+                                    <div className={`purchase-ticket-form-submit${orderTotal === 0 ? "-disable" : ""}`}>
+                                        <button type="submit" disabled={orderTotal === 0 ? 'true' : ''}>Purchase Tickets</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div className="ticket-order-summary">
+                                <div className="ticket-order-summary-image">
+                                    <img src={this.props.event.photoUrl} />
+                                </div>
+                                <div className="ticket-order-summary-info">
+                                    <p>Order summary</p>
+                                    <div className="order-summary-items">{OrderItems}</div>
+                                    <div className="order-total">
+                                        <div><p>Total</p></div>
+                                        <div><p>{orderTotal} USD</p></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </>
+                        }
                     </div>
                     <div className="purchase-ticket-modal-dim"></div>
                 </>
