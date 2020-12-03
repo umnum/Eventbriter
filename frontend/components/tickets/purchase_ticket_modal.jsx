@@ -92,8 +92,8 @@ class PurchaseTicketModal extends React.Component {
                             <div><p>{this.props.event.name}</p></div>
                             <form className="modal-ticket-items-form" onSubmit={this.handleSubmit}>
                                 <div className="modal-ticket-items">{TicketItems}</div>
-                                <div className="purchase-ticket-form-submit">
-                                    <button type="submit">Purchase Tickets</button>
+                                <div className={`purchase-ticket-form-submit${orderTotal === 0 ? "-disable" : ""}`}>
+                                    <button type="submit" disabled={orderTotal === 0 ? 'true' : ''}>Purchase Tickets</button>
                                 </div>
                             </form>
                         </div>
