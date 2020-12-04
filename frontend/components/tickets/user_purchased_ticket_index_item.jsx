@@ -2,7 +2,12 @@ import React from 'react';
 
 class UserPurchasedTicketIndexItem extends React.Component {
     handleDelete() {
-        this.props.removePurchasedTicket(this.props.purchasedTicket.id);
+        this.props.removePurchasedTicket(this.props.purchasedTicket.id)
+            .then(successResponse => {
+                this.props.toggleModal(true);
+                window.scrollTo(0,0);
+                document.body.classList.add("stop-scrolling");
+            });
     }
 
     render() {
