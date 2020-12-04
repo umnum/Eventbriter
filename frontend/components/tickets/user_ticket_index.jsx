@@ -1,16 +1,25 @@
 import React from 'react';
 import UserEventTicketIndexItem from './user_event_ticket_index_item';
 import UserPurchasedTicketIndexItem from './user_purchased_ticket_index_item';
+import DeleteEventTicketModal from './delete_event_ticket_modal';
 
 class UserTicketIndex extends React.Component {
     constructor(props) {
         super(props);
+        this.toggleModal = this.toggleModal.bind(this);
+        this.state = {
+            on: false
+        }
     }
 
     componentDidMount() {
         this.props.fetchTickets(this.props.currentUser.id);
         this.props.fetchPurchasedTickets(this.props.currentUser.id);
         this.props.fetchEvents();
+    }
+
+    toggleModal(toggle) {
+        this.setState({on: toggle})
     }
 
     render() {
@@ -27,7 +36,8 @@ class UserTicketIndex extends React.Component {
                     userPurchasedTickets={this.props.userPurchasedTickets}
                     fetchTicket={this.props.fetchTicket}
                     removeTicket={this.props.removeTicket}
-                    removePurchasedTicket={this.props.removePurchasedTicket} />
+                    removePurchasedTicket={this.props.removePurchasedTicket} 
+                    toggleModal={this.toggleModal} />
         });
         let userPurchasedTicketIndexItems = this.props.userPurchasedTickets.map(userPurchasedTicket => {
             if (this.props.currentUser.id !== userPurchasedTicket.userId) return null;
@@ -42,6 +52,7 @@ class UserTicketIndex extends React.Component {
         return (
             <div className="user-ticket-index">
                 <h1>My Event Tickets</h1>
+                <DeleteEventTicketModal on={this.state.on} toggleModal={this.toggleModal} />
                 <div className="ticket-contents-name">
                     <i>Description</i>
                     <i>Total Quantity</i>

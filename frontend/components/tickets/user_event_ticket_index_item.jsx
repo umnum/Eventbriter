@@ -12,7 +12,11 @@ class UserEventTicketIndexItem extends React.Component {
                 });
             }).then(successResponse => {
                 this.props.removeTicket(this.props.ticket.id);
-            })
+            }).then(successResponse => {
+                this.props.toggleModal(true);
+                window.scrollTo(0,0);
+                document.body.classList.add("stop-scrolling");
+            });
     }
 
     render() {
