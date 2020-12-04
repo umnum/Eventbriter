@@ -13,6 +13,7 @@ class UserEventIndexItem extends React.Component {
         this.props.removeEvent(this.props.event.id);
         this.props.toggleModal(true);
         window.scrollTo(0,0);
+        document.body.classList.add("stop-scrolling");
     }
 
     clearErrors() {

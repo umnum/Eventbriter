@@ -8,6 +8,7 @@ class DeleteEventModal extends React.Component {
     }
 
     closeModal() {
+        document.body.classList.remove("stop-scrolling");
         this.props.toggleModal(false)
     }
 
