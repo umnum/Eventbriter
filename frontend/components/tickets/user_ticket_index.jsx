@@ -37,7 +37,7 @@ class UserTicketIndex extends React.Component {
             event={this.props.events[this.props.entities.tickets[userPurchasedTicket.ticketId].eventId]}
             tickets={this.props.entities.tickets}
             purchasedTicket={userPurchasedTicket}
-            />
+            removePurchasedTicket={this.props.removePurchasedTicket} />
         });
         return (
             <div className="user-ticket-index">
