@@ -27,7 +27,13 @@ class TicketForm extends React.Component {
         }
     }
 
+    componentDidMount() {
+        document.body.classList.add("stop-scrolling");
+        window.scrollTo(0,0);
+    }
+
     componentWillUnmount() {
+        document.body.classList.remove("stop-scrolling");
         this.props.clearTicketErrors();
     }
 
