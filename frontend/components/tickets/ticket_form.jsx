@@ -121,11 +121,20 @@ class TicketForm extends React.Component {
                             <input onBlur={this.blur('price')} onFocus={this.focus('price')} onChange={this.handleInput('price')} type="text" value={this.state.price}/>
                         </div>
                     </div>
-                    <div className={this.state.design.currency? 'ticket-field-wrapper-focused' : ( this.state.errors.currency ? 'ticket-field-wrapper-error' : 'ticket-field-wrapper')}>
-                        <div className={`currency-ticket-field-wrapper ${currencyBorder} ${currencyBorderError}`}>
-                            <label id="currency-label">Currency<p className="required">*</p></label>
-                            <input onBlur={this.blur('currency')} onFocus={this.focus('currency')} onChange={this.handleInput('currency')} type="text" value={this.state.currency}/>
-                        </div>
+                    <div id="currency-dropdown">
+                        <div className={this.state.design.currency? 'ticket-field-wrapper-dropdown-focused' : ( this.state.errors.currency ? 'ticket-field-wrapper-dropdown-error' : 'ticket-field-wrapper-dropdown')}>
+                            <div className={`currency-ticket-field-wrapper ${currencyBorder} ${currencyBorderError}`}>
+                                <select value={this.state.currency} onBlur={this.blur('currency')} onFocus={this.focus('currency')} onChange={this.handleInput('currency')} id="currency" name="currency">
+                                    <option value="">Currency</option>
+                                    <option value="USD">USD</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="CNY">CNY</option>
+                                    <option value="INR">INR</option>
+                                    <option value="JPY">JPY</option>
+                                </select>
+                            </div>
+                        </div> 
                     </div>
                     <div className="ticket-form-submit">
                         <button onClick={this.triggerLoadScreen} type="submit">{this.props.formType}</button>

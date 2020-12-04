@@ -9,9 +9,9 @@ const mapStateToProps = (state, ownProps) => {
         errors: state.errors.ticket,
         ticket: {
             name: "",
-            price: 0.00,
+            price: "",
             currency: "",
-            quantity: 0,
+            quantity: "",
             userId: null,
             eventId: null
         },
