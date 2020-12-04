@@ -25,6 +25,10 @@ class TicketForm extends React.Component {
         this.props.fetchEvent(parseInt(this.props.match.params.eventId));
     }
 
+    componentWillUnmount() {
+        this.props.clearTicketErrors();
+    }
+
     handleInput(form) {
         return e => {
             this.setState({[form]: e.target.value});
@@ -83,7 +87,28 @@ class TicketForm extends React.Component {
                 event_id: this.props.event.id
             }
         };
-        this.props.submitForm(payload);
+        this.props.submitForm(payload)
+            .then(successResponse => {}, errorsResponse => {
+                let errors = {...this.state.errors};
+                this.props.errors.forEach(error => {
+                    if (error.includes("Name")) {
+                        errors.name = true;
+                        this.setState({errors})
+                    }
+                    if (error.includes("Quantity")) {
+                        errors.quantity = true;
+                        this.setState({errors})
+                    }
+                    if (error.includes("Price")) {
+                        errors.price = true;
+                        this.setState({errors})
+                    }
+                    if (error.includes("Currency")) {
+                        errors.currency = true;
+                        this.setState({errors})
+                    }
+                });
+            });
     }
 
     render() {
@@ -137,7 +162,12 @@ class TicketForm extends React.Component {
                         </div> 
                     </div>
                     <div className="ticket-form-submit">
-                        <button onClick={this.triggerLoadScreen} type="submit">{this.props.formType}</button>
+                        <div>
+                            <button onClick={this.triggerLoadScreen} type="submit">{this.props.formType}</button>
+                        </div>
+                        <div className="ticket-form-errors">
+                            {this.props.errors.length === 0 ? <p></p> : <p>Please fill out the required fields</p>}
+                        </div>
                     </div>
                 </form>
             </div>
