@@ -22,7 +22,9 @@ class TicketForm extends React.Component {
     }
 
     componentWillMount() {
-        this.props.fetchEvent(parseInt(this.props.match.params.eventId));
+        if (this.props.formType === 'Create Ticket') {
+            this.props.fetchEvent(parseInt(this.props.match.params.eventId));
+        }
     }
 
     componentWillUnmount() {
@@ -79,6 +81,7 @@ class TicketForm extends React.Component {
         e.preventDefault();
         let payload = {
             ticket: {
+                id: this.state.id,
                 name: this.state.name,
                 price: this.state.price,
                 currency: this.state.currency,
@@ -88,7 +91,9 @@ class TicketForm extends React.Component {
             }
         };
         this.props.submitForm(payload)
-            .then(successResponse => {}, errorsResponse => {
+            .then(successResponse => {
+                this.props.history.push(`/users/${this.props.currentUser.id}/tickets`);
+            }, errorsResponse => {
                 let errors = {...this.state.errors};
                 this.props.errors.forEach(error => {
                     if (error.includes("Name")) {
@@ -126,7 +131,7 @@ class TicketForm extends React.Component {
             <div className="ticket-form-wrapper">
                 <form className="ticket-form" onSubmit={this.handleSubmit}>
                     <div className="ticket-form-title">
-                        Add Ticket
+                        { this.props.formType === "Create Ticket" ? "Add Ticket" : "Update Ticket"}
                     </div>
                     <div className={this.state.design.name? 'ticket-field-wrapper-focused' : ( this.state.errors.name ? 'ticket-field-wrapper-error' : 'ticket-field-wrapper')}>
                         <div className={`name-ticket-field-wrapper ${nameBorder} ${nameBorderError}`}>

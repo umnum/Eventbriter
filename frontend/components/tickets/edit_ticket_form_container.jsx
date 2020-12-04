@@ -2,23 +2,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 import TicketForm from './ticket_form';
 import { fetchTicket, updateTicket, clearTicketErrors } from '../../actions/ticket_actions';
+import { fetchEvent } from '../../actions/event_actions';
 import { Redirect } from 'react-router-dom';
 
 class EditTicketForm extends React.Component {
     componentDidMount() {
-        this.props.fetchTicket(this.props.match.params.ticketId);
+        this.props.fetchTicket(this.props.match.params.ticketId)
+            .then(successResponse => this.props.fetchEvent(this.props.ticket.eventId));
     }
 
     render() {
-        const { submitForm, formType, ticket, currentUser } = this.props;
+        const { submitForm, formType, ticket, currentUser, events } = this.props;
 
-        if (!ticket || !currentUser || ticket.userId !== currentUser.id) {
+        if (!ticket || !currentUser || events[this.props.ticket.eventId].organizerId !== currentUser.id) {
             return <Redirect to="/" />
         }
         return (
             <TicketForm 
             history={this.props.history}
             ticket={ticket}
+            event={events[this.props.ticket.eventId]}
             errors={this.props.errors}
             clearTicketErrors={this.props.clearTicketErrors}
             submitForm={submitForm}
@@ -33,6 +36,7 @@ const mapStateToProps = (state, ownProps) => {
         currentUser: state.entities.users[state.session.id],
         ticket: state.entities.tickets[ownProps.match.params.ticketId],
         errors: state.errors.ticket,
+        events: state.entities.events,
         formType: 'Update Ticket'
     });
 };
@@ -40,6 +44,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return ({
         fetchTicket: ticketId => dispatch(fetchTicket(ticketId)),
+        fetchEvent: eventId => dispatch(fetchEvent(eventId)),
         submitForm: ticket => dispatch(updateTicket(ticket)),
         clearTicketErrors: () => dispatch(clearTicketErrors)
     });
