@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class UserEventTicketIndexItem extends React.Component {
     render() {
@@ -15,6 +16,13 @@ class UserEventTicketIndexItem extends React.Component {
                 </div>
                 <div className="user-event-ticket-price">
                     <p>{ticket.price} {ticket.currency}</p>
+                </div>
+                <div className="user-event-ticket-dropdown">
+                    <a><i className="fas fa-ellipsis-v"></i></a>
+                    <div className="user-event-ticket-dropdown-content">
+                        <Link to={`/tickets/${ticket.id}/edit`}><p>Edit Ticket</p></Link>
+                        <p onClick={this.handleDelete}>Request Refund</p>
+                    </div>
                 </div>
             </div>
         )

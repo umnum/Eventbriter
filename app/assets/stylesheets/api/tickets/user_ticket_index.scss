@@ -3,6 +3,7 @@
     flex-direction: column;
     padding-left: 5%;
 }
+
 .user-ticket-index h1 {
     height: 2%;
     padding-top: 5%;
@@ -12,6 +13,11 @@
     letter-spacing: .75px;
     margin-right: -.75px;
     font-weight: 700;
+}
+
+.user-ticket-index ul {
+    display: flex;
+    flex-direction: column;
 }
 
 .ticket-contents-name {
@@ -33,11 +39,11 @@
 }
 
 .ticket-contents-name i:first-child {
-    width: 60%;
+    width: 48%;
 }
 
 .ticket-contents-name i:nth-child(2){
-    width: 30%;
+    width: 29%;
 }
 
 .ticket-contents-name i:nth-child(3) {

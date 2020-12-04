@@ -16,11 +16,15 @@
 }
 
 .user-event-ticket-index-item div:first-child {
-    width: 62.5%;
+    width: 50%;
 }
 
 .user-event-ticket-index-item div:nth-child(2) {
-    width: 30.5%;
+    width: 30%;
+}
+
+.user-event-ticket-index-item div:nth-child(3) {
+    width: 15%;
 }
 
 .user-event-ticket-index-item-description {
@@ -42,4 +46,64 @@
 .user-event-ticket-description p:last-child {
     font-size: 1.125rem;
     color: #4b4d63;
+}
+
+.user-event-ticket-dropdown {
+    display: flex;
+    justify-content: center;
+    color: #4b4d63;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    height: 20%;
+    border-radius: 50%;
+    position: relative;
+    width: 5%;
+    transition: background-color 300ms ease;
+}
+
+.user-event-ticket-dropdown:hover {
+    background-color: #f8f7fa;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.user-event-ticket-dropdown-content {
+  position: absolute;
+  min-width: 160px;
+  z-index: -1;
+  left: -80%;
+  top: 100%;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+/* Links inside the dropdown */
+.user-event-ticket-dropdown-content p {
+  display: block;
+  color: black;
+  background-color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  height: 20px;
+  box-shadow: 0 2px 0px 2px rgb(238, 237, 242);
+}
+
+.user-event-ticket-dropdown-content a {
+    text-decoration: none;
+}
+
+/* Change color of dropdown links on hover */
+.user-event-ticket-dropdown-content p:hover {background-color: #f8f7fa;}
+
+/* Show the dropdown menu on hover */
+.user-event-ticket-dropdown:hover .user-event-ticket-dropdown-content {
+    z-index: 1;
+    opacity: 1;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.user-event-ticket-dropdown-menu:hover .user-event-ticket-dropdown-link{
+  background-color: rgb(242, 242, 242);
 }
