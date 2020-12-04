@@ -23,10 +23,15 @@ class UserTicketIndex extends React.Component {
             return <UserEventTicketIndexItem 
                     key={userEventTicket.id}
                     event={this.props.events[userEventTicket.eventId]}
-                    ticket={userEventTicket} />
+                    ticket={userEventTicket} 
+                    userPurchasedTickets={this.props.userPurchasedTickets}
+                    fetchTicket={this.props.fetchTicket}
+                    removeTicket={this.props.removeTicket}
+                    removePurchasedTicket={this.props.removePurchasedTicket} />
         });
         let userPurchasedTicketIndexItems = this.props.userPurchasedTickets.map(userPurchasedTicket => {
             if (this.props.currentUser.id !== userPurchasedTicket.userId) return null;
+            if (this.props.entities.tickets[userPurchasedTicket.ticketId] === undefined) return null;
             return <UserPurchasedTicketIndexItem
             key={userPurchasedTicket.id}
             event={this.props.events[this.props.entities.tickets[userPurchasedTicket.ticketId].eventId]}

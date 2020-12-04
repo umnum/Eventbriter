@@ -10,4 +10,9 @@ class Ticket < ApplicationRecord
         primary_key: :id,
         foreign_key: :event_id,
         class_name: :Event
+
+    has_many :purchased_tickets,
+        primary_key: :id,
+        foreign_key: :ticket_id,
+        class_name: :PurchasedTicket
 end

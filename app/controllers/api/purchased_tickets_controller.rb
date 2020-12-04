@@ -26,7 +26,7 @@ class Api::PurchasedTicketsController < ApplicationController
         @purchased_ticket = PurchasedTicket.find_by(id: params[:id])
 
         if @purchased_ticket.destroy
-            render :show
+            #render :show
         else
             render json: @purchased_ticket.errors.full_messages, status: 422
         end

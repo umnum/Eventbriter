@@ -1,4 +1,5 @@
 import { RECEIVE_PURCHASED_TICKET, RECEIVE_PURCHASED_TICKETS, REMOVE_PURCHASED_TICKET } from '../actions/purchased_ticket_actions';
+import { RECEIVE_TICKET } from '../actions/ticket_actions';
 const purchasedTicketsReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
     let newState = Object.assign({}, oldState);
@@ -19,6 +20,19 @@ const purchasedTicketsReducer = (oldState = {}, action) => {
         case REMOVE_PURCHASED_TICKET:
             delete newState[action.ticketId];
             return newState;
+        case RECEIVE_TICKET:
+            if (Object.keys(action.payload).length === 0) {
+                return oldState;
+            }
+            else if (Object.keys(action.payload.purchasedTickets === undefined)) {
+                return oldState;
+            }
+            else {
+                Object.values(action.payload.purchasedTickets).forEach(ticket => {
+                    newState[ticket.id] = ticket;
+                });
+                return newState;
+            }
         default:
             return oldState;
     }

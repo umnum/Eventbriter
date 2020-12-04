@@ -2,6 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class UserEventTicketIndexItem extends React.Component {
+    handleDelete() {
+        this.props.fetchTicket(this.props.ticket.id)
+            .then(successResponse => {
+                this.props.userPurchasedTickets.forEach(purchasedTicket => {
+                    if (purchasedTicket.ticketId === this.props.ticket.id) {
+                        this.props.removePurchasedTicket(purchasedTicket.id);
+                    }
+                });
+            }).then(successResponse => {
+                this.props.removeTicket(this.props.ticket.id);
+            })
+    }
+
     render() {
         const { event, ticket } = this.props;
         if (event === undefined) return null;
@@ -21,7 +34,7 @@ class UserEventTicketIndexItem extends React.Component {
                     <a><i className="fas fa-ellipsis-v"></i></a>
                     <div className="user-event-ticket-dropdown-content">
                         <Link to={`/tickets/${ticket.id}/edit`}><p>Edit Ticket</p></Link>
-                        <p onClick={this.handleDelete}>Request Refund</p>
+                        <p onClick={this.handleDelete.bind(this)}>Remove Ticket</p>
                     </div>
                 </div>
             </div>
