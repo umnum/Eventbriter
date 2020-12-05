@@ -21,6 +21,9 @@ class UserEventTicketIndexItem extends React.Component {
 
     render() {
         const { event, ticket } = this.props;
+        const currencySymbol = {
+            'USD': '$', 'EUR': '€', 'GBP': '£', 'INR': '₹', 'JPY': '¥', 'CNY': '¥'
+        };
         if (event === undefined) return null;
         return (
             <div className="user-event-ticket-index-item">
@@ -32,7 +35,7 @@ class UserEventTicketIndexItem extends React.Component {
                     <p>{ticket.quantity}</p>
                 </div>
                 <div className="user-event-ticket-price">
-                    <p>{ticket.price} {ticket.currency}</p>
+                    <p>{currencySymbol[ticket.currency]} {ticket.price}</p>
                 </div>
                 <div className="user-event-ticket-dropdown">
                     <a><i className="fas fa-ellipsis-v"></i></a>

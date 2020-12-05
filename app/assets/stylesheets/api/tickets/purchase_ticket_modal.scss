@@ -81,8 +81,15 @@
     font-weight: 600;
 }
 
-.order-summary-item-blank {
+.order-summary-item-blank,
+.order-total-blank {
     height: 0%;
+}
+
+.order-receipt-total {
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
 }
 
 .order-summary-item {
@@ -91,6 +98,33 @@
     margin-top: 5%;
     height: 30%;
     border-bottom: 1px solid #eeedf2;
+}
+
+.order-total {
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+}
+
+.order-total-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-receipt-total-list {
+    display: flex;
+    justify-content: flex-end;
+    width: 75%;
+}
+
+.order-plus,
+.order-receipt-plus {
+    display: flex;
+    justify-content: center;
+}
+
+.order-receipt-plus {
+    width: 2%;
 }
 
 .order-summary-item-quantity {
@@ -105,7 +139,7 @@
     width: 30%;
 }
 
-.order-total {
+.order-total-wrapper {
     display: flex;
     justify-content: space-between;
     font-size: 1.125rem;
@@ -344,7 +378,7 @@
     width: 30%;
 }
 
-.order-receipt-total {
+.order-receipt-total-wrapper {
     display: flex;
     justify-content: space-between;
     font-size: 1.125rem;
