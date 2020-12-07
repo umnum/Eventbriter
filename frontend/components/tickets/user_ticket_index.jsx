@@ -3,12 +3,14 @@ import UserEventTicketIndexItem from './user_event_ticket_index_item';
 import UserPurchasedTicketIndexItem from './user_purchased_ticket_index_item';
 import DeleteEventTicketModal from './delete_event_ticket_modal';
 import DeletePurchasedTicketModal from './delete_purchased_ticket_modal';
+import { Link } from 'react-router-dom';
 
 class UserTicketIndex extends React.Component {
     constructor(props) {
         super(props);
         this.toggleDeleteEventTicketModal = this.toggleDeleteEventTicketModal.bind(this);
         this.toggleDeletePurchasedTicketModal = this.toggleDeletePurchasedTicketModal.bind(this);
+        this.handleLinkToEvents = this.handleLinkToEvents.bind(this);
         this.state = {
             eventTicketModalon: false,
             purchasedTicketModalon: false
@@ -27,6 +29,11 @@ class UserTicketIndex extends React.Component {
 
     toggleDeletePurchasedTicketModal(toggle) {
         this.setState({purchasedTicketModalon: toggle})
+    }
+
+    handleLinkToEvents() {
+        scrollTo(0,0);
+        this.props.history.push("/");
     }
 
     render() {
@@ -64,20 +71,26 @@ class UserTicketIndex extends React.Component {
                 </div>
                 <DeleteEventTicketModal on={this.state.eventTicketModalon} toggleModal={this.toggleDeleteEventTicketModal} />
                 <DeletePurchasedTicketModal on={this.state.purchasedTicketModalon} toggleModal={this.toggleDeletePurchasedTicketModal} />
+                { this.props.userEventTickets.length === 0 ? <></> : 
                 <div className="ticket-contents-name">
                     <i>Description</i>
                     <i>Total Quantity</i>
                     <i>Price</i>
-                </div>
+                </div>}
                 <ul>{userEventTicketIndexItems}</ul>
                 <div className="user-ticket-index-title">
                     <h1>My Purchased Tickets</h1>
                 </div>
+                { this.props.userPurchasedTickets.length === 0 ? 
+                <div className="ticket-contents-empty">
+                    <p>Nothing here!</p>
+                    <p>Click <a onClick={this.handleLinkToEvents}>here</a> to find an event and purchase tickets.</p>
+                </div> :
                 <div className="ticket-contents-name">
                     <i>Description</i>
                     <i>Purchased Quantity</i>
                     <i>Price</i>
-                </div>
+                </div>}
                 <ul>{userPurchasedTicketIndexItems}</ul>
             </div>
         );

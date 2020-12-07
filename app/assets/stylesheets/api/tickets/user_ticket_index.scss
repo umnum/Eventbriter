@@ -12,6 +12,33 @@
     font-weight: 700;
 }
 
+.ticket-contents-empty {
+    border-top: 1px solid #eeedf2;
+    padding-top: 3%;
+    padding-left: 3%;
+    font-weight: 600;
+}
+
+.ticket-contents-empty p:first-child {
+    font-size: 1.5rem;
+}
+
+.ticket-contents-empty p:last-child {
+    font-size: 1.125rem;
+    color: #4b4d63;
+}
+
+.ticket-contents-empty p:last-child a {
+    color: #d1410c;
+    transition: color 200ms ease;
+    text-decoration: none;
+}
+
+.ticket-contents-empty p:last-child a:hover {
+    cursor: pointer;
+    color: #F05537;
+}
+
 .user-ticket-index-title {
     display: flex;
     flex-direction: column;
