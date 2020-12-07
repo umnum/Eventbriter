@@ -84,7 +84,7 @@ class Header extends React.Component {
                                 <a>{this.props.currentUser.username}</a>
                                 <p>{this.props.currentUser.email}</p>
                             </h3>
-                            <Link to={`/users/${this.props.currentUser.id}/events`}><h3>Events</h3></Link>
+                            <Link to={`/users/${this.props.currentUser.id}/events`}><h3>Manage Events</h3></Link>
                             <h3 onClick={this.logout}>Log Out</h3>
                         </div>
                     </div> </>: isSessionForm ? <></> :
