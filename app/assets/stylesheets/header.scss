@@ -53,7 +53,13 @@
 .show-tickets-link i:first-child {
   display: flex;
   justify-content: center;
-  padding-top: 10%;
+}
+
+.create-event-link i:first-child::before,
+.show-tickets-link i:first-child::before {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .create-event-link i:last-child,
@@ -64,10 +70,10 @@
   font-weight: 450;
 }
 
-.dropdown-link i:first-child {
-  color: rgb(103, 100, 100);
-  padding-right: 20%;
-  padding-left: 20%;
+.dropdown-link i:first-child::before {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .home-link i {
@@ -79,7 +85,6 @@
 /* Dropdown Button */
 .dropdown-link{
   display: flex;
-  padding: 20%;
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -100,9 +105,17 @@
 }
 
 .dropdown-link {
+  display: flex;
+  flex-direction: column;
   color: black;
   font-size: 12px;
   font-weight: 350;
+}
+
+.dropdown-link div {
+  display: flex;
+  justify-content: space-evenly;
+  height: 100%;
 }
 
 .dropdown-link p, 
@@ -112,31 +125,27 @@
 }
 
 .dropdown-link p {
-  padding-right: 15%;
+  font-size: 12px;
+  font-weight: 450;
 }
 
 .signin-link:hover, .about-link:hover {
   background-color: rgb(242, 242, 242);
 }
 
-.fab.fa-github {
+.fa-github {
   padding-top: 3px;
   color: green;
 }
 
-.fab.fa-linkedin {
+.fa-linkedin {
   padding-top: 3px;
   color: #0077b5;
 }
 
-.fab.fa-angellist {
+.fa-angellist {
   padding-top: 3px;
   color: black;
-}
-
-.fas.fa-chevron-down {
-  width: 10px;
-  height: 10px;
 }
 
 /* The container <div> - needed to position the dropdown content */

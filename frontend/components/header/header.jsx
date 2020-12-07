@@ -49,8 +49,11 @@ class Header extends React.Component {
                     {isSessionForm ? <></> :
                     <div className="dropdown-about-menu">
                             <a className="dropdown-link">
-                                <p>About</p>
-                                <i className="fas fa-chevron-down"></i>
+                                <i class="far fa-eye fa-lg"></i>
+                                <div>
+                                    <p>About</p>
+                                    <i className="fas fa-chevron-down"></i>
+                                </div>
                             </a>
                         <div className="dropdown-about-content">
                             <a className="about-link" href="https://github.com/umnum/FSProject/wiki">
@@ -71,7 +74,10 @@ class Header extends React.Component {
                     <div className="dropdown-menu">
                         <a className="dropdown-link">
                             <i className="far fa-user fa-lg"></i>
-                            <i className="fas fa-chevron-down"></i>
+                            <div>
+                                <p>Profile</p>
+                                <i className="fas fa-chevron-down"></i>
+                            </div>
                         </a>
                         <div className="dropdown-content">
                             <h3 id="profile-header-info">
