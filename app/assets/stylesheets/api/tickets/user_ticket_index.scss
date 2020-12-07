@@ -5,14 +5,22 @@
 }
 
 .user-ticket-index h1 {
-    height: 2%;
-    padding-top: 5%;
-    padding-bottom: 3%;
     font-size: 1.75rem;
     line-height: 2.25rem;
     letter-spacing: .75px;
     margin-right: -.75px;
     font-weight: 700;
+}
+
+.user-ticket-index-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 70px;
+}
+
+.user-ticket-index-title > h1 {
+    padding-top: 20px;
 }
 
 .user-ticket-index ul {
@@ -26,12 +34,13 @@
     width: 83%;
     padding-left: 3%;
     background-color: #f8f7fa;
-    height: 20%;
-    padding-top: 2%;
-    padding-bottom: 2.5%;
+    height: 70px;
 }
 
 .ticket-contents-name i {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     color: #6f7287;
     font-size: .975rem;
     line-height: 1.25rem;
