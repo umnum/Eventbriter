@@ -9,7 +9,7 @@ class Home extends React.Component {
             <div className="home">
                 <div className="events">
                     <div className="events-title">Popular events</div>
-                    <nav className="event-index-nav">
+                    {/*<nav className="event-index-nav">
                         <ul>
                             <li><Link to=""><span>All</span></Link></li>
                             <li><Link to=""><span>For you</span></Link></li>
@@ -22,7 +22,7 @@ class Home extends React.Component {
                             <li><Link to=""><span>Food & Drink</span></Link></li>
                             <li><Link to=""><span>Charity & Causes</span></Link></li>
                         </ul>
-                    </nav>
+                    </nav>*/}
                     <EventIndexContainer />
                 </div>
             </div>
