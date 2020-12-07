@@ -59,7 +59,7 @@ class UserTicketIndex extends React.Component {
         });
         return (
             <div className="user-ticket-index">
-                <h1>My Event Tickets</h1>
+                <h1>My Tickets For Sale</h1>
                 <DeleteEventTicketModal on={this.state.eventTicketModalon} toggleModal={this.toggleDeleteEventTicketModal} />
                 <DeletePurchasedTicketModal on={this.state.purchasedTicketModalon} toggleModal={this.toggleDeletePurchasedTicketModal} />
                 <div className="ticket-contents-name">
@@ -68,7 +68,7 @@ class UserTicketIndex extends React.Component {
                     <i>Price</i>
                 </div>
                 <ul>{userEventTicketIndexItems}</ul>
-                <h1>My Purcased Tickets</h1>
+                <h1>My Purchased Tickets</h1>
                 <div className="ticket-contents-name">
                     <i>Description</i>
                     <i>Purchased Quantity</i>
