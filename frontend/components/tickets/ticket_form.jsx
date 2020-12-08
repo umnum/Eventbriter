@@ -98,7 +98,7 @@ class TicketForm extends React.Component {
         };
         this.props.submitForm(payload)
             .then(successResponse => {
-                this.props.history.push(`/users/${this.props.currentUser.id}/tickets`);
+                this.props.history.push(`/users/${this.props.currentUser.id}/events/${this.props.event.id}/tickets`);
             }, errorsResponse => {
                 let errors = {...this.state.errors};
                 this.props.errors.forEach(error => {
