@@ -91,7 +91,8 @@
     flex-direction: column;
 }
 
-.ticket-contents-name {
+.ticket-contents-name,
+.purchased-ticket-contents-name {
     display: flex;
     justify-content: flex-start;
     width: 83%;
@@ -100,7 +101,8 @@
     height: 70px;
 }
 
-.ticket-contents-name i {
+.ticket-contents-name i,
+.purchased-ticket-contents-name i {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -119,6 +121,18 @@
 }
 
 .ticket-contents-name i:nth-child(3) {
+    width: 10%;
+}
+
+.purchased-ticket-contents-name i:first-child {
+    width: 44%;
+}
+
+.purchased-ticket-contents-name i:nth-child(2){
+    width: 26%;
+}
+
+.purchased-ticket-contents-name i:nth-child(3) {
     width: 10%;
 }
 

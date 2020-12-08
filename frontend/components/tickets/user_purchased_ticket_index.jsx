@@ -51,7 +51,7 @@ class UserTicketIndex extends React.Component {
                     <p>Nothing here!</p>
                     <p>Click <a onClick={this.handleLinkToEvents}>here</a> to find an event and purchase tickets.</p>
                 </div> :
-                <div className="ticket-contents-name">
+                <div className="purchased-ticket-contents-name">
                     <i>Description</i>
                     <i>Purchased Quantity</i>
                     <i>Price</i>
