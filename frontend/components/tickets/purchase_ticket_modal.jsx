@@ -68,10 +68,10 @@ class PurchaseTicketModal extends React.Component {
         let orderTotal = {
             'USD': 0, 'EUR': 0, 'GBP': 0, 'INR': 0, 'JPY': 0, 'CNY': 0
         };
-        let ReceiptItems, TicketItems, OrderItems, Total, runningSum;
+        let ReceiptItems, TicketItems, OrderItems, Total, totalQuantity;
         if (this.state.ticketOrderProcessed) {
             ReceiptItems = this.props.tickets.map(ticket => {
-                const quantity = this.state.quantity[ticket.id];
+                const quantity = parseInt(this.state.quantity[ticket.id]);
                 orderTotal[ticket.currency] += quantity * ticket.price;
                 return (
                     quantity === 0 ? <div key={ticket.id} className="order-summary-item-blank"></div> : 
@@ -81,7 +81,7 @@ class PurchaseTicketModal extends React.Component {
                     </div>
                 );
             });
-            runningSum = 0;
+            let runningSum = 0;
             Total = Object.keys(orderTotal).map(currency => {
                 const total = orderTotal[currency];
                 runningSum += total;
@@ -110,18 +110,20 @@ class PurchaseTicketModal extends React.Component {
                     </div>
                 </div>
             })
+            totalQuantity = 0;
             OrderItems = this.props.tickets.map(ticket => {
-                const quantity = this.state.quantity[ticket.id];
+                const quantity = parseInt(this.state.quantity[ticket.id]);
+                totalQuantity += quantity;
                 orderTotal[ticket.currency] += quantity * ticket.price;
                 return (
                     quantity === 0 ? <div key={ticket.id} className="order-summary-item-blank"></div> : 
                     <div key={ticket.id} className="order-summary-item">
                         <div className="order-summary-item-quantity"><p>{quantity} x {ticket.name}</p></div>
-                        <div className="order-summary-item-price"><p>{currencySymbol[ticket.currency]} {ticket.price}</p></div>
+                        <div className="order-summary-item-price"><p>{currencySymbol[ticket.currency]} {quantity * ticket.price}</p></div>
                     </div>
                 );
             })
-            runningSum = 0;
+            let runningSum = 0;
             Total = Object.keys(orderTotal).map(currency => {
                 const total = orderTotal[currency];
                 runningSum += total;
@@ -157,8 +159,8 @@ class PurchaseTicketModal extends React.Component {
                                 <div><p>{this.props.event.name}</p></div>
                                 <form className="modal-ticket-items-form" onSubmit={this.handleSubmit}>
                                     <div className="modal-ticket-items">{TicketItems}</div>
-                                    <div className={`purchase-ticket-form-submit${runningSum === 0 ? "-disable" : ""}`}>
-                                        <button type="submit" disabled={runningSum === 0 ? true : ''}>Purchase Tickets</button>
+                                    <div className={`purchase-ticket-form-submit${totalQuantity === 0 ? "-disable" : ""}`}>
+                                        <button type="submit" disabled={totalQuantity === 0 ? true : ''}>Purchase Tickets</button>
                                     </div>
                                 </form>
                             </div>
