@@ -42,7 +42,7 @@ class UserTicketIndex extends React.Component {
         });
         return (
             <div className="user-ticket-index">
-                <DeletePurchasedTicketModal on={this.state.purchasedTicketModalon} toggleModal={this.toggleDeletePurchasedTicketModal} />
+                <DeletePurchasedTicketModal on={this.state.modalOn} toggleModal={this.toggleModal} />
                 <div className="user-ticket-index-title">
                     <h1>Purchased Tickets</h1>
                 </div>
