@@ -68,7 +68,7 @@ class PurchaseTicketModal extends React.Component {
         let orderTotal = {
             'USD': 0, 'EUR': 0, 'GBP': 0, 'INR': 0, 'JPY': 0, 'CNY': 0
         };
-        let ReceiptItems, TicketItems, OrderItems, Total;
+        let ReceiptItems, TicketItems, OrderItems, Total, runningSum;
         if (this.state.ticketOrderProcessed) {
             ReceiptItems = this.props.tickets.map(ticket => {
                 const quantity = this.state.quantity[ticket.id];
@@ -81,7 +81,7 @@ class PurchaseTicketModal extends React.Component {
                     </div>
                 );
             });
-            let runningSum = 0;
+            runningSum = 0;
             Total = Object.keys(orderTotal).map(currency => {
                 const total = orderTotal[currency];
                 runningSum += total;
@@ -121,7 +121,7 @@ class PurchaseTicketModal extends React.Component {
                     </div>
                 );
             })
-            let runningSum = 0;
+            runningSum = 0;
             Total = Object.keys(orderTotal).map(currency => {
                 const total = orderTotal[currency];
                 runningSum += total;
@@ -157,8 +157,8 @@ class PurchaseTicketModal extends React.Component {
                                 <div><p>{this.props.event.name}</p></div>
                                 <form className="modal-ticket-items-form" onSubmit={this.handleSubmit}>
                                     <div className="modal-ticket-items">{TicketItems}</div>
-                                    <div className={`purchase-ticket-form-submit${orderTotal === 0 ? "-disable" : ""}`}>
-                                        <button type="submit" disabled={orderTotal === 0 ? 'true' : ''}>Purchase Tickets</button>
+                                    <div className={`purchase-ticket-form-submit${runningSum === 0 ? "-disable" : ""}`}>
+                                        <button type="submit" disabled={runningSum === 0 ? true : ''}>Purchase Tickets</button>
                                     </div>
                                 </form>
                             </div>
