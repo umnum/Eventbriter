@@ -74,7 +74,8 @@ class PurchaseTicketModal extends React.Component {
                 const quantity = parseInt(this.state.quantity[ticket.id]);
                 orderTotal[ticket.currency] += quantity * ticket.price;
                 return (
-                    quantity === 0 ? <div key={ticket.id} className="order-summary-item-blank"></div> : 
+                    quantity === 0 ? 
+                    <div key={ticket.id} className="order-summary-item-blank"></div> : 
                     <div key={ticket.id} className="order-receipt-item">
                         <div className="order-receipt-item-quantity"><p>{quantity} x {ticket.name}</p></div>
                         <div className="order-receipt-item-price"><p>{currencySymbol[ticket.currency]} {quantity * ticket.price}</p></div>
@@ -133,9 +134,7 @@ class PurchaseTicketModal extends React.Component {
                 const total = orderTotal[currency];
                 runningSum += total;
                 return (
-                    total === 0 ? ( this.props.event.status === "Free" ?
-                    <div key={currency} className="order-total-blank">Free</div> : 
-                    <div key={currency} className="order-total-blank"></div> ) :
+                    total === 0 ? <div key={currency} className="order-total-blank"></div> :
                     <div key={currency} className="order-total">
                         { runningSum !== total ? <div className="order-plus"><p>+</p></div> : <></>}
                         <div className="order-price"><p>{currencySymbol[currency]} {total}</p></div>
@@ -158,7 +157,11 @@ class PurchaseTicketModal extends React.Component {
                             <div className="order-receipt-items">{ReceiptItems}</div>
                             <div className="order-receipt-total-wrapper">
                                 <div><p>Total</p></div>
-                                <div className="order-receipt-total-list">{Total}</div>
+                                {this.props.event.status === "Free" ? 
+                                <div className="order-receipt-total-list">
+                                    <div className="order-summary-item-blank">Free</div>
+                                </div> :
+                                <div className="order-receipt-total-list">{Total}</div>}
                             </div>
                         </div> :
                         <>
@@ -180,7 +183,11 @@ class PurchaseTicketModal extends React.Component {
                                     <div className="order-summary-items">{OrderItems}</div>
                                     <div className="order-total-wrapper">
                                         <div><p>Total</p></div>
-                                        <div className="order-total-list">{Total}</div>
+                                        { this.props.event.status === "Free" ? 
+                                        <div className="order-total-list">
+                                            <div className="order-total-blank">Free</div>
+                                        </div> :
+                                        <div className="order-total-list">{Total}</div>}
                                     </div>
                                 </div>
                             </div>
