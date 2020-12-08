@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchEvents, removeEvent, clearEventErrors } from '../../actions/event_actions';
 import UserEventIndex from './user_event_index';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
     return ({
@@ -17,4 +18,4 @@ const mapDispatchToProps = dispatch => {
     });
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserEventIndex);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserEventIndex));

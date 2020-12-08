@@ -1,19 +1,16 @@
 import React from 'react';
 import UserEventTicketIndexItem from './user_event_ticket_index_item';
-import UserPurchasedTicketIndexItem from './user_purchased_ticket_index_item';
 import DeleteEventTicketModal from './delete_event_ticket_modal';
 import DeletePurchasedTicketModal from './delete_purchased_ticket_modal';
-import { Link } from 'react-router-dom';
 
 class UserTicketIndex extends React.Component {
     constructor(props) {
         super(props);
-        this.toggleDeleteEventTicketModal = this.toggleDeleteEventTicketModal.bind(this);
-        this.toggleDeletePurchasedTicketModal = this.toggleDeletePurchasedTicketModal.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
         this.handleLinkToEvents = this.handleLinkToEvents.bind(this);
+        this.handleCreateTicket = this.handleCreateTicket.bind(this);
         this.state = {
-            eventTicketModalon: false,
-            purchasedTicketModalon: false
+            modalOn: false
         }
     }
 
@@ -23,12 +20,8 @@ class UserTicketIndex extends React.Component {
         this.props.fetchEvents();
     }
 
-    toggleDeleteEventTicketModal(toggle) {
-        this.setState({eventTicketModalon: toggle})
-    }
-
-    toggleDeletePurchasedTicketModal(toggle) {
-        this.setState({purchasedTicketModalon: toggle})
+    toggleModal(toggle) {
+        this.setState({modalOn: toggle})
     }
 
     handleLinkToEvents() {
@@ -36,62 +29,48 @@ class UserTicketIndex extends React.Component {
         this.props.history.push("/");
     }
 
+    handleCreateTicket() {
+        this.props.history.push(`/events/${this.props.event.id}/tickets/new`);
+    }
+
     render() {
-        if (this.props.events === undefined) return null;
-        if (Object.values(this.props.events).length === 0) return null;
+        if (this.props.event === undefined) return null;
+        let eventTicketCount = 0;
         let userEventTicketIndexItems = this.props.userEventTickets.map(userEventTicket => {
-            if (this.props.events === undefined) return null;
-            if (this.props.events[userEventTicket.eventId] === undefined) return null;
-            if (this.props.currentUser.id !== this.props.events[userEventTicket.eventId].organizerId) return null;
+            if (this.props.event.id !== userEventTicket.eventId) return null;
+            if (this.props.currentUser.id !== this.props.event.organizerId) return null;
+            eventTicketCount++;
             return <UserEventTicketIndexItem 
                     key={userEventTicket.id}
-                    event={this.props.events[userEventTicket.eventId]}
+                    event={this.props.event}
                     ticket={userEventTicket} 
                     userPurchasedTickets={this.props.userPurchasedTickets}
                     fetchTicket={this.props.fetchTicket}
                     removeTicket={this.props.removeTicket}
                     removePurchasedTicket={this.props.removePurchasedTicket} 
-                    toggleModal={this.toggleDeleteEventTicketModal} />
-        });
-        let userPurchasedTicketIndexItems = this.props.userPurchasedTickets.map(userPurchasedTicket => {
-            if (this.props.currentUser.id !== userPurchasedTicket.userId) return null;
-            if (this.props.entities.tickets[userPurchasedTicket.ticketId] === undefined) return null;
-            return <UserPurchasedTicketIndexItem
-            key={userPurchasedTicket.id}
-            event={this.props.events[this.props.entities.tickets[userPurchasedTicket.ticketId].eventId]}
-            tickets={this.props.entities.tickets}
-            purchasedTicket={userPurchasedTicket}
-            removePurchasedTicket={this.props.removePurchasedTicket}
-            toggleModal={this.toggleDeletePurchasedTicketModal} />
+                    toggleModal={this.toggleModal} />
         });
         return (
             <div className="user-ticket-index">
                 <div className="user-ticket-index-title">
                     <h1>My Tickets For Sale</h1>
                 </div>
-                <DeleteEventTicketModal on={this.state.eventTicketModalon} toggleModal={this.toggleDeleteEventTicketModal} />
-                <DeletePurchasedTicketModal on={this.state.purchasedTicketModalon} toggleModal={this.toggleDeletePurchasedTicketModal} />
-                { this.props.userEventTickets.length === 0 ? <></> : 
+                <DeleteEventTicketModal on={this.state.modalOn} toggleModal={this.toggleModal} />
+                { eventTicketCount === 0 ? 
+                <div className="ticket-contents-empty">
+                    <p>There are no tickets for this event!</p>
+                </div> : 
+                <>
                 <div className="ticket-contents-name">
                     <i>Description</i>
                     <i>Total Quantity</i>
                     <i>Price</i>
-                </div>}
-                <ul>{userEventTicketIndexItems}</ul>
-                <div className="user-ticket-index-title">
-                    <h1>My Purchased Tickets</h1>
                 </div>
-                { this.props.userPurchasedTickets.length === 0 ? 
-                <div className="ticket-contents-empty">
-                    <p>Nothing here!</p>
-                    <p>Click <a onClick={this.handleLinkToEvents}>here</a> to find an event and purchase tickets.</p>
-                </div> :
-                <div className="ticket-contents-name">
-                    <i>Description</i>
-                    <i>Purchased Quantity</i>
-                    <i>Price</i>
-                </div>}
-                <ul>{userPurchasedTicketIndexItems}</ul>
+                <ul>{userEventTicketIndexItems}</ul>
+                </>}
+                <div className="create-event-ticket">
+                    <button onClick={this.handleCreateTicket}>Create Ticket</button>
+                </div>
             </div>
         );
     }

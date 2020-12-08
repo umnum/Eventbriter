@@ -49,7 +49,7 @@ class Header extends React.Component {
                     {isSessionForm ? <></> :
                     <div className="dropdown-about-menu">
                             <a className="dropdown-link">
-                                <i class="far fa-eye fa-lg"></i>
+                                <i className="far fa-eye fa-lg"></i>
                                 <div>
                                     <p>About</p>
                                     <i className="fas fa-chevron-down"></i>

@@ -25,7 +25,7 @@ class UserEventIndex extends React.Component {
         const currentUserId = this.props.currentUserId;
         let userEvents = this.props.events.map(event => {
             if (event.organizerId === currentUserId) {
-                return <UserEventIndexItem key={event.id} event={event} clearEventErrors={this.props.clearEventErrors} removeEvent={this.props.removeEvent} toggleModal={this.toggleModal.bind(this)}/>
+                return <UserEventIndexItem key={event.id} event={event} clearEventErrors={this.props.clearEventErrors} removeEvent={this.props.removeEvent} toggleModal={this.toggleModal.bind(this)} currentUserId={this.props.currentUserId} history={this.props.history} />
             }
         })
         return (
@@ -36,9 +36,9 @@ class UserEventIndex extends React.Component {
                 <DeleteEventModal on={this.state.on} toggleModal={this.toggleModal.bind(this)} />
                 <div className="contents-name">
                     <i>Event</i>
-                    <i>Sold</i>
-                    <i>Gross</i>
+                    <i>Tickets</i>
                     <i>Status</i>
+                    <i>Manage Event</i>
                 </div>
                 <ul>{userEvents}</ul>
             </div>

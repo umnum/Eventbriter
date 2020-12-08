@@ -7,6 +7,7 @@ class UserEventIndexItem extends React.Component {
         super(props);
         this.handleDelete = this.handleDelete.bind(this);
         this.clearErrors = this.clearErrors.bind(this);
+        this.handleManageTickets = this.handleManageTickets.bind(this);
     }
 
     handleDelete() {
@@ -14,6 +15,11 @@ class UserEventIndexItem extends React.Component {
         this.props.toggleModal(true);
         window.scrollTo(0,0);
         document.body.classList.add("stop-scrolling");
+    }
+
+    handleManageTickets() {
+        window.scrollTo(0,0);
+        this.props.history.push(`/users/${this.props.currentUserId}/events/${this.props.event.id}/tickets`);
     }
 
     clearErrors() {
@@ -42,8 +48,9 @@ class UserEventIndexItem extends React.Component {
                             <div><i>{`${month} ${day}, ${year}`}</i></div>
                         </div>
                     </div>
-                    <div className="sold-content-description"></div>
-                    <div className="gross-content-description"></div>
+                    <div className="tickets-content-description">
+                        <button onClick={this.handleManageTickets}>Manage Tickets</button>
+                    </div>
                     <div className="status-content-description">
                         {event.status}
                     </div>
@@ -52,7 +59,6 @@ class UserEventIndexItem extends React.Component {
                         <div className="event-dropdown-content">
                             <Link to={`/events/${event.id}`}><p>View</p></Link>
                             <Link onClick={this.clearErrors} to={`/events/${event.id}/edit`}><p>Update</p></Link>
-                            <Link to={`/events/${event.id}/tickets/new`}><p>Create Ticket</p></Link>
                             <p onClick={this.handleDelete}>Delete</p>
                         </div>
                     </div>

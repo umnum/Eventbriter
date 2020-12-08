@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import UserTicketIndex from './user_ticket_index';
+import UserPurchasedTicketIndex from './user_purchased_ticket_index';
 import { fetchTicket, fetchTickets, removeTicket } from '../../actions/ticket_actions';
 import { fetchPurchasedTickets, removePurchasedTicket } from '../../actions/purchased_ticket_actions';
 import { fetchEvents } from '../../actions/event_actions';
@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
         currentUser: state.entities.users[state.session.id],
         userEventTickets: Object.values(state.entities.tickets),
         userPurchasedTickets: Object.values(state.entities.purchasedTickets),
-        event: state.entities.events[ownProps.match.params.eventId],
+        events: state.entities.events,
         entities: state.entities
     };
 };
@@ -25,4 +25,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserTicketIndex);
+export default connect(mapStateToProps, mapDispatchToProps)(UserPurchasedTicketIndex);
