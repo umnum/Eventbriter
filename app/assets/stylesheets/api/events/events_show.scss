@@ -141,9 +141,18 @@
     text-transform: capitalize;
 }
 
+.event-show-panel-tickets button#sold-out {
+    background-color: red;
+    border: 2px solid red;
+}
+
 .event-show-panel-tickets button:hover {
     background-color: #3d9d6c;
     border-color: #3d9d6c;
+}
+
+.event-show-panel-tickets button#sold-out:hover {
+    cursor: default;
 }
 
 .event-show-details {
