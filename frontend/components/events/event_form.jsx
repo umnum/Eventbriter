@@ -1,4 +1,5 @@
 import React from 'react';
+import CreateTicketModal from './create_ticket_modal';
 
 class EventFrom extends React.Component {
     constructor(props) {
@@ -28,9 +29,12 @@ class EventFrom extends React.Component {
             description: false
         };
         this.state.loading = false;
+        this.state.modalOn = false;
+        this.state.eventId = null;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
         this.triggerLoadScreen = this.triggerLoadScreen.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     }
 
     componentDidMount() {
@@ -42,6 +46,10 @@ class EventFrom extends React.Component {
         return e => {
             this.setState({[form]: e.target.value});
         };
+    }
+
+    toggleModal(toggle) {
+        this.setState({modalOn: toggle})
     }
 
     focus(form) {
@@ -131,8 +139,18 @@ class EventFrom extends React.Component {
         let payload = {user: this.props.currentUser, event: formData};
         this.props.submitForm(payload).then(response => {
             const eventId = response.payload.event.id;
+            this.setState({eventId});
             this.props.clearEventErrors();
-            this.props.history.push(`/events/${eventId}`);
+            if (this.props.formType === 'Update Event') {
+                this.props.history.push(`/events/${eventId}`);
+            }
+            else {
+                // TODO: trigger ticket creation modal
+                this.setState({modalOn: true})
+                window.scrollTo(0,0);
+                document.body.classList.add("stop-scrolling");
+                this.setState({loading: false});
+            }
         }, errorResponse => {
             let errors = {...this.state.errors};
             this.props.errors.forEach(error => {
@@ -231,6 +249,7 @@ class EventFrom extends React.Component {
         let descriptionBorderError = this.state.errors.description? "error-class" : "";
         return (
             <>
+                <CreateTicketModal on={this.state.modalOn} toggleModal={this.toggleModal} eventId={this.state.eventId} history={this.props.history} />
                 <form className="event-form" onSubmit={this.handleSubmit}>
                     <div className="event-basic-info">
                         <div className="basic-info-header">

@@ -122,7 +122,8 @@
     width: 10%;
 }
 
-.ticket-event-delete-modal {
+.ticket-event-delete-modal,
+.ticket-event-create-modal {
     display: flex;
     flex-direction: column;
     width: 400px;
@@ -145,7 +146,8 @@
     border-radius: 2px;
 }
 
-.ticket-event-delete-modal button {
+.ticket-event-delete-modal button,
+.ticket-event-create-modal button {
     display: flex;
     justify-content: center;
     height: 44px;
@@ -169,7 +171,8 @@
     transition-property: background-color, border-color;
 }
 
-.ticket-event-delete-modal div:first-child {
+.ticket-event-delete-modal div:first-child,
+.ticket-event-create-modal div:first-child {
     display: flex;
     justify-content: center;
     padding-top: 50px;
@@ -177,13 +180,22 @@
     font-weight: 600;
 }
 
-.ticket-event-delete-modal div:last-child {
+.ticket-event-create-modal div:nth-child(2) > p {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 550;
+}
+
+.ticket-event-delete-modal div:last-child,
+.ticket-event-create-modal div:last-child {
     display: flex;
     justify-content: center;
     height: 50px;
 }
 
-.ticket-event-delete-modal-dim {
+.ticket-event-delete-modal-dim,
+.ticket-event-create-modal-dim {
     position:absolute;
     top:0;
     left:0;
