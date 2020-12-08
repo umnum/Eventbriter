@@ -92,7 +92,8 @@ event22 = Event.create!(name: 'Halloween Party 2020 Monster Mash', location: '23
     start_sales_date: DateTime.new(2020, 10, 5, 12, 0, 0))
 event22.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_6.jpg"),
                            filename: "event_image_6.jpg")
-ticket221 = Ticket.create!(name: "Standard Ticket", price: 0, currency: "USD", quantity: 100, event_id: event21.id, user_id: user2.id)
+ticket221 = Ticket.create!(name: "Adult Ticket", price: 20, currency: "USD", quantity: 200, event_id: event22.id, user_id: user2.id)
+ticket222 = Ticket.create!(name: "Child Ticket", price: 5, currency: "USD", quantity: 200, event_id: event22.id, user_id: user2.id)
 event23 = Event.create!(name: 'Wine Tasting Event for Syrah Lovers', location: '525 Zinfandel Ln St Helena, CA 94574', 
     longitude: -122.4358398541205, latitude: 38.48755599354239, event_type: 'Party or Social Gathering',
     description: 'We will be serving an incredible variety of Syrahs for you to enjoy.', organizer_id: user2.id, category_id: category2.id, 
