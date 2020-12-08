@@ -3,20 +3,12 @@ import { Link } from 'react-router-dom';
 
 class UserEventTicketIndexItem extends React.Component {
     handleDelete() {
-        this.props.fetchTicket(this.props.ticket.id)
+        this.props.removeTicket(this.props.ticket.id)
             .then(successResponse => {
-                this.props.userPurchasedTickets.forEach(purchasedTicket => {
-                    if (purchasedTicket.ticketId === this.props.ticket.id) {
-                        this.props.removePurchasedTicket(purchasedTicket.id);
-                    }
-                });
-            }).then(successResponse => {
-                this.props.removeTicket(this.props.ticket.id);
-            }).then(successResponse => {
                 this.props.toggleModal(true);
                 window.scrollTo(0,0);
                 document.body.classList.add("stop-scrolling");
-            });
+        });
     }
 
     render() {
