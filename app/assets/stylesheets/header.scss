@@ -34,7 +34,8 @@
 }
 
 .create-event-link,
-.show-tickets-link {
+.show-tickets-link,
+.manage-event-link {
   color: black;
   display: flex;
   flex-direction: column;
@@ -45,25 +46,29 @@
 }
 
 .create-event-link:hover,
-.show-tickets-link:hover {
+.show-tickets-link:hover,
+.manage-event-link:hover {
   background-color: rgb(242, 242, 242);
 }
 
 .create-event-link i:first-child,
-.show-tickets-link i:first-child {
+.show-tickets-link i:first-child,
+.manage-event-link i:first-child {
   display: flex;
   justify-content: center;
 }
 
 .create-event-link i:first-child::before,
-.show-tickets-link i:first-child::before {
+.show-tickets-link i:first-child::before,
+.manage-event-link i:first-child::before {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .create-event-link i:last-child,
-.show-tickets-link i:last-child {
+.show-tickets-link i:last-child,
+.manage-event-link i:last-child {
   display: flex;
   justify-content: center;
   font-size: 12px;

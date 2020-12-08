@@ -70,6 +70,7 @@ class Header extends React.Component {
                     {!this.props.isLoggedIn() ?
                     <>
                     <Link onClick={this.clearEventErrors} className="create-event-link" to="/events/new"><i className="fas fa-plus"></i><i>Create Event</i></Link>
+                    <Link className="manage-event-link" to={`/users/${this.props.currentUser.id}/events`}><i className="fas fa-tasks"></i><i>Manage Events</i></Link>
                     <Link className="show-tickets-link" to={`/users/${this.props.currentUser.id}/tickets`}><i className="fas fa-ticket-alt"></i><i>Tickets</i></Link>
                     <div className="dropdown-menu">
                         <a className="dropdown-link">
@@ -84,7 +85,6 @@ class Header extends React.Component {
                                 <a>{this.props.currentUser.username}</a>
                                 <p>{this.props.currentUser.email}</p>
                             </h3>
-                            <Link to={`/users/${this.props.currentUser.id}/events`}><h3>Manage Events</h3></Link>
                             <h3 onClick={this.logout}>Log Out</h3>
                         </div>
                     </div> </>: isSessionForm ? <></> :
