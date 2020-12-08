@@ -112,8 +112,13 @@ class PurchaseTicketModal extends React.Component {
             })
             totalQuantity = 0;
             OrderItems = this.props.tickets.map(ticket => {
-                const quantity = parseInt(this.state.quantity[ticket.id]);
-                totalQuantity += quantity;
+                let quantity = parseInt(this.state.quantity[ticket.id]);
+                if (quantity > 0) {
+                    totalQuantity += quantity;
+                }
+                else {
+                    quantity = 0;
+                }
                 orderTotal[ticket.currency] += quantity * ticket.price;
                 return (
                     quantity === 0 ? <div key={ticket.id} className="order-summary-item-blank"></div> : 
@@ -128,7 +133,9 @@ class PurchaseTicketModal extends React.Component {
                 const total = orderTotal[currency];
                 runningSum += total;
                 return (
-                    total === 0 ? <div key={currency} className="order-total-blank"></div> :
+                    total === 0 ? ( this.props.event.status === "Free" ?
+                    <div key={currency} className="order-total-blank">Free</div> : 
+                    <div key={currency} className="order-total-blank"></div> ) :
                     <div key={currency} className="order-total">
                         { runningSum !== total ? <div className="order-plus"><p>+</p></div> : <></>}
                         <div className="order-price"><p>{currencySymbol[currency]} {total}</p></div>
