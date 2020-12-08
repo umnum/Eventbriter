@@ -14,5 +14,6 @@ class Ticket < ApplicationRecord
     has_many :purchased_tickets,
         primary_key: :id,
         foreign_key: :ticket_id,
-        class_name: :PurchasedTicket
+        class_name: :PurchasedTicket,
+        dependent: :destroy
 end

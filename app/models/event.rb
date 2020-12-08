@@ -17,7 +17,8 @@ class Event < ApplicationRecord
     has_many :tickets,
         primary_key: :id,
         foreign_key: :event_id,
-        class_name: :Ticket
+        class_name: :Ticket,
+        dependent: :destroy
 
     has_one_attached :event_image
 
