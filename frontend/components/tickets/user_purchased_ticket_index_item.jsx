@@ -29,11 +29,8 @@ class UserPurchasedTicketIndexItem extends React.Component {
                 <div className="user-purchased-ticket-price">
                     <p>{currencySymbol[ticket.currency]} {ticket.price}</p>
                 </div>
-                <div className="user-event-ticket-dropdown">
-                    <a><i className="fas fa-ellipsis-v"></i></a>
-                    <div className="user-event-ticket-dropdown-content">
-                        <p onClick={this.handleDelete.bind(this)}>Request Refund</p>
-                    </div>
+                <div className="user-purchased-ticket-request-refund">
+                    <button onClick={this.handleDelete.bind(this)}>Request Refund</button>
                 </div>
             </div>
         )

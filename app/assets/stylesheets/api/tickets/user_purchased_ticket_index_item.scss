@@ -32,6 +32,11 @@
     flex-direction: column;
 }
 
+.user-purchased-ticket-description {
+    display: flex;
+    flex-direction: column;
+}
+
 .user-purchased-ticket-description p {
     line-height: 1.5rem;
     letter-spacing: .25px;
@@ -46,4 +51,36 @@
 .user-purchased-ticket-description p:last-child {
     font-size: 1.125rem;
     color: #4b4d63;
+}
+
+.user-purchased-ticket-request-refund button {
+    display: flex;
+    justify-content: center;
+    height: 44px;
+    width: 100%;
+    padding-top: 1.5%;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    line-height: 18px;
+    font-weight: 548;
+    letter-spacing: 0.2px;
+    color: white;
+    background-color: #d1410c;
+    border: 2px solid #d1410c;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 240ms cubic-bezier(0.4, 0, 0.3, 1);
+    transition-property: background-color, border-color;
+}
+.user-purchased-ticket-request-refund button:hover {
+    background-color: #F05537;
+    border-color: #F05537;
+}
+
+.user-purchased-ticket-request-refund button:focus {
+    outline: none;
 }

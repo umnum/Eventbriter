@@ -65,6 +65,7 @@ class UserTicketIndex extends React.Component {
                     <i>Description</i>
                     <i>Total Quantity</i>
                     <i>Price</i>
+                    <i>Manage Ticket</i>
                 </div>
                 <ul>{userEventTicketIndexItems}</ul>
                 </>}
