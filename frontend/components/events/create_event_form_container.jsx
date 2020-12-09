@@ -17,7 +17,7 @@ const mapStateToProps = state => {
             startDate: null,
             endDate: null,
             timezone: "",
-            status: "On sale",
+            status: "Announced",
             eventImage: null
         },
         formType: 'Create Event'
