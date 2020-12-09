@@ -3,7 +3,7 @@ json.event do
     json.extract! event, :id, :name, :location, :event_type, :description
     json.extract! event, :start_date, :end_date, :timezone, :capacity, :status
     json.extract! event, :start_sales_date, :organizer_id, :category_id
-    json.extract! event, :latitude, :longitude
+    json.extract! event, :latitude, :longitude, :is_sold_out
     json.photoUrl url_for(event.event_image)
 end
 json.user do

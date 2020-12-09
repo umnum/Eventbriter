@@ -98,7 +98,23 @@ class TicketForm extends React.Component {
         };
         this.props.submitForm(payload)
             .then(successResponse => {
-                this.props.history.push(`/users/${this.props.currentUser.id}/events/${this.props.event.id}/tickets`);
+                let event = {...successResponse.payload.event};
+                if (parseInt(event.capacity) >= 0) {
+                    event.capacity = parseInt(event.capacity) + parseInt(this.state.quantity);
+                }
+                else {
+                    event.capacity = parseInt(event.quantity);
+                }
+                const formData = new FormData();
+                formData.append('event[capacity]', event.capacity);
+                formData.append('event[id]', event.id);
+                formData.append('event[is_sold_out]', this.state.quantity > 0);
+                formData.append('event[status]', this.state.quantity > 0 ? ( this.state.price > 0 ? "On Sale" : "Free") : "Sold Out");
+                let payload = {user: this.props.currentUser, event: formData};
+                this.props.updateEvent(payload)
+                    .then(successResponse =>{
+                        this.props.history.push(`/users/${this.props.currentUser.id}/events/${event.id}/tickets`);
+                    });
             }, errorsResponse => {
                 let errors = {...this.state.errors};
                 this.props.errors.forEach(error => {

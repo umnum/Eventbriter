@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import TicketForm from './ticket_form';
 import { createTicket, clearTicketErrors } from '../../actions/ticket_actions';
-import { fetchEvent } from '../../actions/event_actions';
+import { fetchEvent, updateEvent } from '../../actions/event_actions';
 
 const mapStateToProps = (state, ownProps) => {
     return ({
@@ -24,8 +24,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return ({
         fetchEvent: eventId => dispatch(fetchEvent(eventId)),
+        updateEvent: formData => dispatch(updateEvent(formData)),
         submitForm: ticket => dispatch(createTicket(ticket)),
-        clearTicketErrors: () => dispatch(clearTicketErrors())
+        clearTicketErrors: () => dispatch(clearTicketErrors()),
     });
 };
 
