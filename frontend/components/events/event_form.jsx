@@ -346,70 +346,72 @@ class EventFrom extends React.Component {
                                 </p>
                             </div>
                         </div>
-                        <div className="event-date-and-time-selector">
-                            <div className="start-date-time-field-wrapper">
-                                <div id="start-date" className="datetime-item">
-                                    <div className={this.state.design.startDate? 'field-wrapper-focused' : ( this.state.errors.startDate? 'field-wrapper-error' : 'field-wrapper')}>
-                                        <div className={`start-date-field-wrapper ${startDateBorder} ${startDateBorderError}`}>
-                                            <label id="start-date-label">Start Date</label>
-                                            <input onBlur={this.blur('startDate')} onFocus={this.focus('startDate')} onChange={this.handleInput('startDate')} type="date" />
-                                        </div>
-                                    </div> 
+                        <div className="event-date-timezone-wrapper">
+                            <div className="event-date-and-time-selector">
+                                <div className="start-date-time-field-wrapper">
+                                    <div id="start-date" className="datetime-item">
+                                        <div className={this.state.design.startDate? 'field-wrapper-focused' : ( this.state.errors.startDate? 'field-wrapper-error' : 'field-wrapper')}>
+                                            <div className={`start-date-field-wrapper ${startDateBorder} ${startDateBorderError}`}>
+                                                <label id="start-date-label">Start Date</label>
+                                                <input onBlur={this.blur('startDate')} onFocus={this.focus('startDate')} onChange={this.handleInput('startDate')} type="date" />
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div id="start-time" className="datetime-item">
+                                        <div className={this.state.design.startTime? 'field-wrapper-focused' : ( this.state.errors.startTime? 'field-wrapper-error' : 'field-wrapper')}>
+                                            <div className={`start-time-field-wrapper ${startTimeBorder} ${startTimeBorderError}`}>
+                                                <label id="start-time-label">Start Time</label>
+                                                <input onBlur={this.blur('startTime')} onFocus={this.focus('startTime')} onChange={this.handleInput('startTime')} type="time" name="startTime" />
+                                            </div>
+                                        </div> 
+                                    </div>
                                 </div>
-                                <div id="start-time" className="datetime-item">
-                                    <div className={this.state.design.startTime? 'field-wrapper-focused' : ( this.state.errors.startTime? 'field-wrapper-error' : 'field-wrapper')}>
-                                        <div className={`start-time-field-wrapper ${startTimeBorder} ${startTimeBorderError}`}>
-                                            <label id="start-time-label">Start Time</label>
-                                            <input onBlur={this.blur('startTime')} onFocus={this.focus('startTime')} onChange={this.handleInput('startTime')} type="time" name="startTime" />
-                                        </div>
-                                    </div> 
+                                <div className="end-date-time-field-wrapper">
+                                    <div id="end-date" className="datetime-item">
+                                        <div className={this.state.design.endDate? 'field-wrapper-focused' : ( this.state.errors.endDate? 'field-wrapper-error' : 'field-wrapper')}>
+                                            <div className={`end-date-field-wrapper ${endDateBorder} ${endDateBorderError}`}>
+                                                <label id="end-date-label">End Date</label>
+                                                <input onBlur={this.blur('endDate')} onFocus={this.focus('endDate')} onChange={this.handleInput('endDate')} type="date" name="endDate" />
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div id="end-time" className="datetime-item">
+                                        <div className={this.state.design.endTime? 'field-wrapper-focused' : ( this.state.errors.endTime? 'field-wrapper-error' : 'field-wrapper')}>
+                                            <div className={`end-time-field-wrapper ${endTimeBorder} ${endTimeBorderError}`}>
+                                                <label id="start-time-label">End Time</label>
+                                                <input onBlur={this.blur('endTime')} onFocus={this.focus('endTime')} onChange={this.handleInput('endTime')} type="time" name="endTime" />
+                                            </div>
+                                        </div> 
+                                    </div>
                                 </div>
                             </div>
-                            <div className="end-date-time-field-wrapper">
-                                <div id="end-date" className="datetime-item">
-                                    <div className={this.state.design.endDate? 'field-wrapper-focused' : ( this.state.errors.endDate? 'field-wrapper-error' : 'field-wrapper')}>
-                                        <div className={`end-date-field-wrapper ${endDateBorder} ${endDateBorderError}`}>
-                                            <label id="end-date-label">End Date</label>
-                                            <input onBlur={this.blur('endDate')} onFocus={this.focus('endDate')} onChange={this.handleInput('endDate')} type="date" name="endDate" />
-                                        </div>
-                                    </div> 
+                            <div id="timezone-dropdown">
+                                <div className={this.state.design.timezone? 'field-wrapper-dropdown-focused' : ( this.state.errors.timezone? 'field-wrapper-dropdown-error' : 'field-wrapper-dropdown')}>
+                                    <div className={`timezone-field-wrapper ${timezoneBorder} ${timezoneBorderError}`}>
+                                        <select value={this.state.timezone} onBlur={this.blur('timezone')} onFocus={this.focus('timezone')} onChange={this.handleInput('timezone')} id="timezone-type" name="timezone">
+                                            <option value="">Timezone</option>
+                                            <option value="AST">Atlantic Standard Time (AST)</option>
+                                            <option value="EST">Eastern Standard Time (EST)</option>
+                                            <option value="EDT">Eastern Daylight Time (EDT)</option>
+                                            <option value="CST">Central Standard Time (CST)</option>
+                                            <option value="CDT">Central Daylight Time (CDT)</option>
+                                            <option value="MST">Mountain Standard Time (MST)</option>
+                                            <option value="MDT">Mountain Daylight Time (MDT)</option>
+                                            <option value="PST">Pacific Standard Time (PST)</option>
+                                            <option value="PDT">Pacific Daylight Time (PDT)</option>
+                                            <option value="AKST">Alaska Standard Time (AKST)</option>
+                                            <option value="AKDT">Alaska Daylight Time (AKDT)</option>
+                                            <option value="HST">Hawaii Standard Time (HST)</option>
+                                            <option value="HAST">Hawaii-Aleutian Standard Time (HAST)</option>
+                                            <option value="HADT">Hawaii-Aleutian Daylight Time (HADT)</option>
+                                            <option value="SST">Samoa Standard Time (SST)</option>
+                                            <option value="SDT">Samoa Daylight Time (SDT)</option>
+                                            <option value="CHST">Chamorro Standard Time (CHST)</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div id="end-time" className="datetime-item">
-                                    <div className={this.state.design.endTime? 'field-wrapper-focused' : ( this.state.errors.endTime? 'field-wrapper-error' : 'field-wrapper')}>
-                                        <div className={`end-time-field-wrapper ${endTimeBorder} ${endTimeBorderError}`}>
-                                            <label id="start-time-label">End Time</label>
-                                            <input onBlur={this.blur('endTime')} onFocus={this.focus('endTime')} onChange={this.handleInput('endTime')} type="time" name="endTime" />
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
+                            </div> 
                         </div>
-                        <div id="timezone-dropdown">
-                            <div className={this.state.design.timezone? 'field-wrapper-dropdown-focused' : ( this.state.errors.timezone? 'field-wrapper-dropdown-error' : 'field-wrapper-dropdown')}>
-                                <div className={`timezone-field-wrapper ${timezoneBorder} ${timezoneBorderError}`}>
-                                    <select value={this.state.timezone} onBlur={this.blur('timezone')} onFocus={this.focus('timezone')} onChange={this.handleInput('timezone')} id="timezone-type" name="timezone">
-                                        <option value="">Timezone</option>
-                                        <option value="AST">Atlantic Standard Time (AST)</option>
-                                        <option value="EST">Eastern Standard Time (EST)</option>
-                                        <option value="EDT">Eastern Daylight Time (EDT)</option>
-                                        <option value="CST">Central Standard Time (CST)</option>
-                                        <option value="CDT">Central Daylight Time (CDT)</option>
-                                        <option value="MST">Mountain Standard Time (MST)</option>
-                                        <option value="MDT">Mountain Daylight Time (MDT)</option>
-                                        <option value="PST">Pacific Standard Time (PST)</option>
-                                        <option value="PDT">Pacific Daylight Time (PDT)</option>
-                                        <option value="AKST">Alaska Standard Time (AKST)</option>
-                                        <option value="AKDT">Alaska Daylight Time (AKDT)</option>
-                                        <option value="HST">Hawaii Standard Time (HST)</option>
-                                        <option value="HAST">Hawaii-Aleutian Standard Time (HAST)</option>
-                                        <option value="HADT">Hawaii-Aleutian Daylight Time (HADT)</option>
-                                        <option value="SST">Samoa Standard Time (SST)</option>
-                                        <option value="SDT">Samoa Daylight Time (SDT)</option>
-                                        <option value="CHST">Chamorro Standard Time (CHST)</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div> 
                     </div>
                     <hr className="event-form-divider" />
                     <div className="event-description-wrapper">
@@ -425,11 +427,8 @@ class EventFrom extends React.Component {
                                 </p>
                             </div>
                         </div>
-                        <div className={this.state.design.description? 'field-wrapper-focused' : ( this.state.errors.description ? 'field-wrapper-error' : 'field-wrapper')}>
-                            <div className={`description-field-wrapper ${descriptionBorder} ${descriptionBorderError}`}>
-                                <label id="description-label">Summary</label>
-                                <input onBlur={this.blur('description')} onFocus={this.focus('description')} onChange={this.handleInput('description')} type="text" value={this.state.description}/>
-                            </div>
+                        <div className={this.state.errors.description ? 'description-errors' : ''}>
+                                <textarea rows="10" onBlur={this.blur('description')} onFocus={this.focus('description')} onChange={this.handleInput('description')} value={this.state.description} />
                         </div>
                     </div> 
                     <div className={`event-errors-${this.state.errors.description ? 'shown' : 'hidden'}`}>You must add a description for your event.</div>
@@ -455,8 +454,8 @@ class EventFrom extends React.Component {
                         {errors}
                     </div>
                 </form>
-            <div><div className={this.state.loading ? "loader" : ""}></div></div>
-            <div className={this.state.loading ? "dim" : ""}></div>
+            <div className={this.state.loading ? "" : "loader-disabled"}><div className={this.state.loading ? "loader" : "loader-disabled"}></div></div>
+            <div className={this.state.loading ? "dim" : "dim-disabled"}></div>
             </>
         );
     }

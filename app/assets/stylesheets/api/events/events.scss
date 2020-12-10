@@ -219,6 +219,10 @@
     font-weight: 700;
 }
 
+.event-date-and-time-header h1 {
+    height: 50%;
+}
+
 .start-date-time-field-wrapper {
     display: flex;
     justify-content: space-around;
@@ -262,7 +266,6 @@
     display: block;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    width: 100%;
 }
 
 .event-location {
@@ -278,7 +281,7 @@
 .event-date-and-time {
     display: flex;
     flex-direction: column;
-    height: 150%;
+    width: 60% !important;
 }
 
 .event-description-wrapper {
@@ -341,6 +344,7 @@ input[type="file"] {
 .event-date-and-time-header {
     display: flex;
     flex-direction: column;
+    height: 50%;
 }
 
 .event-form-divider {
@@ -547,11 +551,14 @@ input[type="file"] {
     background: transparent;
 }
 
+.event-date-timezone-wrapper {
+    display: flex;
+}
+
 .event-date-and-time-selector {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 250%;
 }
 
 .event-description {
@@ -834,4 +841,20 @@ div .event-form-submit {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+.loader-disabled {
+    height: 0%;
+}
+
+.dim-disabled {
+    height: 0%;
+}
+
+textarea {
+    width: 100%;
+}
+
+.description-errors > textarea {
+    border: 2px solid red;
 }
