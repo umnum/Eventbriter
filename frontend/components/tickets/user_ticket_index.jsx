@@ -63,7 +63,7 @@ class UserTicketIndex extends React.Component {
                 <>
                 <div className="ticket-contents-name">
                     <i>Description</i>
-                    <i>Total Quantity</i>
+                    <i>Tickets Sold / Total Quantity</i>
                     <i>Price</i>
                     <i>Manage Ticket</i>
                 </div>

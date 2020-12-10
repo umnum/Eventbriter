@@ -24,7 +24,7 @@ class UserEventTicketIndexItem extends React.Component {
                     <p>{ticket.name}</p>
                 </div>
                 <div className="user-event-ticket-quantity">
-                    <p>{ticket.quantity}</p>
+                    <p>{ticket.ticketsSold} / {ticket.quantity}</p>
                 </div>
                 <div className="user-event-ticket-price">
                     <p>{currencySymbol[ticket.currency]} {ticket.price}</p>
