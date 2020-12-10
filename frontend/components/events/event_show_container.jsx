@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-import { fetchEvent } from '../../actions/event_actions';
+import { fetchEvent, updateEvent } from '../../actions/event_actions';
 import { purchaseTicket } from '../../actions/purchased_ticket_actions';
+import { updateTicket } from '../../actions/ticket_actions';
 import EventShow from './event_show';
 
 const mapStateToProps = (state, ownProps) => {
@@ -16,6 +17,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return({
         fetchEvent: eventId => dispatch(fetchEvent(eventId)),
+        updateEvent: formData => dispatch(updateEvent(formData)),
+        updateTicket: ticket => dispatch(updateTicket(ticket)),
         purchaseTicket: ticket => dispatch(purchaseTicket(ticket))
     });
 };

@@ -13,6 +13,7 @@ const mapStateToProps = (state, ownProps) => {
             price: "",
             currency: "",
             quantity: "",
+            ticketsSold: 0,
             userId: null,
             eventId: null
         },

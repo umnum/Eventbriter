@@ -92,6 +92,7 @@ class TicketForm extends React.Component {
                 price: this.state.price,
                 currency: this.state.currency,
                 quantity: this.state.quantity,
+                tickets_sold: this.state.ticketsSold,
                 user_id: this.props.event.organizerId,
                 event_id: this.props.event.id
             }
@@ -114,11 +115,14 @@ class TicketForm extends React.Component {
                     if (this.state.price > 0) {
                         status = "On Sale"
                     }
-                    else if (status === "Announced"){
+                    else if (status === "Announced" || status === "Sold Out"){
                         status = "Free"
                     }
                 }
                 formData.append('event[status]', status);
+                if (this.props.formType === 'Create Ticket') {
+                    formData.append('event[tickets_sold]', event.ticketsSold > 0 ? event.ticketsSold : 0);
+                }
                 let payload = {user: this.props.currentUser, event: formData};
                 this.props.updateEvent(payload)
                     .then(successResponse =>{

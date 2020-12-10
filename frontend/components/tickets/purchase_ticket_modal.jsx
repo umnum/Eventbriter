@@ -21,6 +21,9 @@ class PurchaseTicketModal extends React.Component {
         document.body.classList.remove("stop-scrolling");
         this.props.toggleModal(false)
         this.setState({ticketOrderProcessed: false})
+        this.props.tickets.forEach(ticket => {
+            this.state.quantity[ticket.id] = 0;
+        })
     }
 
     handleInput(field, ticketId) {
@@ -40,28 +43,44 @@ class PurchaseTicketModal extends React.Component {
         e.preventDefault();
         const purchasedTicket = {
             purchased_ticket: {
-                user_id: this.props.userId,
+                user_id: this.props.currentUser.id,
                 ticket_id: null,
                 quantity: null
             }
         };
-        this.props.tickets.forEach(ticket => {
-            const quantity = this.state.quantity[ticket.id];
+        let eventTicketsSold = parseInt(this.props.event.ticketsSold);
+        const lastIndex = this.props.tickets.length - 1;
+        this.props.tickets.forEach((ticket, idx) => {
+            const quantity = parseInt(this.state.quantity[ticket.id]);
             if (quantity !== 0) {
                 purchasedTicket.purchased_ticket.ticket_id = ticket.id;
                 purchasedTicket.purchased_ticket.quantity = quantity;
+                const formData = new FormData();
+                const ticketsSold = ticket.ticketsSold + quantity;
+                eventTicketsSold += quantity;
+                if (idx === lastIndex) {
+                    formData.append('event[id]', ticket.eventId);
+                    formData.append('event[tickets_sold]', eventTicketsSold);
+                    if (eventTicketsSold === parseInt(this.props.event.capacity)) {
+                        formData.append('event[status]', "Sold Out");
+                        formData.append('event[is_sold_out]', true);
+                    }
+                }
+                const payload = {user: this.props.currentUser, event: formData};
                 this.props.purchaseTicket(purchasedTicket)
-                    .then(() => this.setState({ticketOrderProcessed: true}));
+                    .then(() => this.props.updateTicket({ticket: {id: ticket.id, tickets_sold: ticketsSold}}))
+                    .then(() => {
+                        if (idx === lastIndex) {
+                            this.props.updateEvent(payload);
+                            this.setState({ticketOrderProcessed: true});
+                        }
+                    });
             }
         });
     }
 
     render() {
         if (!this.props.on) return null;
-        const quantities = [0,1,2,3,4,5,6,7,8,9,10];
-        const QuantityDropdownItems = quantities.map(quantity => {
-            return <option key={quantity} value={quantity}>{quantity}</option>
-        })
         const currencySymbol = {
             'USD': '$', 'EUR': '€', 'GBP': '£', 'INR': '₹', 'JPY': '¥', 'CNY': '¥'
         };
@@ -99,17 +118,24 @@ class PurchaseTicketModal extends React.Component {
         }
         else {
             TicketItems = this.props.tickets.map(ticket => {
-                return <div className="modal-ticket-item" key={ticket.id}>
-                    <div>
-                        <p>{ticket.name}</p>
-                        <p>{currencySymbol[ticket.currency]} {ticket.price}</p>
-                    </div>
-                    <div>
-                        <select value={this.state.quantity[ticket.id]} onChange={this.handleInput(`quantity`,ticket.id)} id="quantity" name="quantity">
-                            {QuantityDropdownItems}
-                        </select>
-                    </div>
-                </div>
+                const tickets_sold = ticket.ticketsSold;
+                const quantities = [0,1,2,3,4,5,6,7,8,9,10].slice(0, ticket.quantity - tickets_sold + 1);
+                const QuantityDropdownItems = quantities.map(quantity => {
+                    return <option key={quantity} value={quantity}>{quantity}</option>
+                })
+                return quantities.length > 1 ? 
+                    <div className="modal-ticket-item" key={ticket.id}>
+                        <div>
+                            <p>{ticket.name}</p>
+                            <p>{currencySymbol[ticket.currency]} {ticket.price}</p>
+                        </div>
+                        <div>
+                            <select value={this.state.quantity[ticket.id]} onChange={this.handleInput(`quantity`,ticket.id)} id="quantity" name="quantity">
+                                {QuantityDropdownItems}
+                            </select>
+                        </div>
+                    </div> :
+                    <div className="modal-ticket-item-blank"></div>
             })
             totalQuantity = 0;
             OrderItems = this.props.tickets.map(ticket => {

@@ -115,7 +115,9 @@ class EventShow extends React.Component {
                 toggleModal={this.toggleModal}
                 event={this.props.event}
                 tickets={tickets}
-                userId={this.props.currentUserId}
+                updateEvent={this.props.updateEvent}
+                updateTicket={this.props.updateTicket}
+                currentUser={this.props.users[this.props.currentUserId]}
                 purchaseTicket={this.props.purchaseTicket}
                 />
             </div>
