@@ -42,48 +42,47 @@ event11 = Event.create!(name: 'Homemade Risotto Cooking Class', location: '2640 
     longitude: -122.436340, latitude: 37.793906, event_type: 'Class, Training, or Workshop',
     description: 'Welcome to my risotto cooking class!', organizer_id: user1.id, category_id: category8.id, 
     start_date: DateTime.new(2020, 10, 13, 9, 30, 0), end_date: DateTime.new(2020, 10, 13, 12, 0, 0), 
-    timezone: 'PDT', capacity: 10, status: 'On Sale', is_sold_out: false, 
+    timezone: 'PDT', capacity: 60, status: 'On Sale', is_sold_out: false, 
     start_sales_date: DateTime.new(2020, 10, 1, 12, 0, 0))
 event11.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_1.jpg"),
                            filename: "event_image_1.jpg")
-ticket111 = Ticket.create!(name: "Standard Cooking Course", price: 10, currency: "USD", quantity: 50, event_id: event11.id, user_id: user1.id)
-ticket112 = Ticket.create!(name: "Special Cooking Course", price: 30, currency: "USD", quantity: 10, event_id: event11.id, user_id: user1.id)
+ticket111 = Ticket.create!(name: "Standard Cooking Course", price: 10, currency: "USD", quantity: 50, event_id: event11.id, user_id: user1.id, tickets_sold: 0)
+ticket112 = Ticket.create!(name: "Special Cooking Course", price: 30, currency: "USD", quantity: 10, event_id: event11.id, user_id: user1.id, tickets_sold: 0)
 event12 = Event.create!(name: 'Dave Chappelle Live in New York', location: '117 MacDougal St, New York, NY', 
     longitude: -74.000551, latitude: 40.730187, event_type: 'Concert or Performance',
     description: 'Comedian Dave Chappelle is back for a Halloween performance at the Comedy Cellar', organizer_id: user1.id, category_id: category11.id, 
     start_date: DateTime.new(2020, 10, 31, 22, 30, 0), end_date: DateTime.new(2020, 11, 1, 1, 0, 0), 
-    timezone: 'EDT', capacity: 100, status: 'Sold Out', is_sold_out: true, 
-    start_sales_date: DateTime.new(2020, 10, 5, 12, 0, 0))
-    event12.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_2.jpg"),
+    timezone: 'EDT', status: 'Announced')
+event12.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_2.jpg"),
     filename: "event_image_2.jpg")
-    event13 = Event.create!(name: 'Kendrick Lamar Live at Coachella', location: 'Coachella Valley Music and Arts Festival', 
+event13 = Event.create!(name: 'Kendrick Lamar Live at Coachella', location: 'Coachella Valley Music and Arts Festival', 
     longitude: -116.242427, latitude: 33.681587, event_type: 'Concert or Performance',
     description: 'Kendrick Lamar will be headlining 2021 Coachella', organizer_id: user1.id, category_id: category4.id, 
     start_date: DateTime.new(2021, 4, 18, 11, 30, 0), end_date: DateTime.new(2021, 4, 17, 11, 30, 0), 
-    timezone: 'PDT', capacity: 10, status: 'On Sale', is_sold_out: false, 
+    timezone: 'PDT', capacity: 100, status: 'On Sale', is_sold_out: false, 
     start_sales_date: DateTime.new(2021, 1, 1, 0, 0, 0))
 event13.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_3.jpg"),
                            filename: "event_image_3.jpg")
-ticket131 = Ticket.create!(name: "General Admission", price: 250, currency: "USD", quantity: 10000, event_id: event13.id, user_id: user1.id)
-ticket132 = Ticket.create!(name: "VIP Pass", price: 1500, currency: "USD", quantity: 100, event_id: event13.id, user_id: user1.id)
+ticket131 = Ticket.create!(name: "General Admission", price: 250, currency: "USD", quantity: 90, event_id: event13.id, user_id: user1.id, tickets_sold: 0)
+ticket132 = Ticket.create!(name: "VIP Pass", price: 1500, currency: "USD", quantity: 10, event_id: event13.id, user_id: user1.id, tickets_sold: 0)
 event14 = Event.create!(name: 'Jello Biafra: Punk Rock Seminar', location: 'San Francisco City Hall', 
     longitude: -122.41925292706068, latitude: 37.77924551206588, event_type: 'Seminar or Talk',
     description: 'Punk rock legend gives a seminar on how to DIY in politics', organizer_id: user1.id, category_id: category15.id, 
     start_date: DateTime.new(2020, 11, 4, 12, 30, 0), end_date: DateTime.new(2020, 11, 4, 3, 30, 0), 
-    timezone: 'PDT', capacity: 10, status: 'Free')
+    timezone: 'PDT', capacity: 200, status: 'Free')
 event14.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_4.jpg"),
                            filename: "event_image_4.jpg")
-ticket141 = Ticket.create!(name: "Standard Ticket Admission", price: 0, currency: "USD", quantity: 200, event_id: event14.id, user_id: user1.id)
+ticket141 = Ticket.create!(name: "Standard Ticket Admission", price: 0, currency: "USD", quantity: 200, event_id: event14.id, user_id: user1.id, tickets_sold: 0)
 user2 = User.create!(username: 'Steve Woz', email: 'swoz@mail.com', password: 'passwordsw')
 event21 = Event.create!(name: 'Yoga workshop for beginners', location: 'Hare Krishna Temple Berkeley, CA', 
     longitude: -122.26015173618387, latitude: 37.8591269052156, event_type: 'Class, Training, or Workshop',
     description: 'Berkeley Krishna Temple will offer a free yoga workshop for beginners.', 
     organizer_id: user2.id, category_id: category3.id, 
     start_date: DateTime.new(2020, 11, 13, 11, 30, 0), end_date: DateTime.new(2020, 11, 13, 1, 0, 0), 
-    timezone: 'PDT', capacity: 50, status: 'Free')
+    timezone: 'PDT', capacity: 100, status: 'Free')
 event21.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_5.jpg"),
                            filename: "event_image_5.jpg")
-ticket211 = Ticket.create!(name: "Standard Ticket", price: 0, currency: "USD", quantity: 100, event_id: event21.id, user_id: user2.id)
+ticket211 = Ticket.create!(name: "Standard Ticket", price: 0, currency: "USD", quantity: 100, event_id: event21.id, user_id: user2.id, tickets_sold: 0)
 event22 = Event.create!(name: 'Halloween Party 2020 Monster Mash', location: '230 2nd St, Fall River, MA 02721', 
     longitude: 41.69882675023279, latitude: -71.15641606136671, event_type: 'Party or Social Gathering',
     description: 'Lizzy Bordon will be throwing a Halloween Party to die for!', organizer_id: user2.id, category_id: category19.id, 
@@ -92,8 +91,8 @@ event22 = Event.create!(name: 'Halloween Party 2020 Monster Mash', location: '23
     start_sales_date: DateTime.new(2020, 10, 5, 12, 0, 0))
 event22.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_6.jpg"),
                            filename: "event_image_6.jpg")
-ticket221 = Ticket.create!(name: "Adult Ticket", price: 20, currency: "USD", quantity: 200, event_id: event22.id, user_id: user2.id)
-ticket222 = Ticket.create!(name: "Child Ticket", price: 5, currency: "USD", quantity: 200, event_id: event22.id, user_id: user2.id)
+ticket221 = Ticket.create!(name: "Adult Ticket", price: 20, currency: "USD", quantity: 100, event_id: event22.id, user_id: user2.id, tickets_sold: 0)
+ticket222 = Ticket.create!(name: "Child Ticket", price: 5, currency: "USD", quantity: 100, event_id: event22.id, user_id: user2.id, tickets_sold: 0)
 event23 = Event.create!(name: 'Wine Tasting Event for Syrah Lovers', location: '525 Zinfandel Ln St Helena, CA 94574', 
     longitude: -122.4358398541205, latitude: 38.48755599354239, event_type: 'Party or Social Gathering',
     description: 'We will be serving an incredible variety of Syrahs for you to enjoy.', organizer_id: user2.id, category_id: category2.id, 
@@ -102,8 +101,8 @@ event23 = Event.create!(name: 'Wine Tasting Event for Syrah Lovers', location: '
     start_sales_date: DateTime.new(2020, 10, 20, 0, 0, 0))
 event23.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_7.jpg"),
                            filename: "event_image_7.jpg")
-ticket231 = Ticket.create!(name: "General Wine Tasting Ticket", price: 20, currency: "USD", quantity: 200, event_id: event23.id, user_id: user2.id)
-ticket232 = Ticket.create!(name: "Fancy Wine Tasting Ticket", price: 50, currency: "USD", quantity: 50, event_id: event23.id, user_id: user2.id)
+ticket231 = Ticket.create!(name: "General Wine Tasting Ticket", price: 20, currency: "USD", quantity: 40, event_id: event23.id, user_id: user2.id, tickets_sold: 0)
+ticket232 = Ticket.create!(name: "Fancy Wine Tasting Ticket", price: 50, currency: "USD", quantity: 10, event_id: event23.id, user_id: user2.id, tickets_sold: 0)
 event24 = Event.create!(name: 'Grand Opening of Uncle Ray\'s Pizza', location: '20 W 34th St, New York, NY 10001', 
     longitude: -73.98553565397498, latitude: 40.74835922014053, event_type: 'Party or Social Gathering',
     description: 'Come to the grand opening of Uncle Ray\'s for some delicious pizza.', organizer_id: user2.id, category_id: category2.id, 
@@ -111,7 +110,7 @@ event24 = Event.create!(name: 'Grand Opening of Uncle Ray\'s Pizza', location: '
     timezone: 'EDT', capacity: 100, status: 'Free')
 event24.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_8.jpg"),
                            filename: "event_image_8.jpg")
-ticket241 = Ticket.create!(name: "Free Pizza Slice", price: 0, currency: "USD", quantity: 200, event_id: event24.id, user_id: user2.id)
+ticket241 = Ticket.create!(name: "Free Pizza Slice", price: 0, currency: "USD", quantity: 100, event_id: event24.id, user_id: user2.id, tickets_sold: 0)
 user3 = User.create!(username: 'Sarah Connor', email: 'sconner@mail.com', password: 'passwordsc')
 event31 = Event.create!(name: 'San Diego Comic-Con', location: 'San Diego Convention Center', 
     longitude: -117.16260190092468, latitude: 32.70737930413964, event_type: 'Convention',
@@ -122,8 +121,8 @@ event31 = Event.create!(name: 'San Diego Comic-Con', location: 'San Diego Conven
     start_sales_date: DateTime.new(2021, 3, 1, 12, 0, 0))
 event31.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_9.jpg"),
                            filename: "event_image_9.jpg")
-ticket311 = Ticket.create!(name: "General Admission", price: 50, currency: "USD", quantity: 5000, event_id: event31.id, user_id: user3.id)
-ticket312 = Ticket.create!(name: "Special Access Pass", price: 200, currency: "USD", quantity: 300, event_id: event31.id, user_id: user3.id)
+ticket311 = Ticket.create!(name: "General Admission", price: 50, currency: "USD", quantity: 4700, event_id: event31.id, user_id: user3.id, tickets_sold: 0)
+ticket312 = Ticket.create!(name: "Special Access Pass", price: 200, currency: "USD", quantity: 300, event_id: event31.id, user_id: user3.id, tickets_sold: 0)
 event32 = Event.create!(name: '100 Mile Marathon in Death Valley', location: 'Death Valley, CA', 
     longitude: -117.05804814503013, latitude: 36.63146972584565, event_type: 'Race or Endurance Event',
     description: '100 eligable runners will be entered into the 24 hour 100 Mile Death Valley Marathon', organizer_id: user3.id, category_id: category20.id, 
@@ -131,15 +130,16 @@ event32 = Event.create!(name: '100 Mile Marathon in Death Valley', location: 'De
     timezone: 'PDT', capacity: 100, status: 'Free')
 event32.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_10.jpg"),
                            filename: "event_image_10.jpg")
-ticket321 = Ticket.create!(name: "Standard Ticket", price: 0, currency: "USD", quantity: 300, event_id: event32.id, user_id: user3.id)
+ticket321 = Ticket.create!(name: "Standard Ticket", price: 0, currency: "USD", quantity: 100, event_id: event32.id, user_id: user3.id, tickets_sold: 0)
 event33 = Event.create!(name: 'Guns N Roses Reunion concert', location: 'Wiskey A Go Go', 
     longitude: -118.38580531534498, latitude: 34.09088354032888, event_type: 'Concert or Performance',
     description: 'Guns N Roses reunites at the Wiskey A Go Go', organizer_id: user3.id, category_id: category4.id, 
     start_date: DateTime.new(2021, 2, 14, 22, 30, 0), end_date: DateTime.new(2021, 2, 15, 0, 0, 0), 
-    timezone: 'PDT', capacity: 50, status: 'Sold Out', is_sold_out: true, 
+    timezone: 'PDT', capacity: 500, status: 'On Sale', is_sold_out: true, 
     start_sales_date: DateTime.new(2021, 1, 1, 12, 0, 0))
 event33.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_11.jpg"),
                            filename: "event_image_11.jpg")
+ticket331 = Ticket.create!(name: "General Admission", price: 200, currency: "USD", quantity: 500, event_id: event32.id, user_id: user3.id, tickets_sold: 0)
 event34 = Event.create!(name: 'Billy Boy\'s Bar Mitzvah Bash', location: 'Billy Boy\'s house', 
     longitude: -122.45869579966192, latitude: 37.77450172572943, event_type: 'Party or Social Gathering',
     description: 'Billy Boy will be throwing his Bar Mitzvah with special guest Bozo the Clown.', organizer_id: user3.id, category_id: category14.id, 
@@ -147,7 +147,7 @@ event34 = Event.create!(name: 'Billy Boy\'s Bar Mitzvah Bash', location: 'Billy 
     timezone: 'PDT', capacity: 100, status: 'Free')
 event34.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_12.jpg"),
                            filename: "event_image_12.jpg")
-ticket341 = Ticket.create!(name: "Standard Ticket", price: 0, currency: "USD", quantity: 150, event_id: event34.id, user_id: user3.id)
+ticket341 = Ticket.create!(name: "Standard Ticket", price: 0, currency: "USD", quantity: 100, event_id: event34.id, user_id: user3.id, tickets_sold: 0)
 user4 = User.create!(username: 'Michael Jordan', email: 'mjordan@mail.com', password: 'passwordmj')
 event41 = Event.create!(name: 'JavaScript Tech Conference', location: 'Moscone Center', 
     longitude: -122.40070140852366, latitude: 37.784308741928044, event_type: 'Conference',
@@ -158,8 +158,8 @@ event41 = Event.create!(name: 'JavaScript Tech Conference', location: 'Moscone C
     start_sales_date: DateTime.new(2020, 12, 1, 12, 0, 0))
 event41.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_13.jpg"),
                            filename: "event_image_13.jpg")
-ticket341 = Ticket.create!(name: "General Admission", price: 150, currency: "USD", quantity: 150, event_id: event41.id, user_id: user4.id)
-ticket342 = Ticket.create!(name: "Student Admission", price: 35, currency: "USD", quantity: 150, event_id: event41.id, user_id: user4.id)
+ticket411 = Ticket.create!(name: "General Admission", price: 150, currency: "USD", quantity: 350, event_id: event41.id, user_id: user4.id, tickets_sold: 0)
+ticket412 = Ticket.create!(name: "Student Admission", price: 35, currency: "USD", quantity: 150, event_id: event41.id, user_id: user4.id, tickets_sold: 0)
 event42 = Event.create!(name: 'Michael Jordan Book Signing', location: 'United Center, Chicago Illinois', 
     longitude: -87.67434756137992, latitude: 41.88053103958748, event_type: 'Appearance or Signing',
     description: 'Michael Jordan will be at the United Center for a book signing.', organizer_id: user4.id, category_id: category20.id, 
@@ -168,8 +168,8 @@ event42 = Event.create!(name: 'Michael Jordan Book Signing', location: 'United C
     start_sales_date: DateTime.new(2020, 10, 15, 12, 0, 0))
 event42.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_14.jpg"),
                            filename: "event_image_14.jpg")
-ticket421 = Ticket.create!(name: "General Ticket", price: 20, currency: "USD", quantity: 250, event_id: event42.id, user_id: user4.id)
-ticket422 = Ticket.create!(name: "Exclusive Access", price: 150, currency: "USD", quantity: 20, event_id: event42.id, user_id: user4.id)
+ticket421 = Ticket.create!(name: "General Ticket", price: 20, currency: "USD", quantity: 950, event_id: event42.id, user_id: user4.id, tickets_sold: 0)
+ticket422 = Ticket.create!(name: "Exclusive Access", price: 150, currency: "USD", quantity: 50, event_id: event42.id, user_id: user4.id, tickets_sold: 0)
 event43 = Event.create!(name: 'San Francisco Jazz Festival', location: 'San Franciso, CA', 
     longitude: -122.416667, latitude: 37.783333, event_type: 'Festival or Fair',
     description: 'Come enjoy 3 weeks of Jazz at San Francisco\'s annual Jazz Festival', organizer_id: user4.id, category_id: category4.id, 
@@ -178,8 +178,8 @@ event43 = Event.create!(name: 'San Francisco Jazz Festival', location: 'San Fran
     start_sales_date: DateTime.new(2020, 11, 1, 12, 0, 0))
 event43.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_15.jpg"),
                            filename: "event_image_15.jpg")
-ticket431 = Ticket.create!(name: "General Admission", price: 20, currency: "USD", quantity: 2000, event_id: event43.id, user_id: user4.id)
-ticket432 = Ticket.create!(name: "VIP Access", price: 150, currency: "USD", quantity: 300, event_id: event43.id, user_id: user4.id)
+ticket431 = Ticket.create!(name: "General Admission", price: 20, currency: "USD", quantity: 1700, event_id: event43.id, user_id: user4.id, tickets_sold: 0)
+ticket432 = Ticket.create!(name: "VIP Access", price: 150, currency: "USD", quantity: 300, event_id: event43.id, user_id: user4.id, tickets_sold: 0)
 event44 = Event.create!(name: 'The Slipnutz Comedy Reunion', location: 'Madison Square Garden', 
     longitude: -73.99354599028146, latitude: 40.750073708311426, event_type: 'Concert or Performance',
     description: 'They\'re the Slipnutz, slippin\' on nuts, clownin\' around ... and slippin\' on nuts!', organizer_id: user4.id, category_id: category14.id, 
@@ -188,4 +188,4 @@ event44 = Event.create!(name: 'The Slipnutz Comedy Reunion', location: 'Madison 
     start_sales_date: DateTime.new(2020, 11, 1, 12, 0, 0))
 event44.event_image.attach(io: open("https://eventbriter-dev.s3-us-west-1.amazonaws.com/event_image_16.jpg"),
                            filename: "event_image_16.jpg")
-ticket441 = Ticket.create!(name: "General Admission", price: 50, currency: "USD", quantity: 5000, event_id: event44.id, user_id: user4.id)
+ticket441 = Ticket.create!(name: "General Admission", price: 50, currency: "USD", quantity: 5000, event_id: event44.id, user_id: user4.id, tickets_sold: 0)
