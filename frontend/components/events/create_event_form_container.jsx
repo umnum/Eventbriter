@@ -15,7 +15,9 @@ const mapStateToProps = state => {
             categoryId: null,
             eventType: "",
             startDate: null,
+            startTime: null,
             endDate: null,
+            endTime: null,
             timezone: "",
             status: "Announced",
             eventImage: null

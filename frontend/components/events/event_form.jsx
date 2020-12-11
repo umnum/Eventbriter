@@ -5,6 +5,12 @@ class EventFrom extends React.Component {
     constructor(props) {
         super(props);
         this.state = props.event;
+        let startDate = this.state.startDate === null ? null : new Date(this.state.startDate);
+        let startTime = this.state.startDate === null ? null : startDate.toTimeString().split(' ')[0].slice(0, 5);
+        this.state.startTime = startTime;
+        let endDate = this.state.endDate === null ? null : new Date(this.state.endDate);
+        let endTime = this.state.endDate === null ? null : endDate.toTimeString().split(' ')[0].slice(0, 5);
+        this.state.endTime = endTime;
         this.state.design = {
             name: false,
             type: false,
@@ -205,21 +211,24 @@ class EventFrom extends React.Component {
     }
 
     render() {
-        let startDate = new Date(this.state.startDate);
-        let endDate = new Date(this.state.endDate);
-        let year = startDate.getFullYear().toString();
-        let month = (startDate.getMonth() + 1).toString();
-        month = (month.length === 1 ? '0' : '') + month;
-        let day = startDate.toString(' ').split(' ')[2];
-        let startTime = startDate.toTimeString().split(' ')[0].slice(0, 5);
-        startDate = `${year}-${month}-${day}`;
+        let startDate = this.state.startDate === null ? null : new Date(this.state.startDate);
+        let endDate = this.state.endDate === null ? null : new Date(this.state.endDate);
+        let year, month, day;
+        if (startDate !== null ) {
+            let year = startDate.getFullYear().toString();
+            let month = (startDate.getMonth() + 1).toString();
+            month = (month.length === 1 ? '0' : '') + month;
+            day = startDate.toString(' ').split(' ')[2];
+            startDate = `${year}-${month}-${day}`;
 
-        year = endDate.getFullYear().toString();
-        month = (endDate.getMonth() + 1).toString();
-        month = (month.length === 1 ? '0' : '') + month;
-        day = endDate.toString(' ').split(' ')[2];
-        let endTime = endDate.toTimeString().split(' ')[0].slice(0, 5);
-        endDate = `${year}-${month}-${day}`;
+        }
+        if (endDate !== null) {
+            year = endDate.getFullYear().toString();
+            month = (endDate.getMonth() + 1).toString();
+            month = (month.length === 1 ? '0' : '') + month;
+            day = endDate.toString(' ').split(' ')[2];
+            endDate = `${year}-${month}-${day}`;
+        }
 
         let categoryOptions = this.props.categories.map(category => {
             return <option key={category.id} value={category.id}>{category.name}</option>;
@@ -353,7 +362,7 @@ class EventFrom extends React.Component {
                                         <div className={this.state.design.startDate? 'field-wrapper-focused' : ( this.state.errors.startDate? 'field-wrapper-error' : 'field-wrapper')}>
                                             <div className={`start-date-field-wrapper ${startDateBorder} ${startDateBorderError}`}>
                                                 <label id="start-date-label">Start Date</label>
-                                                <input onBlur={this.blur('startDate')} onFocus={this.focus('startDate')} onChange={this.handleInput('startDate')} type="date" />
+                                                <input onBlur={this.blur('startDate')} onFocus={this.focus('startDate')} onChange={this.handleInput('startDate')} type="date" value={startDate}/>
                                             </div>
                                         </div> 
                                     </div>
@@ -361,7 +370,7 @@ class EventFrom extends React.Component {
                                         <div className={this.state.design.startTime? 'field-wrapper-focused' : ( this.state.errors.startTime? 'field-wrapper-error' : 'field-wrapper')}>
                                             <div className={`start-time-field-wrapper ${startTimeBorder} ${startTimeBorderError}`}>
                                                 <label id="start-time-label">Start Time</label>
-                                                <input onBlur={this.blur('startTime')} onFocus={this.focus('startTime')} onChange={this.handleInput('startTime')} type="time" name="startTime" />
+                                                <input onBlur={this.blur('startTime')} onFocus={this.focus('startTime')} onChange={this.handleInput('startTime')} type="time" name="startTime" value={this.state.startTime}/>
                                             </div>
                                         </div> 
                                     </div>
@@ -371,7 +380,7 @@ class EventFrom extends React.Component {
                                         <div className={this.state.design.endDate? 'field-wrapper-focused' : ( this.state.errors.endDate? 'field-wrapper-error' : 'field-wrapper')}>
                                             <div className={`end-date-field-wrapper ${endDateBorder} ${endDateBorderError}`}>
                                                 <label id="end-date-label">End Date</label>
-                                                <input onBlur={this.blur('endDate')} onFocus={this.focus('endDate')} onChange={this.handleInput('endDate')} type="date" name="endDate" />
+                                                <input onBlur={this.blur('endDate')} onFocus={this.focus('endDate')} onChange={this.handleInput('endDate')} type="date" name="endDate" value={endDate}/>
                                             </div>
                                         </div> 
                                     </div>
@@ -379,7 +388,7 @@ class EventFrom extends React.Component {
                                         <div className={this.state.design.endTime? 'field-wrapper-focused' : ( this.state.errors.endTime? 'field-wrapper-error' : 'field-wrapper')}>
                                             <div className={`end-time-field-wrapper ${endTimeBorder} ${endTimeBorderError}`}>
                                                 <label id="start-time-label">End Time</label>
-                                                <input onBlur={this.blur('endTime')} onFocus={this.focus('endTime')} onChange={this.handleInput('endTime')} type="time" name="endTime" />
+                                                <input onBlur={this.blur('endTime')} onFocus={this.focus('endTime')} onChange={this.handleInput('endTime')} type="time" name="endTime" value={this.state.endTime}/>
                                             </div>
                                         </div> 
                                     </div>
