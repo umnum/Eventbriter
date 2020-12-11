@@ -1,7 +1,7 @@
     //background-color: #555; //dark-gray
 .event-show-page {
     background-color: #ececec;
-    height: 300%;
+    height: 130%;
 }
 
 .event-show-body {
@@ -12,13 +12,13 @@
     top: 13%;
     left:13%;
     width:75%;
-    height: 280%;
+    height: 120%;
     border-radius: 6px;
 }
 
 .event-show-header {
     display: flex;
-    height: 15%;
+    height: 200px;
 }
 
 .event-show-header-image img {
@@ -73,12 +73,13 @@
     line-height: 21px;
     letter-spacing: .5px;
     word-break: break-word;
-    height: 60%;
 }
 
 .header-info-container {
-    height: 30%;
-    padding-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 5%;
     padding-left: 20%;
     padding-right: 10%;
 }
@@ -98,14 +99,14 @@
 }
 
 .event-show-panel {
-    border-style: solid;
+    border-style: solid ;
     border-color: #DBDAE3;
     border-width: 1px 0;
     background-color: #fff;
     padding-top: 10px;
     padding-bottom: 10px;
     box-sizing: border-box;
-    height: 4%;
+    height: 66px;
     display: flex;
     justify-content: space-between;
 }
@@ -165,8 +166,19 @@
 
 .details-description {
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     width: 70%;
+    height: 600px;
     padding-right: 5%;
+}
+
+.details-description > div:first-child {
+    height: 200px;
+}
+
+.details-description h1 {
+    overflow: scroll;
 }
 
 .details-info {
@@ -205,8 +217,11 @@
     height: 20%;
 }
 
+.event-show-map {
+    padding-top: 30px;
+}
+
 #map-container {
-    height: 30%;
-    margin-left: 10%;
-    width: 50%;
+    width: 300px;
+    height: 300px;
 }

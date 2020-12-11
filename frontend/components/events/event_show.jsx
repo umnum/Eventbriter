@@ -88,7 +88,12 @@ class EventShow extends React.Component {
                     </div>
                     <div className="event-show-details">
                         <div className="details-description">
-                            <h1>{this.props.event.description}</h1>
+                            <div><h1>{this.props.event.description}</h1></div>
+                            <div className="event-show-map">
+                                { this.props.event.longitude && this.props.event.latitude ? 
+                                <EventMap lng={this.props.event.longitude} lat={this.props.event.latitude} /> :
+                                <></> }
+                            </div>
                         </div>
                         <div className="details-info">
                             <div>
@@ -103,11 +108,6 @@ class EventShow extends React.Component {
                                 <p>{this.props.event.location}</p>
                             </div>
                         </div>
-                    </div>
-                    <div className="event-show-map">
-                        { this.props.event.longitude && this.props.event.latitude ? 
-                          <EventMap lng={this.props.event.longitude} lat={this.props.event.latitude} /> :
-                          <></> }
                     </div>
                 </div>
                 <PurchaseTicketModal 
