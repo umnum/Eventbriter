@@ -5,12 +5,26 @@ class EventFrom extends React.Component {
     constructor(props) {
         super(props);
         this.state = props.event;
-        let startDate = this.state.startDate === null ? null : new Date(this.state.startDate);
-        let startTime = this.state.startDate === null ? null : startDate.toTimeString().split(' ')[0].slice(0, 5);
-        this.state.startTime = startTime;
-        let endDate = this.state.endDate === null ? null : new Date(this.state.endDate);
-        let endTime = this.state.endDate === null ? null : endDate.toTimeString().split(' ')[0].slice(0, 5);
-        this.state.endTime = endTime;
+        let startDate, endDate, year, month, day = null;
+        if (this.state.startDate !== null) {
+            startDate = new Date(this.state.startDate);
+            this.state.startTime = startDate.toTimeString().split(' ')[0].slice(0, 5);
+            year = startDate.getFullYear().toString();
+            month = (startDate.getMonth() + 1).toString();
+            month = (month.length === 1 ? '0' : '') + month;
+            day = startDate.toString(' ').split(' ')[2];
+            this.state.startDate = `${year}-${month}-${day}`;
+        }
+        endDate = this.state.endDate === null ? null : new Date(this.state.endDate);
+        if (this.state.endDate !== null) {
+            endDate = new Date(this.state.endDate);
+            this.state.endTime = endDate.toTimeString().split(' ')[0].slice(0, 5);
+            year = endDate.getFullYear().toString();
+            month = (endDate.getMonth() + 1).toString();
+            month = (month.length === 1 ? '0' : '') + month;
+            day = endDate.toString(' ').split(' ')[2];
+            this.state.endDate = `${year}-${month}-${day}`;
+        }
         this.state.design = {
             name: false,
             type: false,
@@ -215,8 +229,8 @@ class EventFrom extends React.Component {
         let endDate = this.state.endDate === null ? null : new Date(this.state.endDate);
         let year, month, day;
         if (startDate !== null ) {
-            let year = startDate.getFullYear().toString();
-            let month = (startDate.getMonth() + 1).toString();
+            year = startDate.getFullYear().toString();
+            month = (startDate.getMonth() + 1).toString();
             month = (month.length === 1 ? '0' : '') + month;
             day = startDate.toString(' ').split(' ')[2];
             startDate = `${year}-${month}-${day}`;

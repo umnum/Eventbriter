@@ -42,7 +42,8 @@ class EventShow extends React.Component {
         let startYear = date[3];
         let startHours = startDateTime.getHours();
         let startAmOrPm = startHours > 11 ? "PM" : "AM";
-        startHours = (startHours % 12 + 1).toLocaleString();
+        startHours = (startHours % 12).toLocaleString();
+        startHours = startHours === "0" ? "12" : startHours;
         let startMinutes = startDateTime.getMinutes().toLocaleString();
         startMinutes = (startMinutes.length === 1 ? '0' : '') + startMinutes;
         let endDateTime = new Date(this.props.event.endDate);
@@ -54,7 +55,8 @@ class EventShow extends React.Component {
         let endYear = date[3];
         let endHours = endDateTime.getHours();
         let endAmOrPm = endHours > 11 ? "PM" : "AM";
-        endHours = (endHours % 12 + 1).toLocaleString();
+        endHours = (endHours % 12).toLocaleString();
+        endHours = endHours === "0" ? "12" : endHours;
         let endMinutes = endDateTime.getMinutes().toLocaleString();
         endMinutes = (endMinutes.length === 1 ? '0' : '') + endMinutes;
         let tickets = [];
