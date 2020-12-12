@@ -50,6 +50,14 @@ class UserTicketIndex extends React.Component {
                     removePurchasedTicket={this.props.removePurchasedTicket} 
                     toggleModal={this.toggleModal} />
         });
+        if (eventTicketCount === 0 && this.props.event.status !== "Announced") {
+            const formData = new FormData();
+            formData.append('event[id]', this.props.event.id);
+            formData.append('event[status]', "Announced");
+            formData.append('event[is_sold_out]', false);
+            const payload = {user: this.props.currentUser, event: formData};
+            this.props.updateEvent(payload)
+        }
         return (
             <div className="user-ticket-index">
                 <div className="user-ticket-index-title">
