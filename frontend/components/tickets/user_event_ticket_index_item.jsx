@@ -8,7 +8,15 @@ class UserEventTicketIndexItem extends React.Component {
                 this.props.toggleModal(true);
                 window.scrollTo(0,0);
                 document.body.classList.add("stop-scrolling");
-        });
+        })
+            .then(successResponse => {
+                const formData = new FormData();
+                formData.append('event[id]', this.props.event.id);
+                formData.append('event[capacity]', this.props.event.capacity - this.props.ticket.quantity);
+                formData.append('event[tickets_sold]', this.props.event.ticketsSold - this.props.ticket.quantity);
+                const payload = {user: this.props.currentUser, event: formData};
+                this.props.updateEvent(payload)
+            });
     }
 
     render() {

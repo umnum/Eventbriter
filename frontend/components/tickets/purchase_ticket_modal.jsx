@@ -61,6 +61,7 @@ class PurchaseTicketModal extends React.Component {
                 if (idx === lastIndex) {
                     formData.append('event[id]', ticket.eventId);
                     formData.append('event[tickets_sold]', eventTicketsSold);
+                    debugger
                     if (eventTicketsSold === parseInt(this.props.event.capacity)) {
                         formData.append('event[status]', "Sold Out");
                         formData.append('event[is_sold_out]', true);

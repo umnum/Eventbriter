@@ -48,6 +48,7 @@ class UserTicketIndex extends React.Component {
                     fetchTicket={this.props.fetchTicket}
                     removeTicket={this.props.removeTicket}
                     removePurchasedTicket={this.props.removePurchasedTicket} 
+                    updateEvent={this.props.updateEvent}
                     toggleModal={this.toggleModal} />
         });
         if (eventTicketCount === 0 && this.props.event.status !== "Announced") {
