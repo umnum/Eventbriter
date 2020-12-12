@@ -294,7 +294,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 5%;
+    padding: 2%;
 }
 
 .image-selector {
@@ -725,7 +725,8 @@ input[type="file"] {
     height: 20%;
 }
 
-.event-errors-hidden {
+.event-errors-hidden,
+.event-errors-description-hidden {
     color: transparent;
     font-size: 12px;
     line-height: 22px;
@@ -880,4 +881,8 @@ textarea {
 
 .description-errors > textarea {
     border: 2px solid red;
+}
+
+.event-errors-description-hidden, .hidden {
+    height: 0% !important;
 }

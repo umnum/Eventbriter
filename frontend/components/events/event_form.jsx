@@ -467,7 +467,7 @@ class EventFrom extends React.Component {
                                 <textarea rows="10" onBlur={this.blur('description')} onFocus={this.focus('description')} onChange={this.handleInput('description')} value={this.state.description} />
                         </div>
                     </div> 
-                    <div className={`event-errors-${this.state.errors.description ? 'shown' : 'hidden'}`}>You must add a description for your event.</div>
+                    <div className={`event-errors-${this.state.errors.description ? 'shown' : 'description-hidden'}`}>You must add a description for your event.</div>
                     <div className="event-image">
                         <h1>
                             Main Event Image
@@ -480,7 +480,7 @@ class EventFrom extends React.Component {
                             </p>
                         </div>
                         <div className="image-selector">
-                            <div>
+                            <div className={this.state.photoUrl ? "" : "hidden"}>
                                 {this.state.photoUrl ? <img src={this.state.photoUrl}></img> : <></>}
                             </div>
                             <div>
