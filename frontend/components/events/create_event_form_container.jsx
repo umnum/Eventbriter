@@ -20,7 +20,8 @@ const mapStateToProps = state => {
             endTime: null,
             timezone: "",
             status: "Announced",
-            eventImage: null
+            eventImage: null,
+            photoUrl: null
         },
         formType: 'Create Event'
     });

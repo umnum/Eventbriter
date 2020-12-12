@@ -293,21 +293,43 @@
 .event-image {
     display: flex;
     flex-direction: column;
-    height: 80%;
+    height: 100%;
+    padding: 5%;
 }
 
 .image-selector {
+    display: flex;
+    flex-direction: column;
     color: #39364F;
+    width: 25%;
+}
+
+.image-selector img {
+    width: 80%;
+    height: 80%;
+}
+
+.image-selector > div:first-child {
+    height: 75%;
+}
+
+.image-selector > div:last-child {
+    display: flex;
+    height: 25%;
+}
+
+.image-selector p {
+    height: 10%;
 }
 
 .image-selector-error {
     color: red;
 }
 
-.image-selector > input {
+.image-selector input {
     -webkit-writing-mode: horizontal-tb !important;
     text-rendering: auto;
-    color: -internal-light-dark(black, white);
+    color: transparent;
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;
@@ -326,6 +348,7 @@
     border-style: inset;
     border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
     border-image: initial;
+    width: 40%;
 }
 
 input[type="file"] {

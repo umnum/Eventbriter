@@ -25,6 +25,13 @@ class EventFrom extends React.Component {
             day = endDate.toString(' ').split(' ')[2];
             this.state.endDate = `${year}-${month}-${day}`;
         }
+        if (this.state.photoUrl !== null) {
+            let array = this.state.photoUrl.split('/');
+            this.state.urlFilename = array[array.length-1];
+        }
+        else {
+            this.state.urlFilename = null;
+        }
         this.state.design = {
             name: false,
             type: false,
@@ -220,8 +227,16 @@ class EventFrom extends React.Component {
     handleFile(e) {
         let errors = {...this.state.errors};
         errors.eventImage = false;
+        let reader = new FileReader();
+        let file = e.currentTarget.files[0];
+        let url = reader.readAsDataURL(file);
+        reader.onloadend = function (e) {
+        this.setState({
+          photoUrl: [reader.result]
+        })}.bind(this);
+        this.setState({urlFilename: file.name});
         this.setState({errors});
-        this.setState({eventImage: e.currentTarget.files[0]});
+        this.setState({eventImage: file});
     }
 
     render() {
@@ -268,8 +283,6 @@ class EventFrom extends React.Component {
         let endTimeBorderError = this.state.errors.endTime? "error-class" : "";
         let timezoneBorder = this.state.design.timezone? "new-class" : "";
         let timezoneBorderError = this.state.errors.timezone? "error-class" : "";
-        let descriptionBorder = this.state.design.description? "new-class" : "";
-        let descriptionBorderError = this.state.errors.description? "error-class" : "";
         return (
             <>
                 <CreateTicketModal on={this.state.modalOn} toggleModal={this.toggleModal} eventId={this.state.eventId} history={this.props.history} />
@@ -467,7 +480,13 @@ class EventFrom extends React.Component {
                             </p>
                         </div>
                         <div className="image-selector">
-                            <input className={this.state.errors.eventImage ? `image-selector-error` : ``} onChange={this.handleFile} type="file" />
+                            <div>
+                                {this.state.photoUrl ? <img src={this.state.photoUrl}></img> : <></>}
+                            </div>
+                            <div>
+                                <input className={this.state.errors.eventImage ? `image-selector-error` : ``} onChange={this.handleFile} type="file" />
+                                <p>{ this.state.urlFilename ? this.state.urlFilename : "No File Chosen"}</p>
+                            </div>
                         </div>
                     </div>
                     <div className="event-form-submit">
