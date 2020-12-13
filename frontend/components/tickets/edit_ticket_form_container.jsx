@@ -14,7 +14,10 @@ class EditTicketForm extends React.Component {
     render() {
         const { submitForm, formType, ticket, currentUser, events } = this.props;
 
-        if (!ticket || !currentUser || events[this.props.ticket.eventId].organizerId !== currentUser.id) {
+        if (!ticket || Object.values(events).length === 0) {
+            return null;
+        }
+        if (!currentUser || events[this.props.ticket.eventId].organizerId !== currentUser.id) {
             return <Redirect to="/" />
         }
         return (
