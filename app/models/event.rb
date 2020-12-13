@@ -2,7 +2,7 @@ class Event < ApplicationRecord
     validates :name, :location, :event_type, :description, presence: true
     validates :start_date, :end_date, :timezone, :status, presence: true
 
-    validate :ensure_image
+    #validate :ensure_image
 
     belongs_to :organizer,
         primary_key: :id,

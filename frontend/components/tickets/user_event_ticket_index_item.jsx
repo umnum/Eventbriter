@@ -11,9 +11,10 @@ class UserEventTicketIndexItem extends React.Component {
         })
             .then(successResponse => {
                 const formData = new FormData();
+                const eventCapacity = this.props.event.capacity;
                 formData.append('event[id]', this.props.event.id);
-                formData.append('event[capacity]', this.props.event.capacity - this.props.ticket.quantity);
-                formData.append('event[tickets_sold]', this.props.event.ticketsSold - this.props.ticket.quantity);
+                formData.append('event[capacity]', eventCapacity - this.props.ticket.quantity);
+                formData.append('event[tickets_sold]', this.props.event.ticketsSold - this.props.ticket.ticketsSold);
                 const payload = {user: this.props.currentUser, event: formData};
                 this.props.updateEvent(payload)
             });

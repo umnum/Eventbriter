@@ -36,10 +36,14 @@ class UserTicketIndex extends React.Component {
     render() {
         if (this.props.event === undefined) return null;
         let eventTicketCount = 0;
+        let eventTotalTicketPrice = 0;
+        let eventTotalTicketsSold = 0;
         let userEventTicketIndexItems = this.props.userEventTickets.map(userEventTicket => {
             if (this.props.event.id !== userEventTicket.eventId) return null;
             if (this.props.currentUser.id !== this.props.event.organizerId) return null;
             eventTicketCount++;
+            eventTotalTicketPrice += userEventTicket.price;
+            eventTotalTicketsSold += userEventTicket.ticketsSold;
             return <UserEventTicketIndexItem 
                     key={userEventTicket.id}
                     event={this.props.event}
@@ -56,6 +60,22 @@ class UserTicketIndex extends React.Component {
             formData.append('event[id]', this.props.event.id);
             formData.append('event[status]', "Announced");
             formData.append('event[is_sold_out]', false);
+            formData.append('event[capacity]', 0);
+            formData.append('event[tickets_sold]', 0);
+            const payload = {user: this.props.currentUser, event: formData};
+            this.props.updateEvent(payload)
+        }
+        else if (eventTotalTicketsSold === this.props.event.capacity) {
+            const formData = new FormData();
+            formData.append('event[id]', this.props.event.id);
+            formData.append('event[status]', "Sold Out");
+            const payload = {user: this.props.currentUser, event: formData};
+            this.props.updateEvent(payload)
+        }
+        else if (eventTotalTicketPrice === 0 && this.props.event.status !== "Free") {
+            const formData = new FormData();
+            formData.append('event[id]', this.props.event.id);
+            formData.append('event[status]', "Free");
             const payload = {user: this.props.currentUser, event: formData};
             this.props.updateEvent(payload)
         }

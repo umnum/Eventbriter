@@ -48,7 +48,10 @@ class PurchaseTicketModal extends React.Component {
                 quantity: null
             }
         };
-        let eventTicketsSold = parseInt(this.props.event.ticketsSold);
+        let eventTicketsSold = this.props.event.ticketsSold;
+        if (eventTicketsSold) {
+            eventTicketsSold = parseInt(eventTicketsSold);
+        }
         const lastIndex = this.props.tickets.length - 1;
         this.props.tickets.forEach((ticket, idx) => {
             const quantity = parseInt(this.state.quantity[ticket.id]);
@@ -61,7 +64,6 @@ class PurchaseTicketModal extends React.Component {
                 if (idx === lastIndex) {
                     formData.append('event[id]', ticket.eventId);
                     formData.append('event[tickets_sold]', eventTicketsSold);
-                    debugger
                     if (eventTicketsSold === parseInt(this.props.event.capacity)) {
                         formData.append('event[status]', "Sold Out");
                         formData.append('event[is_sold_out]', true);

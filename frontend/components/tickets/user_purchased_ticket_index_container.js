@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import UserPurchasedTicketIndex from './user_purchased_ticket_index';
-import { fetchTicket, fetchTickets, removeTicket } from '../../actions/ticket_actions';
+import { fetchTicket, fetchTickets, removeTicket, updateTicket } from '../../actions/ticket_actions';
 import { fetchPurchasedTickets, removePurchasedTicket } from '../../actions/purchased_ticket_actions';
-import { fetchEvents } from '../../actions/event_actions';
+import { fetchEvents, updateEvent } from '../../actions/event_actions';
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -20,6 +20,8 @@ const mapDispatchToProps = dispatch => {
         fetchTicket: ticketId => dispatch(fetchTicket(ticketId)),
         fetchPurchasedTickets: userId => dispatch(fetchPurchasedTickets(userId)),
         fetchEvents: () => dispatch(fetchEvents()),
+        updateEvent: payload => dispatch(updateEvent(payload)),
+        updateTicket: ticket => dispatch(updateTicket(ticket)),
         removeTicket: ticketId => dispatch(removeTicket(ticketId)),
         removePurchasedTicket: ticketId => dispatch(removePurchasedTicket(ticketId))
     }

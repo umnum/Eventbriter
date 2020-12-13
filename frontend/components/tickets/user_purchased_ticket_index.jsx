@@ -38,6 +38,8 @@ class UserTicketIndex extends React.Component {
             tickets={this.props.entities.tickets}
             purchasedTicket={userPurchasedTicket}
             removePurchasedTicket={this.props.removePurchasedTicket}
+            updateEvent={this.props.updateEvent}
+            updateTicket={this.props.updateTicket}
             toggleModal={this.toggleModal} />
         });
         return (
