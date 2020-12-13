@@ -97,11 +97,17 @@ class TicketForm extends React.Component {
                 event_id: this.props.event.id
             }
         };
+        const prevTicketQuantity = this.props.ticket.quantity;
         this.props.submitForm(payload)
             .then(successResponse => {
                 let event = {...successResponse.payload.event};
                 if (parseInt(event.capacity) >= 0) {
-                    event.capacity = parseInt(event.capacity) + parseInt(this.state.quantity);
+                    if (this.props.formType === 'Update Ticket') {
+                        event.capacity = parseInt(event.capacity) + parseInt(this.state.quantity) - prevTicketQuantity;
+                    }
+                    else {
+                        event.capacity = parseInt(event.capacity) + parseInt(this.state.quantity);
+                    }
                 }
                 else {
                     event.capacity = parseInt(this.state.quantity);

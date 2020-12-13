@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import TicketForm from './ticket_form';
 import { fetchTicket, updateTicket, clearTicketErrors } from '../../actions/ticket_actions';
-import { fetchEvent } from '../../actions/event_actions';
+import { fetchEvent, updateEvent } from '../../actions/event_actions';
 import { Redirect } from 'react-router-dom';
 
 class EditTicketForm extends React.Component {
@@ -28,6 +28,7 @@ class EditTicketForm extends React.Component {
             errors={this.props.errors}
             clearTicketErrors={this.props.clearTicketErrors}
             submitForm={submitForm}
+            updateEvent={this.props.updateEvent}
             currentUser={currentUser}
             formType={formType} />
         );
@@ -48,6 +49,7 @@ const mapDispatchToProps = dispatch => {
     return ({
         fetchTicket: ticketId => dispatch(fetchTicket(ticketId)),
         fetchEvent: eventId => dispatch(fetchEvent(eventId)),
+        updateEvent: formData => dispatch(updateEvent(formData)),
         submitForm: ticket => dispatch(updateTicket(ticket)),
         clearTicketErrors: () => dispatch(clearTicketErrors)
     });
