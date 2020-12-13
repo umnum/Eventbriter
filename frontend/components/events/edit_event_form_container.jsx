@@ -13,7 +13,10 @@ class EditEventForm extends React.Component {
     render() {
         const { submitForm, formType, event, currentUser, categories } = this.props;
 
-        if (!event || !currentUser || event.organizerId !== currentUser.id) {
+        if (!event) {
+            return null;
+        }
+        if (!currentUser || event.organizerId !== currentUser.id) {
             return <Redirect to="/" />
         }
         return (
