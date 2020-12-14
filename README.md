@@ -97,6 +97,9 @@ Navigating to `Manage Events` as described above, will also give the user the op
 #### Creating a Ticket
 
 Any Eventbriter member that has created at least one event has the ability to create tickets for their events. To do this, the user must navigate to the `Manage Events` icon. From there, they will see a list of all of their organized events. Within the `Tickets` column for each event is the `Manage Tickets` button. Clicking on this button will take you to a list of all the tickets (if any) that have been created for the event, underneath this list will be a `Create Ticket` button that will take you to the page for creating an additional ticket. When taken to this page, the user must provide the following information for the ticket: name, quantity, price, and currency. Clicking on `Create Ticket` with all the appropriate information filled out will add this ticket to the list of tickets created for the event and will update the status of the event to "On Sale". If there are tickets available, but none of them have a price above 0, then the status of the event will be updated to "Free".
+<p align="center">
+    <img src="./img/create_ticket.gif" alt="Create Ticket">
+</p>
 
 #### Removing a Ticket
 
@@ -105,6 +108,12 @@ Going through the same process as above with navigating to `Manage Tickets` will
 #### Purchasing a Ticket
 
 Any event that is listed as "On Sale" has tickets that are available for any Eventbriter member to purchase. Any user can view a list of all available events, but when a logged in user clicks on an event that is listed as "On Sale", they are provided a `Tickets` button that will give them the ability to purchase available tickets to this event. Clicking on the `Tickets` button will cause a modal to pop up which will list all the available tickets. Next to each ticket is a dropdown option where a user can purchase up to ten tickets at a time, if ten are available. Once the user chooses at least one ticket to purchase, the `Purchase Tickets` button becomes active and the user can click on this button to purchase their tickets. Once they click on the button, they will be shown a receipt of all the tickets they have purchased, as well as the total price of each ticket type and the total price all together. A logged in user can view a list of all of their purchased tickets by navigating to the `Tickets` icon located in the navigation bar at the top of the page. This list provides information for each ticket purchase, including the name of the event, the ticket name, the quantity purchased, and the ticket price for a single ticket. The last column provides an option to request a ticket refund, which is discussed [below](#requesting-a-ticket-refund).
+<p align="center">
+    <img src="./img/purchase_ticket.gif" alt="Purchase Ticket">
+</p>
 
 #### Requesting a Ticket Refund
 When a logged in user navigates to the `Tickets` icon, located in the navigation bar at the very top of the page, they will be taken to a list of all the tickets they have purchased. At the very right of each ticket listed is a button that says `Request Refund`. Clicking on this button will remove the purchased ticket from your list and notify you that you have been refunded.
+<p align="center">
+    <img src="./img/view_purchased_tickets.gif" alt="View Purchased Tickets">
+</p>
