@@ -27,7 +27,7 @@
 
 ## About Eventbriter
 
-Eventbriter is a full stack web application that is inspired by the Eventbrite website. When users visit the site, they are allowed to view all the events that were created by Eventbriter members. A user can become an Eventbriter member by creating an account and signing in. Once a member is signed in, they have the ability to create their own events, update their events, and delete their events. They can also create tickets to their events so that other members can purchase tickets and attend your events. Any event that is listed as "On Sale" has tickets available to be purchased by an Eventbriter member. If a user does not want to sign up for an account, they can log in as the Demo User which will allow them to explore the same features as a logged in user.
+Eventbriter is a full stack web application that is inspired by the Eventbrite website. When users visit the site, they are allowed to view all the events that were created by Eventbriter members. A user can become an Eventbriter member by creating an account and signing in. Once a member is signed in, they have the ability to create their own events, update their events, and delete their events. They can also create tickets so that other members can purchase tickets and attend your events. Any event that is listed as "On Sale" has tickets available to be purchased by an Eventbriter member. If a user does not want to sign up for an account, they can log in as the Demo User which will allow them to explore the same features as a logged in user.
 
 What separates Eventbriter from Eventbrite is that it is built as a single-page web application, which provides users with a dynamic and smooth navigation across the entire site. This was made possible by utilizing React and Redux on the frontend. The backend was built on a Ruby on Rails framework, while PostgreSQL was used for database storage along with Amazon AWS S3 to store the events' images.
 
@@ -86,18 +86,25 @@ Logged in users are able to create events that are available for all users to vi
 </p>
 
 #### Updating an Event
-If the event organizer needs to update any details about their event, they can do so by navigating to the `Manage Event` icon located in the navigation bar at the very top of the page. Clicking on this icon will take them to a list of all of their organized events. From there they can choose an event to update.
+If the event organizer needs to update any details about their event, they can do so by navigating to the `Manage Events` icon located in the navigation bar at the very top of the page. Clicking on this icon will take them to a list of all of their organized events. From there they can choose an event to update.
 <p align="center">
     <img src="./img/update_event.gif" alt="Update Event">
 </p>
 
 #### Deleting an Event
-Navigating to `Manage Event` as described above, will also give the user the option of deleting one of their organized events. Doing so will also remove any tickets created for the event as well as removing any purchased tickets and refunding attendees, if tickets were purchased but the event was not attended.
+Navigating to `Manage Events` as described above, will also give the user the option of deleting one of their organized events. Doing so will also remove any tickets created for the event as well as removing any purchased tickets and refunding attendees, if tickets were purchased but the event was not attended.
 
 #### Creating a Ticket
 
+Any Eventbriter member that has created at least one event has the ability to create tickets for their events. To do this, the user must navigate to the `Manage Events` icon. From there, they will see a list of all of their organized events. Within the `Tickets` column for each event is the `Manage Tickets` button. Clicking on this button will take you to a list of all the tickets (if any) that have been created for the event, underneath this list will be a `Create Ticket` button that will take you to the page for creating an additional ticket. When taken to this page, the user must provide the following information for the ticket: name, quantity, price, and currency. Clicking on `Create Ticket` with all the appropriate information filled out will add this ticket to the list of tickets created for the event and will update the status of the event to "On Sale". If there are tickets available, but none of them have a price above 0, then the status of the event will be updated to "Free".
+
 #### Removing a Ticket
+
+Going through the same process as above with navigating to `Manage Tickets` will also provide the option to remove a ticket from the current logged in user's organized events. As described above, `Manage Tickets` lists all of the tickets available for the user's organized event. This list provides a brief description of each ticket, including the ticket's name, number of tickets sold, the total ticket quantity, and the ticket price. The last column `Manage Ticket` provides a dropdown menu with options to either update a ticket's information or remove the ticket. Clicking on `Remove Ticket` will remove the ticket from the list of available tickets for the event. It will also remove any `purchased tickets` from users that have bought tickets to the event and will notify the event organizer that all event attendees have been refunded. Removing all tickets to an event will update the status of that event back to  "Announced".
 
 #### Purchasing a Ticket
 
+Any event that is listed as "On Sale" has tickets that are available for any Eventbriter member to purchase. Any user can view a list of all available events, but when a logged in user clicks on an event that is listed as "On Sale", they are provided a `Tickets` button that will give them the ability to purchase available tickets to this event. Clicking on the `Tickets` button will cause a modal to pop up which will list all the available tickets. Next to each ticket is a dropdown option where a user can purchase up to ten tickets at a time, if ten are available. Once the user chooses at least one ticket to purchase, the `Purchase Tickets` button becomes active and the user can click on this button to purchase their tickets. Once they click on the button, they will be shown a receipt of all the tickets they have purchased, as well as the total price of each ticket type and the total price all together. A logged in user can view a list of all of their purchased tickets by navigating to the `Tickets` icon located in the navigation bar at the top of the page. This list provides information for each ticket purchase, including the name of the event, the ticket name, the quantity purchased, and the ticket price for a single ticket. The last column provides an option to request a ticket refund, which is discussed [below](#requesting-a-ticket-refund).
+
 #### Requesting a Ticket Refund
+When a logged in user navigates to the `Tickets` icon, located in the navigation bar at the very top of the page, they will be taken to a list of all the tickets they have purchased. At the very right of each ticket listed is a button that says `Request Refund`. Clicking on this button will remove the purchased ticket from your list and notify you that you have been refunded.
