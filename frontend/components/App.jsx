@@ -12,7 +12,7 @@ import EditTicketFormContainer from './tickets/edit_ticket_form_container';
 import UserTicketIndexContainer from './tickets/user_ticket_index_container';
 import UserPurchasedTicketIndexContainer from './tickets/user_purchased_ticket_index_container';
 import { Switch, Route } from 'react-router-dom';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import NotFound from './not_found';
 
 const App = () => {
@@ -23,14 +23,14 @@ const App = () => {
                 <Route exact path="/" component={HomeContainer} />
                 <AuthRoute exact path="/login" component={LoginFormContainer} />
                 <AuthRoute exact path="/signup" component={SignupFormContainer} />
-                <Route exact path="/events/:eventId/edit" component={EditEventFormContainer} />
-                <Route exact path="/events/new" component={CreateEventFormContainer} />
-                <Route exact path="/events/:eventId" component={EventShowContainer} />
-                <Route exact path="/users/:userId/events" component={UserEventIndexContainer} />
-                <Route exact path="/users/:userId/events/:eventId/tickets" component={UserTicketIndexContainer} />
-                <Route exact path="/users/:userId/tickets" component={UserPurchasedTicketIndexContainer} />
-                <Route exact path="/tickets/:ticketId/edit" component={EditTicketFormContainer} />
-                <Route exact path="/events/:eventId/tickets/new" component={CreateTicketFormContainer} />
+                <ProtectedRoute exact path="/events/:eventId/edit" component={EditEventFormContainer} />
+                <ProtectedRoute exact path="/events/new" component={CreateEventFormContainer} />
+                <ProtectedRoute exact path="/events/:eventId" component={EventShowContainer} />
+                <ProtectedRoute exact path="/users/:userId/events" component={UserEventIndexContainer} />
+                <ProtectedRoute exact path="/users/:userId/events/:eventId/tickets" component={UserTicketIndexContainer} />
+                <ProtectedRoute exact path="/users/:userId/tickets" component={UserPurchasedTicketIndexContainer} />
+                <ProtectedRoute exact path="/tickets/:ticketId/edit" component={EditTicketFormContainer} />
+                <ProtectedRoute exact path="/events/:eventId/tickets/new" component={CreateTicketFormContainer} />
                 <Route path="/" component={NotFound} />
             </Switch>
         </div>
